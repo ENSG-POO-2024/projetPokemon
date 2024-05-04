@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QPainter, QColor, QPixmap
 from PyQt5.QtCore import Qt, QPoint
 import random
-
+import csv
 
 class GameBoard(QWidget):
     def __init__(self):
@@ -18,6 +18,13 @@ class GameBoard(QWidget):
         self.road_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/road.png").scaled(self.square_size, self.square_size)  # Charger l'image de route
         self.grass_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/grass.png").scaled(self.square_size, self.square_size)  # Charger l'image d'herbe
         self.tree_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/arbre.png").scaled(self.square_size, self.square_size)  # Charger l'image d'arbre
+        self.tall_grass_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/tall_grass.png").scaled(self.square_size, self.square_size)  # Charger l'image d'herbe haute
+
+        # Générer la grille une seule fois au démarrage
+        self.grid, self.tree_positions = self.generate_grid()
+
+        # Ajouter un attribut pour stocker les coordonnées de chaque case
+        self.coordinates = [[(i, j) for j in range(self.board_size)] for i in range(self.board_size)]
 
         # Charger les images du personnage
         self.player_images = {
@@ -26,11 +33,22 @@ class GameBoard(QWidget):
             "up": QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/top.png").scaled(self.square_size, self.square_size),
             "down": QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/bot.png").scaled(self.square_size, self.square_size)
         }
-
-        # Générer la grille une seule fois au démarrage
-        self.grid, self.tree_positions = self.generate_grid()
+        
+        self.load_coordinates("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/data/pokemon_coordinates_modified.csv")
 
         self.initUI()
+        
+    def load_coordinates(self, file_path):
+        try:
+            with open(file_path, newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    x, y = int(row['coord_x']), int(row['coord_y'])
+                    if 0 <= x < self.board_size and 0 <= y < self.board_size:
+                        self.grid[x][y] = 'tall_grass'
+        except FileNotFoundError:
+            print("Fichier CSV introuvable.")
+
 
     def initUI(self):
         self.setWindowTitle('Game Board')
@@ -68,9 +86,13 @@ class GameBoard(QWidget):
             for j in range(camera_top_left_y, min(camera_top_left_y + self.camera_size, self.board_size)):
                 x = start_x + (i - camera_top_left_x) * self.square_size
                 y = start_y + (j - camera_top_left_y) * self.square_size
-               
+            
+                # Dessiner l'image de l'herbe haute
+                if self.grid[i][j] == 'tall_grass':
+                    painter.drawPixmap(x, y, self.tall_grass_image)
+
                 # Dessiner l'image de route ou d'herbe selon la grille générée au démarrage
-                if self.grid[i][j] == 'road':
+                elif self.grid[i][j] == 'road':
                     painter.drawPixmap(x, y, self.road_image)
                 elif self.grid[i][j] == 'grass':
                     painter.drawPixmap(x, y, self.grass_image)
@@ -110,9 +132,6 @@ class GameBoard(QWidget):
                 self.direction = "right"
 
         self.update()
-
-
-
 
 
 if __name__ == '__main__':
