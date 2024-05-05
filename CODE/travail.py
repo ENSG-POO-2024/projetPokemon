@@ -18,8 +18,8 @@ class GameBoard(QWidget):
         self.road_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/road.png").scaled(self.square_size, self.square_size)  # Charger l'image de route
         self.grass_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/grass.png").scaled(self.square_size, self.square_size)  # Charger l'image d'herbe
         self.tree_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/arbre.png").scaled(self.square_size, self.square_size)  # Charger l'image d'arbre
-        self.tall_grass_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/tall_grass.png").scaled(self.square_size, self.square_size)  # Charger l'image d'herbe haute
-
+        self.tall_grass_image = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/tall_grass.png").scaled(self.square_size, self.square_size)
+    
         # Générer la grille une seule fois au démarrage
         self.grid, self.tree_positions = self.generate_grid()
 
@@ -55,15 +55,38 @@ class GameBoard(QWidget):
         self.setGeometry(100, 100, 800, 800)  # Taille de la fenêtre
 
     def generate_grid(self):
-        grid = [['road' for _ in range(self.board_size)] for _ in range(self.board_size)]  # Commencez par remplir tout de route
+        grid = [['grass' for _ in range(self.board_size)] for _ in range(self.board_size)]  # Commencez par remplir tout de herbe
+
+        # Charger les positions des herbes hautes depuis le fichier CSV
+        tall_grass_positions = []
+        try:
+            with open("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/data/pokemon_coordinates_modified.csv", newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    x, y = int(row['coord_x']), int(row['coord_y'])
+                    if 0 <= x < self.board_size and 0 <= y < self.board_size:
+                        tall_grass_positions.append((x, y))
+        except FileNotFoundError:
+            print("Fichier CSV introuvable.")
+
+        # Placez les herbes hautes sur la grille aux positions spécifiées
+        for x, y in tall_grass_positions:
+            grid[x][y] = 'tall_grass'
+
+        # Placez aléatoirement les routes et les arbres là où il n'y a pas d'herbes hautes
         tree_positions = []
         for i in range(self.board_size):
             for j in range(self.board_size):
-                if random.random() < 0.8:  # Probabilité de 80% pour la route
-                    grid[i][j] = 'grass'
-                if grid[i][j] == 'grass' and random.random() < 0.2:  # Probabilité de 20% pour l'arbre sur l'herbe
-                    tree_positions.append((i, j))
+                if grid[i][j] != 'tall_grass':
+                    if random.random() < 0.4:  # Probabilité de 40% pour la route
+                        grid[i][j] = 'road'
+                    elif random.random() < 0.2:  # Probabilité de 20% pour l'arbre
+                        tree_positions.append((i, j))
+                    else:
+                        grid[i][j] = 'grass'  # Les cases restantes sont remplies d'herbe
+
         return grid, tree_positions
+
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -86,26 +109,34 @@ class GameBoard(QWidget):
             for j in range(camera_top_left_y, min(camera_top_left_y + self.camera_size, self.board_size)):
                 x = start_x + (i - camera_top_left_x) * self.square_size
                 y = start_y + (j - camera_top_left_y) * self.square_size
-            
-                # Dessiner l'image de l'herbe haute
-                if self.grid[i][j] == 'tall_grass':
-                    painter.drawPixmap(x, y, self.tall_grass_image)
 
-                # Dessiner l'image de route ou d'herbe selon la grille générée au démarrage
-                elif self.grid[i][j] == 'road':
-                    painter.drawPixmap(x, y, self.road_image)
-                elif self.grid[i][j] == 'grass':
-                    painter.drawPixmap(x, y, self.grass_image)
+                # Dessiner d'abord l'herbe sur toute la caméra
+                painter.drawPixmap(x, y, self.grass_image)
 
                 # Dessiner les arbres
                 for tree_x, tree_y in self.tree_positions:
                     if (tree_x, tree_y) == (i, j):
                         painter.drawPixmap(x, y, self.tree_image)
 
+        # Dessiner les autres éléments
+        for i in range(camera_top_left_x, min(camera_top_left_x + self.camera_size, self.board_size)):
+            for j in range(camera_top_left_y, min(camera_top_left_y + self.camera_size, self.board_size)):
+                x = start_x + (i - camera_top_left_x) * self.square_size
+                y = start_y + (j - camera_top_left_y) * self.square_size
+
+                if self.grid[i][j] == 'tall_grass':
+                    painter.drawPixmap(x, y, self.tall_grass_image)
+                elif self.grid[i][j] == 'road':
+                    painter.drawPixmap(x, y, self.road_image)
+                elif self.grid[i][j] == 'grass':
+                    continue  # Déjà dessiné l'herbe, on passe à la suivante
+
         # Dessiner le personnage
         player_x = start_x + (self.white_square_pos[0] - camera_top_left_x) * self.square_size
         player_y = start_y + (self.white_square_pos[1] - camera_top_left_y) * self.square_size
         painter.drawPixmap(player_x, player_y, self.player_images[self.direction])
+
+
 
 
     def keyPressEvent(self, event):
