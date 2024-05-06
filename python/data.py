@@ -1,5 +1,3 @@
-import Tkinter
-
 class Application:
     def __init__(self):
         """Constructeur de la fenêtre principale"""
@@ -65,6 +63,6 @@ class Application:
         self.entree.delete(0, len(self.v1ch))  # enlever les car. présents
 
 # Programme principal :
-from Tkinter import *
+
 from math import log10   # logarithmes en base 10
 f = Application()        # instanciation de l'objet application
