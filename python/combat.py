@@ -34,13 +34,13 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(420, 30, 191, 161))
         self.label_2.setAutoFillBackground(False)
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(":/image/bulbizzarre.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("bulbizzarre.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(70, 140, 191, 231))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/image/pikachu.png"))
+        self.label.setPixmap(QtGui.QPixmap("pikachu.png"))
         self.label.setScaledContents(True)
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
@@ -145,4 +145,4 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "nom_poke"))
         self.label_10.setText(_translate("MainWindow", "/"))
         self.menuCombat.setTitle(_translate("MainWindow", "Combat"))
-import image1_rc
+# import image1_rc
