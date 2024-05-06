@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="image">
+    <file>pikachu.png</file>
+    <file>bulbizzarre.png</file>
+  </qresource>
+</RCC>
