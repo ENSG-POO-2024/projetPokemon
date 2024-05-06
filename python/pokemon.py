@@ -8,12 +8,17 @@ from abc import abstractmethod, ABCMeta
 import csv
 import numpy as np
 import pandas as pd
+import os
 
 
 ### Extraction des données du projet (dataframe)
+csv_coords = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_coordinates.csv')
+csv_types = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_first_gen.csv')
+coords = pd.read_csv(csv_coords)
+types = pd.read_csv(csv_types)
 
-coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
-types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
+
+
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
 
