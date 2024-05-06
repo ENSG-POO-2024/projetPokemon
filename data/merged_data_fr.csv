@@ -1,0 +1,1221 @@
+#,pokemon,coord_x,coord_y,Name
+1,Bulbizarre,254,12,Bulbasaur
+1,Bulbizarre,118,84,Bulbasaur
+1,Bulbizarre,374,1,Bulbasaur
+1,Bulbizarre,166,78,Bulbasaur
+1,Bulbizarre,182,46,Bulbasaur
+1,Bulbizarre,287,22,Bulbasaur
+2,Herbizarre,303,3,Ivysaur
+2,Herbizarre,236,14,Ivysaur
+2,Herbizarre,48,93,Ivysaur
+2,Herbizarre,226,50,Ivysaur
+2,Herbizarre,35,44,Ivysaur
+2,Herbizarre,296,5,Ivysaur
+2,Herbizarre,321,99,Ivysaur
+3,Florizarre,140,8,Venusaur
+3,Florizarre,94,38,Venusaur
+3,Florizarre,22,13,Venusaur
+3,Florizarre,377,36,Venusaur
+3,Florizarre,14,58,Venusaur
+3,Florizarre,317,2,Venusaur
+4,Salameche,72,42,Charmander
+4,Salameche,330,33,Charmander
+4,Salameche,254,18,Charmander
+4,Salameche,310,54,Charmander
+4,Salameche,76,30,Charmander
+5,Reptincel,13,88,Charmeleon
+5,Reptincel,199,2,Charmeleon
+5,Reptincel,19,27,Charmeleon
+5,Reptincel,227,90,Charmeleon
+5,Reptincel,261,46,Charmeleon
+5,Reptincel,189,35,Charmeleon
+5,Reptincel,0,7,Charmeleon
+6,Dracaufeu,238,52,Charizard
+6,Dracaufeu,247,36,Charizard
+6,Dracaufeu,318,73,Charizard
+6,Dracaufeu,200,79,Charizard
+7,Carapuce,246,17,Squirtle
+7,Carapuce,185,87,Squirtle
+7,Carapuce,16,33,Squirtle
+7,Carapuce,103,19,Squirtle
+7,Carapuce,107,89,Squirtle
+7,Carapuce,278,68,Squirtle
+7,Carapuce,174,5,Squirtle
+8,Carabaffe,231,53,Wartortle
+8,Carabaffe,291,22,Wartortle
+8,Carabaffe,148,59,Wartortle
+8,Carabaffe,145,36,Wartortle
+8,Carabaffe,241,78,Wartortle
+9,Tortank,67,7,Blastoise
+9,Tortank,107,50,Blastoise
+9,Tortank,37,75,Blastoise
+9,Tortank,356,87,Blastoise
+9,Tortank,78,66,Blastoise
+9,Tortank,397,76,Blastoise
+9,Tortank,252,76,Blastoise
+10,Chenipan,227,5,Caterpie
+10,Chenipan,343,64,Caterpie
+11,Chrysacier,232,36,Metapod
+11,Chrysacier,380,13,Metapod
+11,Chrysacier,336,49,Metapod
+12,Papilusion,86,84,Butterfree
+12,Papilusion,386,82,Butterfree
+12,Papilusion,366,4,Butterfree
+12,Papilusion,198,15,Butterfree
+12,Papilusion,155,67,Butterfree
+12,Papilusion,195,31,Butterfree
+13,Aspicot,350,12,Weedle
+13,Aspicot,99,63,Weedle
+13,Aspicot,382,4,Weedle
+13,Aspicot,394,60,Weedle
+13,Aspicot,265,96,Weedle
+13,Aspicot,88,61,Weedle
+13,Aspicot,160,28,Weedle
+14,Coconfort,242,19,Kakuna
+14,Coconfort,94,44,Kakuna
+14,Coconfort,131,30,Kakuna
+14,Coconfort,4,77,Kakuna
+14,Coconfort,206,84,Kakuna
+14,Coconfort,286,15,Kakuna
+14,Coconfort,30,38,Kakuna
+14,Coconfort,376,27,Kakuna
+14,Coconfort,375,11,Kakuna
+14,Coconfort,255,48,Kakuna
+15,Dardargnan,18,27,Beedrill
+15,Dardargnan,398,86,Beedrill
+15,Dardargnan,331,27,Beedrill
+15,Dardargnan,360,68,Beedrill
+15,Dardargnan,167,75,Beedrill
+15,Dardargnan,267,98,Beedrill
+15,Dardargnan,311,1,Beedrill
+15,Dardargnan,226,25,Beedrill
+16,Roucool,100,67,Pidgey
+16,Roucool,24,36,Pidgey
+16,Roucool,305,65,Pidgey
+16,Roucool,134,60,Pidgey
+16,Roucool,183,24,Pidgey
+17,Roucoups,213,2,Pidgeotto
+17,Roucoups,153,96,Pidgeotto
+17,Roucoups,393,46,Pidgeotto
+17,Roucoups,221,68,Pidgeotto
+18,Roucarge,109,28,Pidgeot
+18,Roucarge,12,59,Pidgeot
+18,Roucarge,23,53,Pidgeot
+18,Roucarge,252,19,Pidgeot
+18,Roucarge,267,53,Pidgeot
+18,Roucarge,94,54,Pidgeot
+18,Roucarge,237,92,Pidgeot
+19,Rattata,313,20,Rattata
+19,Rattata d Alola,313,20,Rattata
+19,Rattata,45,52,Rattata
+19,Rattata d Alola,45,52,Rattata
+19,Rattata,198,98,Rattata
+19,Rattata d Alola,198,98,Rattata
+20,Rattatac,222,83,Raticate
+20,Rattatac d Alola,222,83,Raticate
+20,Rattatac,167,53,Raticate
+20,Rattatac d Alola,167,53,Raticate
+20,Rattatac,217,94,Raticate
+20,Rattatac d Alola,217,94,Raticate
+20,Rattatac,68,40,Raticate
+20,Rattatac d Alola,68,40,Raticate
+20,Rattatac,98,99,Raticate
+20,Rattatac d Alola,98,99,Raticate
+20,Rattatac,274,77,Raticate
+20,Rattatac d Alola,274,77,Raticate
+20,Rattatac,134,17,Raticate
+20,Rattatac d Alola,134,17,Raticate
+20,Rattatac,376,84,Raticate
+20,Rattatac d Alola,376,84,Raticate
+21,Piafabec,6,8,Spearow
+21,Piafabec,306,94,Spearow
+21,Piafabec,295,36,Spearow
+22,Rapasdepic,160,74,Fearow
+22,Rapasdepic,311,48,Fearow
+22,Rapasdepic,166,83,Fearow
+22,Rapasdepic,156,62,Fearow
+22,Rapasdepic,231,91,Fearow
+22,Rapasdepic,170,3,Fearow
+22,Rapasdepic,165,44,Fearow
+22,Rapasdepic,205,10,Fearow
+22,Rapasdepic,274,72,Fearow
+22,Rapasdepic,316,28,Fearow
+23,Abo,16,87,Ekans
+23,Abo,54,40,Ekans
+23,Abo,6,84,Ekans
+23,Abo,382,3,Ekans
+23,Abo,32,98,Ekans
+23,Abo,150,13,Ekans
+24,Arbok,3,59,Arbok
+24,Arbok,396,2,Arbok
+24,Arbok,241,30,Arbok
+24,Arbok,194,16,Arbok
+24,Arbok,215,41,Arbok
+24,Arbok,76,29,Arbok
+24,Arbok,109,18,Arbok
+24,Arbok,295,66,Arbok
+25,Pikachu,333,18,Pikachu
+25,Pikachu,104,28,Pikachu
+25,Pikachu,184,41,Pikachu
+25,Pikachu,49,8,Pikachu
+25,Pikachu,0,20,Pikachu
+26,Raichu,131,1,Raichu
+26,Raichu d Alola,131,1,Raichu
+26,Raichu,155,9,Raichu
+26,Raichu d Alola,155,9,Raichu
+26,Raichu,237,67,Raichu
+26,Raichu d Alola,237,67,Raichu
+26,Raichu,383,61,Raichu
+26,Raichu d Alola,383,61,Raichu
+26,Raichu,322,64,Raichu
+26,Raichu d Alola,322,64,Raichu
+26,Raichu,160,89,Raichu
+26,Raichu d Alola,160,89,Raichu
+26,Raichu,268,48,Raichu
+26,Raichu d Alola,268,48,Raichu
+26,Raichu,195,37,Raichu
+26,Raichu d Alola,195,37,Raichu
+26,Raichu,20,35,Raichu
+26,Raichu d Alola,20,35,Raichu
+26,Raichu,158,78,Raichu
+26,Raichu d Alola,158,78,Raichu
+26,Raichu,266,22,Raichu
+26,Raichu d Alola,266,22,Raichu
+27,Sabelette,376,78,Sandshrew
+27,Sabelette d Alola,376,78,Sandshrew
+27,Sabelette,248,64,Sandshrew
+27,Sabelette d Alola,248,64,Sandshrew
+27,Sabelette,127,72,Sandshrew
+27,Sabelette d Alola,127,72,Sandshrew
+27,Sabelette,53,58,Sandshrew
+27,Sabelette d Alola,53,58,Sandshrew
+27,Sabelette,76,63,Sandshrew
+27,Sabelette d Alola,76,63,Sandshrew
+27,Sabelette,146,5,Sandshrew
+27,Sabelette d Alola,146,5,Sandshrew
+27,Sabelette,140,69,Sandshrew
+27,Sabelette d Alola,140,69,Sandshrew
+27,Sabelette,197,56,Sandshrew
+27,Sabelette d Alola,197,56,Sandshrew
+28,Sablaireau,102,48,Sandslash
+28,Sablaireau d Alola,102,48,Sandslash
+28,Sablaireau,246,55,Sandslash
+28,Sablaireau d Alola,246,55,Sandslash
+28,Sablaireau,109,52,Sandslash
+28,Sablaireau d Alola,109,52,Sandslash
+28,Sablaireau,27,25,Sandslash
+28,Sablaireau d Alola,27,25,Sandslash
+28,Sablaireau,152,42,Sandslash
+28,Sablaireau d Alola,152,42,Sandslash
+28,Sablaireau,325,17,Sandslash
+28,Sablaireau d Alola,325,17,Sandslash
+28,Sablaireau,389,39,Sandslash
+28,Sablaireau d Alola,389,39,Sandslash
+28,Sablaireau,51,4,Sandslash
+28,Sablaireau d Alola,51,4,Sandslash
+28,Sablaireau,229,59,Sandslash
+28,Sablaireau d Alola,229,59,Sandslash
+29,Nidoran_femelle,64,85,Nidoran♀
+29,Nidoran_femelle,293,74,Nidoran♀
+29,Nidoran_femelle,334,25,Nidoran♀
+29,Nidoran_femelle,86,4,Nidoran♀
+29,Nidoran_femelle,399,66,Nidoran♀
+29,Nidoran_femelle,178,35,Nidoran♀
+29,Nidoran_femelle,193,53,Nidoran♀
+30,Nidorina,11,47,Nidorina
+30,Nidorina,335,14,Nidorina
+30,Nidorina,383,21,Nidorina
+30,Nidorina,57,54,Nidorina
+30,Nidorina,366,0,Nidorina
+30,Nidorina,21,76,Nidorina
+30,Nidorina,130,80,Nidorina
+31,Nidoqueen,60,1,Nidoqueen
+31,Nidoqueen,229,72,Nidoqueen
+31,Nidoqueen,211,51,Nidoqueen
+31,Nidoqueen,282,7,Nidoqueen
+31,Nidoqueen,349,62,Nidoqueen
+32,Nidoran_male,205,63,Nidoran♂
+32,Nidoran_male,52,7,Nidoran♂
+32,Nidoran_male,25,26,Nidoran♂
+32,Nidoran_male,44,18,Nidoran♂
+32,Nidoran_male,200,3,Nidoran♂
+32,Nidoran_male,366,28,Nidoran♂
+32,Nidoran_male,379,87,Nidoran♂
+32,Nidoran_male,335,29,Nidoran♂
+32,Nidoran_male,38,38,Nidoran♂
+32,Nidoran_male,339,22,Nidoran♂
+32,Nidoran_male,100,11,Nidoran♂
+33,Nidorino,335,54,Nidorino
+33,Nidorino,78,89,Nidorino
+33,Nidorino,89,41,Nidorino
+33,Nidorino,129,68,Nidorino
+34,Nidoking,97,71,Nidoking
+34,Nidoking,387,45,Nidoking
+34,Nidoking,73,93,Nidoking
+34,Nidoking,326,92,Nidoking
+34,Nidoking,130,21,Nidoking
+34,Nidoking,35,56,Nidoking
+34,Nidoking,80,56,Nidoking
+34,Nidoking,335,0,Nidoking
+35,Melofee,36,59,Clefairy
+35,Melofee,93,36,Clefairy
+35,Melofee,114,2,Clefairy
+35,Melofee,181,74,Clefairy
+35,Melofee,60,91,Clefairy
+35,Melofee,306,22,Clefairy
+35,Melofee,220,90,Clefairy
+35,Melofee,277,15,Clefairy
+36,Melodelfe,75,35,Clefable
+36,Melodelfe,13,79,Clefable
+36,Melodelfe,254,75,Clefable
+37,Goupix,66,56,Vulpix
+37,Goupix d Alola,66,56,Vulpix
+37,Goupix,172,0,Vulpix
+37,Goupix d Alola,172,0,Vulpix
+37,Goupix,241,28,Vulpix
+37,Goupix d Alola,241,28,Vulpix
+37,Goupix,219,16,Vulpix
+37,Goupix d Alola,219,16,Vulpix
+37,Goupix,208,71,Vulpix
+37,Goupix d Alola,208,71,Vulpix
+37,Goupix,74,58,Vulpix
+37,Goupix d Alola,74,58,Vulpix
+37,Goupix,262,25,Vulpix
+37,Goupix d Alola,262,25,Vulpix
+37,Goupix,348,55,Vulpix
+37,Goupix d Alola,348,55,Vulpix
+38,Feunard,80,23,Ninetales
+38,Feunard d Alola,80,23,Ninetales
+38,Feunard,213,54,Ninetales
+38,Feunard d Alola,213,54,Ninetales
+38,Feunard,202,94,Ninetales
+38,Feunard d Alola,202,94,Ninetales
+39,Rondoudou,259,68,Jigglypuff
+39,Rondoudou,29,83,Jigglypuff
+39,Rondoudou,212,5,Jigglypuff
+39,Rondoudou,323,32,Jigglypuff
+39,Rondoudou,72,8,Jigglypuff
+39,Rondoudou,172,8,Jigglypuff
+40,Grodoudou,104,41,Wigglytuff
+40,Grodoudou,187,26,Wigglytuff
+40,Grodoudou,118,3,Wigglytuff
+40,Grodoudou,38,75,Wigglytuff
+40,Grodoudou,214,16,Wigglytuff
+40,Grodoudou,237,38,Wigglytuff
+41,Nosferapti,168,78,Zubat
+41,Nosferapti,330,29,Zubat
+41,Nosferapti,12,34,Zubat
+41,Nosferapti,25,73,Zubat
+41,Nosferapti,197,9,Zubat
+41,Nosferapti,153,59,Zubat
+41,Nosferapti,399,44,Zubat
+42,Nosferalto,254,86,Golbat
+42,Nosferalto,288,11,Golbat
+42,Nosferalto,368,55,Golbat
+42,Nosferalto,147,35,Golbat
+42,Nosferalto,39,39,Golbat
+42,Nosferalto,44,21,Golbat
+42,Nosferalto,210,84,Golbat
+42,Nosferalto,27,29,Golbat
+43,Mystherbe,156,52,Oddish
+43,Mystherbe,165,13,Oddish
+43,Mystherbe,261,79,Oddish
+43,Mystherbe,166,75,Oddish
+43,Mystherbe,324,69,Oddish
+43,Mystherbe,58,36,Oddish
+43,Mystherbe,283,14,Oddish
+44,Ortide,134,80,Gloom
+44,Ortide,112,54,Gloom
+44,Ortide,60,88,Gloom
+44,Ortide,242,71,Gloom
+44,Ortide,241,85,Gloom
+44,Ortide,264,23,Gloom
+45,Rafflesia,308,85,Vileplume
+45,Rafflesia,84,84,Vileplume
+45,Rafflesia,131,56,Vileplume
+45,Rafflesia,22,36,Vileplume
+46,Paras,22,50,Paras
+46,Paras,126,91,Paras
+46,Paras,307,68,Paras
+46,Paras,240,96,Paras
+46,Paras,296,39,Paras
+46,Paras,112,19,Paras
+47,Parasect,82,76,Parasect
+47,Parasect,121,3,Parasect
+47,Parasect,139,9,Parasect
+47,Parasect,382,99,Parasect
+47,Parasect,235,4,Parasect
+47,Parasect,50,2,Parasect
+47,Parasect,263,25,Parasect
+48,Mimitoss,102,81,Venonat
+48,Mimitoss,362,66,Venonat
+48,Mimitoss,352,1,Venonat
+48,Mimitoss,118,49,Venonat
+48,Mimitoss,63,33,Venonat
+48,Mimitoss,329,26,Venonat
+48,Mimitoss,296,88,Venonat
+49,Aeromite,41,58,Venomoth
+49,Aeromite,15,41,Venomoth
+49,Aeromite,397,17,Venomoth
+49,Aeromite,338,34,Venomoth
+49,Aeromite,251,80,Venomoth
+49,Aeromite,235,80,Venomoth
+49,Aeromite,93,38,Venomoth
+49,Aeromite,164,15,Venomoth
+49,Aeromite,191,22,Venomoth
+49,Aeromite,42,67,Venomoth
+49,Aeromite,238,50,Venomoth
+50,Taupiqueur,140,83,Diglett
+50,Taupiqueur d Alola,140,83,Diglett
+50,Taupiqueur,74,69,Diglett
+50,Taupiqueur d Alola,74,69,Diglett
+50,Taupiqueur,103,10,Diglett
+50,Taupiqueur d Alola,103,10,Diglett
+50,Taupiqueur,177,14,Diglett
+50,Taupiqueur d Alola,177,14,Diglett
+50,Taupiqueur,93,77,Diglett
+50,Taupiqueur d Alola,93,77,Diglett
+51,Triopikeur,16,57,Dugtrio
+51,Triopikeur d Alola,16,57,Dugtrio
+51,Triopikeur,23,34,Dugtrio
+51,Triopikeur d Alola,23,34,Dugtrio
+51,Triopikeur,323,51,Dugtrio
+51,Triopikeur d Alola,323,51,Dugtrio
+51,Triopikeur,311,40,Dugtrio
+51,Triopikeur d Alola,311,40,Dugtrio
+51,Triopikeur,316,60,Dugtrio
+51,Triopikeur d Alola,316,60,Dugtrio
+51,Triopikeur,215,63,Dugtrio
+51,Triopikeur d Alola,215,63,Dugtrio
+52,Miaouss,353,80,Meowth
+52,Miaouss de Galar,353,80,Meowth
+52,Miaouss d Alola,353,80,Meowth
+52,Miaouss,314,40,Meowth
+52,Miaouss de Galar,314,40,Meowth
+52,Miaouss d Alola,314,40,Meowth
+52,Miaouss,45,50,Meowth
+52,Miaouss de Galar,45,50,Meowth
+52,Miaouss d Alola,45,50,Meowth
+52,Miaouss,171,40,Meowth
+52,Miaouss de Galar,171,40,Meowth
+52,Miaouss d Alola,171,40,Meowth
+53,Persian,336,48,Persian
+53,Persian d Alola,336,48,Persian
+53,Persian,71,72,Persian
+53,Persian d Alola,71,72,Persian
+53,Persian,87,92,Persian
+53,Persian d Alola,87,92,Persian
+53,Persian,62,36,Persian
+53,Persian d Alola,62,36,Persian
+53,Persian,285,65,Persian
+53,Persian d Alola,285,65,Persian
+53,Persian,250,29,Persian
+53,Persian d Alola,250,29,Persian
+54,Psykokwak,204,12,Psyduck
+54,Psykokwak,24,26,Psyduck
+54,Psykokwak,249,42,Psyduck
+54,Psykokwak,102,6,Psyduck
+54,Psykokwak,394,23,Psyduck
+54,Psykokwak,383,64,Psyduck
+54,Psykokwak,214,86,Psyduck
+55,Akwakwak,198,81,Golduck
+55,Akwakwak,276,13,Golduck
+55,Akwakwak,139,2,Golduck
+55,Akwakwak,62,6,Golduck
+55,Akwakwak,213,20,Golduck
+56,Ferosinge,380,85,Mankey
+56,Ferosinge,234,89,Mankey
+56,Ferosinge,177,94,Mankey
+56,Ferosinge,262,12,Mankey
+56,Ferosinge,11,20,Mankey
+56,Ferosinge,259,54,Mankey
+56,Ferosinge,36,88,Mankey
+56,Ferosinge,280,70,Mankey
+57,Colossinge,89,59,Primeape
+57,Colossinge,10,41,Primeape
+57,Colossinge,84,7,Primeape
+57,Colossinge,101,10,Primeape
+58,Caninos,256,5,Growlithe
+58,Caninos de Hisui,256,5,Growlithe
+58,Caninos,155,61,Growlithe
+58,Caninos de Hisui,155,61,Growlithe
+58,Caninos,106,13,Growlithe
+58,Caninos de Hisui,106,13,Growlithe
+58,Caninos,300,79,Growlithe
+58,Caninos de Hisui,300,79,Growlithe
+58,Caninos,181,39,Growlithe
+58,Caninos de Hisui,181,39,Growlithe
+58,Caninos,72,48,Growlithe
+58,Caninos de Hisui,72,48,Growlithe
+58,Caninos,195,57,Growlithe
+58,Caninos de Hisui,195,57,Growlithe
+58,Caninos,53,79,Growlithe
+58,Caninos de Hisui,53,79,Growlithe
+58,Caninos,92,76,Growlithe
+58,Caninos de Hisui,92,76,Growlithe
+58,Caninos,127,71,Growlithe
+58,Caninos de Hisui,127,71,Growlithe
+58,Caninos,118,22,Growlithe
+58,Caninos de Hisui,118,22,Growlithe
+58,Caninos,375,92,Growlithe
+58,Caninos de Hisui,375,92,Growlithe
+59,Arcanin,319,54,Arcanine
+59,Acarnin de Hisui,319,54,Arcanine
+59,Arcanin,369,52,Arcanine
+59,Acarnin de Hisui,369,52,Arcanine
+59,Arcanin,142,90,Arcanine
+59,Acarnin de Hisui,142,90,Arcanine
+59,Arcanin,354,43,Arcanine
+59,Acarnin de Hisui,354,43,Arcanine
+59,Arcanin,260,7,Arcanine
+59,Acarnin de Hisui,260,7,Arcanine
+59,Arcanin,197,23,Arcanine
+59,Acarnin de Hisui,197,23,Arcanine
+59,Arcanin,324,97,Arcanine
+59,Acarnin de Hisui,324,97,Arcanine
+59,Arcanin,190,61,Arcanine
+59,Acarnin de Hisui,190,61,Arcanine
+59,Arcanin,275,99,Arcanine
+59,Acarnin de Hisui,275,99,Arcanine
+59,Arcanin,307,0,Arcanine
+59,Acarnin de Hisui,307,0,Arcanine
+60,Ptitard,122,42,Poliwag
+60,Ptitard,2,45,Poliwag
+60,Ptitard,182,52,Poliwag
+60,Ptitard,125,75,Poliwag
+60,Ptitard,64,50,Poliwag
+61,Tetarte,44,79,Poliwhirl
+61,Tetarte,142,28,Poliwhirl
+61,Tetarte,170,75,Poliwhirl
+61,Tetarte,207,90,Poliwhirl
+61,Tetarte,244,70,Poliwhirl
+61,Tetarte,162,62,Poliwhirl
+61,Tetarte,51,77,Poliwhirl
+61,Tetarte,378,46,Poliwhirl
+61,Tetarte,95,40,Poliwhirl
+62,Tartard,68,11,Poliwrath
+62,Tartard,65,95,Poliwrath
+62,Tartard,385,82,Poliwrath
+62,Tartard,206,21,Poliwrath
+62,Tartard,269,5,Poliwrath
+62,Tartard,391,54,Poliwrath
+62,Tartard,28,42,Poliwrath
+63,Abra,263,14,Abra
+63,Abra,60,79,Abra
+63,Abra,61,90,Abra
+63,Abra,333,37,Abra
+63,Abra,314,56,Abra
+63,Abra,14,46,Abra
+63,Abra,379,29,Abra
+64,Kadabra,249,91,Kadabra
+64,Kadabra,187,47,Kadabra
+64,Kadabra,26,5,Kadabra
+64,Kadabra,319,32,Kadabra
+64,Kadabra,271,45,Kadabra
+64,Kadabra,161,45,Kadabra
+64,Kadabra,122,27,Kadabra
+64,Kadabra,95,82,Kadabra
+64,Kadabra,210,18,Kadabra
+64,Kadabra,20,84,Kadabra
+65,Alakazam,138,61,Alakazam
+65,Alakazam,112,71,Alakazam
+65,Alakazam,95,62,Alakazam
+65,Alakazam,67,34,Alakazam
+65,Alakazam,391,82,Alakazam
+65,Alakazam,69,90,Alakazam
+65,Alakazam,178,23,Alakazam
+65,Alakazam,374,16,Alakazam
+65,Alakazam,186,56,Alakazam
+66,Machoc,35,18,Machop
+66,Machoc,78,72,Machop
+66,Machoc,367,53,Machop
+66,Machoc,329,88,Machop
+66,Machoc,58,15,Machop
+66,Machoc,190,49,Machop
+66,Machoc,282,85,Machop
+66,Machoc,125,34,Machop
+66,Machoc,8,39,Machop
+66,Machoc,366,67,Machop
+66,Machoc,249,82,Machop
+67,Machopeur,314,56,Machoke
+67,Machopeur,31,86,Machoke
+67,Machopeur,154,58,Machoke
+67,Machopeur,144,76,Machoke
+67,Machopeur,170,32,Machoke
+67,Machopeur,129,79,Machoke
+67,Machopeur,152,93,Machoke
+67,Machopeur,110,27,Machoke
+68,Mackogneur,307,14,Machamp
+68,Mackogneur,48,66,Machamp
+68,Mackogneur,114,16,Machamp
+68,Mackogneur,299,6,Machamp
+68,Mackogneur,235,19,Machamp
+68,Mackogneur,44,5,Machamp
+68,Mackogneur,231,51,Machamp
+68,Mackogneur,241,37,Machamp
+68,Mackogneur,228,65,Machamp
+69,Chetiflor,345,94,Bellsprout
+69,Chetiflor,83,81,Bellsprout
+69,Chetiflor,342,37,Bellsprout
+69,Chetiflor,70,58,Bellsprout
+69,Chetiflor,36,10,Bellsprout
+69,Chetiflor,200,39,Bellsprout
+70,Boustiflor,373,11,Weepinbell
+70,Boustiflor,29,28,Weepinbell
+70,Boustiflor,223,45,Weepinbell
+70,Boustiflor,122,33,Weepinbell
+70,Boustiflor,54,4,Weepinbell
+70,Boustiflor,181,66,Weepinbell
+70,Boustiflor,362,76,Weepinbell
+70,Boustiflor,93,8,Weepinbell
+70,Boustiflor,7,16,Weepinbell
+70,Boustiflor,359,38,Weepinbell
+71,Empiflor,354,75,Victreebel
+71,Empiflor,11,89,Victreebel
+71,Empiflor,162,38,Victreebel
+71,Empiflor,28,92,Victreebel
+72,Tentacool,185,98,Tentacool
+72,Tentacool,371,33,Tentacool
+72,Tentacool,366,3,Tentacool
+72,Tentacool,114,44,Tentacool
+72,Tentacool,93,62,Tentacool
+72,Tentacool,15,7,Tentacool
+73,Tentacruel,204,99,Tentacruel
+73,Tentacruel,305,41,Tentacruel
+73,Tentacruel,79,79,Tentacruel
+73,Tentacruel,129,30,Tentacruel
+73,Tentacruel,297,93,Tentacruel
+73,Tentacruel,305,20,Tentacruel
+74,Racaillou,316,23,Geodude
+74,Racaillou d Alola,316,23,Geodude
+74,Racaillou,25,39,Geodude
+74,Racaillou d Alola,25,39,Geodude
+74,Racaillou,81,16,Geodude
+74,Racaillou d Alola,81,16,Geodude
+74,Racaillou,318,17,Geodude
+74,Racaillou d Alola,318,17,Geodude
+74,Racaillou,209,17,Geodude
+74,Racaillou d Alola,209,17,Geodude
+75,Gravalanch,95,91,Graveler
+75,Gravalanch d Alola,95,91,Graveler
+75,Gravalanch,312,17,Graveler
+75,Gravalanch d Alola,312,17,Graveler
+75,Gravalanch,36,3,Graveler
+75,Gravalanch d Alola,36,3,Graveler
+75,Gravalanch,328,91,Graveler
+75,Gravalanch d Alola,328,91,Graveler
+75,Gravalanch,51,69,Graveler
+75,Gravalanch d Alola,51,69,Graveler
+75,Gravalanch,256,64,Graveler
+75,Gravalanch d Alola,256,64,Graveler
+75,Gravalanch,134,3,Graveler
+75,Gravalanch d Alola,134,3,Graveler
+75,Gravalanch,187,24,Graveler
+75,Gravalanch d Alola,187,24,Graveler
+76,Grolem,277,5,Golem
+76,Grolem d Alola,277,5,Golem
+76,Grolem,365,62,Golem
+76,Grolem d Alola,365,62,Golem
+76,Grolem,387,47,Golem
+76,Grolem d Alola,387,47,Golem
+76,Grolem,385,8,Golem
+76,Grolem d Alola,385,8,Golem
+76,Grolem,274,99,Golem
+76,Grolem d Alola,274,99,Golem
+76,Grolem,117,0,Golem
+76,Grolem d Alola,117,0,Golem
+76,Grolem,215,9,Golem
+76,Grolem d Alola,215,9,Golem
+76,Grolem,301,27,Golem
+76,Grolem d Alola,301,27,Golem
+77,Ponyta,169,84,Ponyta
+77,Ponyta de Galar,169,84,Ponyta
+77,Ponyta,186,4,Ponyta
+77,Ponyta de Galar,186,4,Ponyta
+77,Ponyta,166,56,Ponyta
+77,Ponyta de Galar,166,56,Ponyta
+77,Ponyta,52,37,Ponyta
+77,Ponyta de Galar,52,37,Ponyta
+78,Galopa,362,32,Rapidash
+78,Galopa de Galar,362,32,Rapidash
+78,Galopa,399,76,Rapidash
+78,Galopa de Galar,399,76,Rapidash
+78,Galopa,216,42,Rapidash
+78,Galopa de Galar,216,42,Rapidash
+78,Galopa,39,41,Rapidash
+78,Galopa de Galar,39,41,Rapidash
+78,Galopa,112,78,Rapidash
+78,Galopa de Galar,112,78,Rapidash
+78,Galopa,396,2,Rapidash
+78,Galopa de Galar,396,2,Rapidash
+78,Galopa,230,16,Rapidash
+78,Galopa de Galar,230,16,Rapidash
+78,Galopa,275,47,Rapidash
+78,Galopa de Galar,275,47,Rapidash
+79,Ramoloss,299,97,Slowpoke
+79,Ramoloss de Galar,299,97,Slowpoke
+79,Ramoloss,93,54,Slowpoke
+79,Ramoloss de Galar,93,54,Slowpoke
+79,Ramoloss,327,14,Slowpoke
+79,Ramoloss de Galar,327,14,Slowpoke
+79,Ramoloss,43,82,Slowpoke
+79,Ramoloss de Galar,43,82,Slowpoke
+79,Ramoloss,53,70,Slowpoke
+79,Ramoloss de Galar,53,70,Slowpoke
+79,Ramoloss,124,18,Slowpoke
+79,Ramoloss de Galar,124,18,Slowpoke
+80,Flagadoss,61,85,Slowbro
+80,Flagadoss de Galar,61,85,Slowbro
+80,Flagadoss,32,60,Slowbro
+80,Flagadoss de Galar,32,60,Slowbro
+81,Magneti,269,31,Magnemite
+81,Magneti,66,97,Magnemite
+81,Magneti,378,84,Magnemite
+81,Magneti,259,6,Magnemite
+81,Magneti,62,11,Magnemite
+81,Magneti,368,84,Magnemite
+81,Magneti,219,78,Magnemite
+81,Magneti,154,87,Magnemite
+81,Magneti,87,63,Magnemite
+82,Magneton,173,6,Magneton
+82,Magneton,162,93,Magneton
+82,Magneton,361,52,Magneton
+83,Canarticho,317,65,Farfetch'd
+83,Canarticho de Galar,317,65,Farfetch'd
+83,Canarticho,389,32,Farfetch'd
+83,Canarticho de Galar,389,32,Farfetch'd
+83,Canarticho,20,74,Farfetch'd
+83,Canarticho de Galar,20,74,Farfetch'd
+83,Canarticho,33,65,Farfetch'd
+83,Canarticho de Galar,33,65,Farfetch'd
+83,Canarticho,378,17,Farfetch'd
+83,Canarticho de Galar,378,17,Farfetch'd
+84,Doduo,52,61,Doduo
+84,Doduo,184,34,Doduo
+84,Doduo,13,37,Doduo
+84,Doduo,393,84,Doduo
+84,Doduo,9,31,Doduo
+84,Doduo,37,48,Doduo
+84,Doduo,13,17,Doduo
+84,Doduo,263,48,Doduo
+84,Doduo,355,37,Doduo
+84,Doduo,129,16,Doduo
+84,Doduo,330,16,Doduo
+84,Doduo,361,89,Doduo
+85,Dodrio,69,23,Dodrio
+85,Dodrio,132,85,Dodrio
+85,Dodrio,120,57,Dodrio
+85,Dodrio,390,44,Dodrio
+85,Dodrio,64,83,Dodrio
+85,Dodrio,181,82,Dodrio
+85,Dodrio,370,67,Dodrio
+86,Otaria,328,52,Seel
+86,Otaria,212,75,Seel
+86,Otaria,173,26,Seel
+86,Otaria,175,73,Seel
+86,Otaria,267,96,Seel
+86,Otaria,293,27,Seel
+87,Lamantine,84,16,Dewgong
+87,Lamantine,391,3,Dewgong
+87,Lamantine,119,58,Dewgong
+87,Lamantine,242,29,Dewgong
+87,Lamantine,373,19,Dewgong
+88,Tadmorv,294,99,Grimer
+88,Tadmorv d Alola,294,99,Grimer
+88,Tadmorv,131,30,Grimer
+88,Tadmorv d Alola,131,30,Grimer
+88,Tadmorv,70,48,Grimer
+88,Tadmorv d Alola,70,48,Grimer
+89,Grotadmorv,155,90,Muk
+89,Grotadmorv d Alola,155,90,Muk
+89,Grotadmorv,181,22,Muk
+89,Grotadmorv d Alola,181,22,Muk
+89,Grotadmorv,217,12,Muk
+89,Grotadmorv d Alola,217,12,Muk
+89,Grotadmorv,237,0,Muk
+89,Grotadmorv d Alola,237,0,Muk
+89,Grotadmorv,17,84,Muk
+89,Grotadmorv d Alola,17,84,Muk
+89,Grotadmorv,194,93,Muk
+89,Grotadmorv d Alola,194,93,Muk
+89,Grotadmorv,376,74,Muk
+89,Grotadmorv d Alola,376,74,Muk
+89,Grotadmorv,392,84,Muk
+89,Grotadmorv d Alola,392,84,Muk
+89,Grotadmorv,351,24,Muk
+89,Grotadmorv d Alola,351,24,Muk
+89,Grotadmorv,306,25,Muk
+89,Grotadmorv d Alola,306,25,Muk
+90,Kokiyas,262,42,Shellder
+90,Kokiyas,189,9,Shellder
+90,Kokiyas,195,50,Shellder
+90,Kokiyas,134,43,Shellder
+90,Kokiyas,226,71,Shellder
+91,Crustabri,3,17,Cloyster
+91,Crustabri,133,64,Cloyster
+91,Crustabri,177,27,Cloyster
+91,Crustabri,368,76,Cloyster
+91,Crustabri,65,89,Cloyster
+91,Crustabri,0,37,Cloyster
+92,Fantominus,26,0,Gastly
+92,Fantominus,247,19,Gastly
+92,Fantominus,324,90,Gastly
+92,Fantominus,345,66,Gastly
+93,Spectrum,162,15,Haunter
+93,Spectrum,5,84,Haunter
+93,Spectrum,395,49,Haunter
+94,Ectoplasma,160,90,Gengar
+94,Ectoplasma,303,77,Gengar
+94,Ectoplasma,2,90,Gengar
+94,Ectoplasma,298,63,Gengar
+94,Ectoplasma,299,57,Gengar
+94,Ectoplasma,116,84,Gengar
+94,Ectoplasma,274,82,Gengar
+94,Ectoplasma,221,47,Gengar
+94,Ectoplasma,212,50,Gengar
+95,Onix,61,45,Onix
+95,Onix,337,59,Onix
+95,Onix,157,92,Onix
+95,Onix,257,94,Onix
+95,Onix,193,39,Onix
+95,Onix,10,40,Onix
+96,Soporifik,3,58,Drowzee
+96,Soporifik,171,28,Drowzee
+96,Soporifik,323,14,Drowzee
+96,Soporifik,316,64,Drowzee
+96,Soporifik,55,29,Drowzee
+96,Soporifik,232,74,Drowzee
+96,Soporifik,106,68,Drowzee
+96,Soporifik,186,95,Drowzee
+96,Soporifik,145,30,Drowzee
+97,Hypnomade,21,98,Hypno
+97,Hypnomade,66,1,Hypno
+97,Hypnomade,329,80,Hypno
+97,Hypnomade,123,98,Hypno
+97,Hypnomade,247,81,Hypno
+97,Hypnomade,348,15,Hypno
+97,Hypnomade,101,87,Hypno
+97,Hypnomade,252,40,Hypno
+98,Krabby,353,15,Krabby
+98,Krabby,304,34,Krabby
+98,Krabby,331,80,Krabby
+98,Krabby,141,10,Krabby
+99,Krabboss,86,61,Kingler
+99,Krabboss,385,71,Kingler
+99,Krabboss,338,50,Kingler
+99,Krabboss,377,67,Kingler
+99,Krabboss,27,45,Kingler
+99,Krabboss,21,57,Kingler
+99,Krabboss,192,78,Kingler
+99,Krabboss,292,21,Kingler
+100,Voltorbe,74,87,Voltorb
+100,Voltorbe de Hisui,74,87,Voltorb
+100,Voltorbe,199,15,Voltorb
+100,Voltorbe de Hisui,199,15,Voltorb
+100,Voltorbe,73,14,Voltorb
+100,Voltorbe de Hisui,73,14,Voltorb
+100,Voltorbe,296,95,Voltorb
+100,Voltorbe de Hisui,296,95,Voltorb
+100,Voltorbe,140,66,Voltorb
+100,Voltorbe de Hisui,140,66,Voltorb
+101,Electrode,219,2,Electrode
+101,Electrode de Hisui,219,2,Electrode
+101,Electrode,293,39,Electrode
+101,Electrode de Hisui,293,39,Electrode
+101,Electrode,319,74,Electrode
+101,Electrode de Hisui,319,74,Electrode
+101,Electrode,16,8,Electrode
+101,Electrode de Hisui,16,8,Electrode
+101,Electrode,112,26,Electrode
+101,Electrode de Hisui,112,26,Electrode
+101,Electrode,94,64,Electrode
+101,Electrode de Hisui,94,64,Electrode
+101,Electrode,134,62,Electrode
+101,Electrode de Hisui,134,62,Electrode
+101,Electrode,185,33,Electrode
+101,Electrode de Hisui,185,33,Electrode
+101,Electrode,253,0,Electrode
+101,Electrode de Hisui,253,0,Electrode
+102,Noeunoeuf,352,71,Exeggcute
+102,Noeunoeuf,218,15,Exeggcute
+102,Noeunoeuf,82,15,Exeggcute
+103,Noadkoko,60,59,Exeggutor
+103,Noadkoko d Alola,60,59,Exeggutor
+103,Noadkoko,274,77,Exeggutor
+103,Noadkoko d Alola,274,77,Exeggutor
+104,Osselait,86,52,Cubone
+104,Osselait,232,26,Cubone
+104,Osselait,255,9,Cubone
+104,Osselait,340,1,Cubone
+104,Osselait,218,96,Cubone
+105,Ossatueur,337,8,Marowak
+105,Ossatueur d Alola,337,8,Marowak
+105,Ossatueur,394,85,Marowak
+105,Ossatueur d Alola,394,85,Marowak
+105,Ossatueur,353,36,Marowak
+105,Ossatueur d Alola,353,36,Marowak
+105,Ossatueur,184,51,Marowak
+105,Ossatueur d Alola,184,51,Marowak
+105,Ossatueur,279,58,Marowak
+105,Ossatueur d Alola,279,58,Marowak
+105,Ossatueur,399,52,Marowak
+105,Ossatueur d Alola,399,52,Marowak
+105,Ossatueur,122,9,Marowak
+105,Ossatueur d Alola,122,9,Marowak
+105,Ossatueur,214,94,Marowak
+105,Ossatueur d Alola,214,94,Marowak
+106,Kicklee,43,67,Hitmonlee
+106,Kicklee,398,16,Hitmonlee
+106,Kicklee,252,95,Hitmonlee
+106,Kicklee,347,84,Hitmonlee
+106,Kicklee,334,49,Hitmonlee
+107,Tygnon,341,27,Hitmonchan
+107,Tygnon,37,94,Hitmonchan
+107,Tygnon,339,68,Hitmonchan
+107,Tygnon,19,53,Hitmonchan
+107,Tygnon,175,64,Hitmonchan
+107,Tygnon,141,61,Hitmonchan
+107,Tygnon,12,33,Hitmonchan
+108,Excelangue,302,69,Lickitung
+108,Excelangue,96,55,Lickitung
+108,Excelangue,39,27,Lickitung
+108,Excelangue,384,20,Lickitung
+108,Excelangue,33,69,Lickitung
+108,Excelangue,103,58,Lickitung
+108,Excelangue,67,69,Lickitung
+108,Excelangue,385,76,Lickitung
+108,Excelangue,286,36,Lickitung
+108,Excelangue,204,12,Lickitung
+108,Excelangue,40,10,Lickitung
+108,Excelangue,234,49,Lickitung
+108,Excelangue,199,80,Lickitung
+108,Excelangue,277,59,Lickitung
+109,Smogo,347,44,Koffing
+109,Smogo,69,64,Koffing
+109,Smogo,104,6,Koffing
+109,Smogo,335,68,Koffing
+110,Smogogo,175,92,Weezing
+110,Smogogo de Galar,175,92,Weezing
+110,Smogogo,166,48,Weezing
+110,Smogogo de Galar,166,48,Weezing
+110,Smogogo,100,21,Weezing
+110,Smogogo de Galar,100,21,Weezing
+110,Smogogo,294,61,Weezing
+110,Smogogo de Galar,294,61,Weezing
+110,Smogogo,33,12,Weezing
+110,Smogogo de Galar,33,12,Weezing
+110,Smogogo,301,73,Weezing
+110,Smogogo de Galar,301,73,Weezing
+110,Smogogo,76,99,Weezing
+110,Smogogo de Galar,76,99,Weezing
+110,Smogogo,390,98,Weezing
+110,Smogogo de Galar,390,98,Weezing
+111,Rhinocorne,108,4,Rhyhorn
+111,Rhinocorne,324,63,Rhyhorn
+111,Rhinocorne,47,75,Rhyhorn
+111,Rhinocorne,38,34,Rhyhorn
+111,Rhinocorne,37,24,Rhyhorn
+111,Rhinocorne,138,91,Rhyhorn
+111,Rhinocorne,293,35,Rhyhorn
+111,Rhinocorne,231,32,Rhyhorn
+112,Rhinoferos,176,71,Rhydon
+112,Rhinoferos,321,90,Rhydon
+112,Rhinoferos,259,53,Rhydon
+112,Rhinoferos,30,52,Rhydon
+112,Rhinoferos,192,54,Rhydon
+112,Rhinoferos,25,36,Rhydon
+112,Rhinoferos,12,57,Rhydon
+112,Rhinoferos,194,70,Rhydon
+113,Leveinard,23,27,Chansey
+113,Leveinard,49,84,Chansey
+113,Leveinard,278,26,Chansey
+113,Leveinard,50,73,Chansey
+113,Leveinard,46,62,Chansey
+113,Leveinard,348,48,Chansey
+113,Leveinard,95,96,Chansey
+113,Leveinard,8,41,Chansey
+113,Leveinard,340,65,Chansey
+113,Leveinard,48,4,Chansey
+113,Leveinard,52,55,Chansey
+113,Leveinard,118,79,Chansey
+114,Saquedeneu,0,16,Tangela
+114,Saquedeneu,338,32,Tangela
+114,Saquedeneu,194,7,Tangela
+114,Saquedeneu,263,42,Tangela
+115,Kangourex,113,13,Kangaskhan
+115,Kangourex,375,66,Kangaskhan
+115,Kangourex,185,17,Kangaskhan
+115,Kangourex,75,40,Kangaskhan
+115,Kangourex,64,92,Kangaskhan
+115,Kangourex,13,66,Kangaskhan
+115,Kangourex,291,70,Kangaskhan
+116,Hypotrempe,340,79,Horsea
+116,Hypotrempe,232,52,Horsea
+116,Hypotrempe,190,27,Horsea
+117,Hypocean,176,61,Seadra
+117,Hypocean,170,28,Seadra
+117,Hypocean,18,35,Seadra
+117,Hypocean,26,35,Seadra
+117,Hypocean,337,68,Seadra
+117,Hypocean,193,24,Seadra
+117,Hypocean,229,4,Seadra
+117,Hypocean,41,43,Seadra
+117,Hypocean,143,42,Seadra
+118,Poissirene,399,21,Goldeen
+118,Poissirene,144,62,Goldeen
+118,Poissirene,203,7,Goldeen
+118,Poissirene,89,3,Goldeen
+119,Poissiroy,277,12,Seaking
+119,Poissiroy,279,69,Seaking
+119,Poissiroy,243,98,Seaking
+119,Poissiroy,352,82,Seaking
+119,Poissiroy,165,94,Seaking
+119,Poissiroy,184,21,Seaking
+120,Stari,387,52,Staryu
+120,Stari,392,68,Staryu
+120,Stari,130,21,Staryu
+120,Stari,221,39,Staryu
+120,Stari,1,26,Staryu
+120,Stari,155,88,Staryu
+120,Stari,288,49,Staryu
+121,Staross,136,70,Starmie
+121,Staross,22,36,Starmie
+121,Staross,215,26,Starmie
+121,Staross,299,89,Starmie
+121,Staross,187,8,Starmie
+121,Staross,105,96,Starmie
+121,Staross,265,20,Starmie
+122,M.Mime,140,24,Mr. Mime
+122,M.Mime de Galar,140,24,Mr. Mime
+122,M.Mime,153,99,Mr. Mime
+122,M.Mime de Galar,153,99,Mr. Mime
+122,M.Mime,47,8,Mr. Mime
+122,M.Mime de Galar,47,8,Mr. Mime
+122,M.Mime,10,12,Mr. Mime
+122,M.Mime de Galar,10,12,Mr. Mime
+122,M.Mime,1,75,Mr. Mime
+122,M.Mime de Galar,1,75,Mr. Mime
+122,M.Mime,107,80,Mr. Mime
+122,M.Mime de Galar,107,80,Mr. Mime
+122,M.Mime,128,87,Mr. Mime
+122,M.Mime de Galar,128,87,Mr. Mime
+122,M.Mime,200,72,Mr. Mime
+122,M.Mime de Galar,200,72,Mr. Mime
+123,Insecateur,238,66,Scyther
+123,Insecateur,316,31,Scyther
+123,Insecateur,80,46,Scyther
+123,Insecateur,17,61,Scyther
+123,Insecateur,379,61,Scyther
+123,Insecateur,386,19,Scyther
+123,Insecateur,16,44,Scyther
+123,Insecateur,367,39,Scyther
+124,Lippoutou,4,54,Jynx
+124,Lippoutou,308,82,Jynx
+124,Lippoutou,20,72,Jynx
+124,Lippoutou,173,44,Jynx
+124,Lippoutou,87,78,Jynx
+124,Lippoutou,112,45,Jynx
+124,Lippoutou,161,45,Jynx
+125,Elektek,254,91,Electabuzz
+125,Elektek,49,21,Electabuzz
+125,Elektek,178,39,Electabuzz
+125,Elektek,242,75,Electabuzz
+125,Elektek,271,15,Electabuzz
+126,Magmar,107,69,Magmar
+126,Magmar,25,66,Magmar
+126,Magmar,178,90,Magmar
+126,Magmar,64,44,Magmar
+126,Magmar,69,85,Magmar
+127,Scarabrute,44,7,Pinsir
+127,Scarabrute,335,11,Pinsir
+127,Scarabrute,338,8,Pinsir
+127,Scarabrute,256,83,Pinsir
+128,Tauros,2,99,Tauros
+128,Tauros,102,26,Tauros
+128,Tauros,10,52,Tauros
+128,Tauros,112,2,Tauros
+128,Tauros,243,84,Tauros
+128,Tauros,0,89,Tauros
+128,Tauros,19,64,Tauros
+129,Magicarpe,325,89,Magikarp
+129,Magicarpe,315,10,Magikarp
+129,Magicarpe,341,27,Magikarp
+129,Magicarpe,173,85,Magikarp
+129,Magicarpe,39,65,Magikarp
+129,Magicarpe,338,87,Magikarp
+130,Leviator,251,50,Gyarados
+130,Leviator,11,25,Gyarados
+130,Leviator,44,40,Gyarados
+130,Leviator,349,20,Gyarados
+130,Leviator,264,70,Gyarados
+130,Leviator,215,19,Gyarados
+130,Leviator,185,62,Gyarados
+130,Leviator,77,22,Gyarados
+130,Leviator,65,83,Gyarados
+130,Leviator,244,57,Gyarados
+131,Lokhlass,141,41,Lapras
+131,Lokhlass,312,64,Lapras
+132,Metamorph,57,0,Ditto
+132,Metamorph,125,78,Ditto
+132,Metamorph,221,47,Ditto
+132,Metamorph,247,45,Ditto
+133,Evoli,99,17,Eevee
+133,Evoli,318,57,Eevee
+133,Evoli,340,28,Eevee
+133,Evoli,305,51,Eevee
+133,Evoli,200,66,Eevee
+133,Evoli,63,98,Eevee
+133,Evoli,235,49,Eevee
+133,Evoli,9,5,Eevee
+133,Evoli,93,15,Eevee
+134,Aquali,52,10,Vaporeon
+134,Aquali,233,14,Vaporeon
+134,Aquali,214,60,Vaporeon
+134,Aquali,153,37,Vaporeon
+134,Aquali,334,60,Vaporeon
+134,Aquali,267,63,Vaporeon
+134,Aquali,98,85,Vaporeon
+134,Aquali,169,63,Vaporeon
+135,Voltali,359,62,Jolteon
+135,Voltali,132,57,Jolteon
+135,Voltali,214,94,Jolteon
+135,Voltali,24,65,Jolteon
+135,Voltali,357,98,Jolteon
+135,Voltali,16,62,Jolteon
+135,Voltali,93,66,Jolteon
+136,Pyroli,378,52,Flareon
+136,Pyroli,167,7,Flareon
+136,Pyroli,303,78,Flareon
+136,Pyroli,268,28,Flareon
+137,Porygon,47,72,Porygon
+137,Porygon,385,95,Porygon
+137,Porygon,229,61,Porygon
+137,Porygon,312,54,Porygon
+137,Porygon,214,71,Porygon
+138,Amonita,104,63,Omanyte
+138,Amonita,42,59,Omanyte
+138,Amonita,147,62,Omanyte
+138,Amonita,360,94,Omanyte
+138,Amonita,387,72,Omanyte
+138,Amonita,290,81,Omanyte
+139,Amonistar,357,94,Omastar
+139,Amonistar,288,78,Omastar
+139,Amonistar,117,74,Omastar
+139,Amonistar,25,54,Omastar
+139,Amonistar,200,8,Omastar
+139,Amonistar,305,49,Omastar
+139,Amonistar,207,87,Omastar
+140,Kabuto,391,59,Kabuto
+140,Kabuto,191,37,Kabuto
+140,Kabuto,246,75,Kabuto
+140,Kabuto,137,51,Kabuto
+140,Kabuto,329,74,Kabuto
+140,Kabuto,117,42,Kabuto
+141,Kabutops,398,80,Kabutops
+141,Kabutops,20,21,Kabutops
+141,Kabutops,323,43,Kabutops
+141,Kabutops,166,10,Kabutops
+141,Kabutops,134,88,Kabutops
+141,Kabutops,239,38,Kabutops
+141,Kabutops,335,0,Kabutops
+141,Kabutops,227,24,Kabutops
+142,Ptera,125,56,Aerodactyl
+142,Ptera,391,63,Aerodactyl
+142,Ptera,169,62,Aerodactyl
+143,Ronflex,269,99,Snorlax
+143,Ronflex,227,81,Snorlax
+143,Ronflex,321,87,Snorlax
+143,Ronflex,217,68,Snorlax
+143,Ronflex,108,82,Snorlax
+143,Ronflex,328,47,Snorlax
+143,Ronflex,196,73,Snorlax
+143,Ronflex,189,70,Snorlax
+144,Artikodin,315,3,Articuno
+144,Artikodin de Galar,315,3,Articuno
+144,Artikodin,394,39,Articuno
+144,Artikodin de Galar,394,39,Articuno
+144,Artikodin,271,37,Articuno
+144,Artikodin de Galar,271,37,Articuno
+144,Artikodin,51,82,Articuno
+144,Artikodin de Galar,51,82,Articuno
+144,Artikodin,253,2,Articuno
+144,Artikodin de Galar,253,2,Articuno
+144,Artikodin,159,5,Articuno
+144,Artikodin de Galar,159,5,Articuno
+144,Artikodin,212,98,Articuno
+144,Artikodin de Galar,212,98,Articuno
+144,Artikodin,317,80,Articuno
+144,Artikodin de Galar,317,80,Articuno
+144,Artikodin,387,28,Articuno
+144,Artikodin de Galar,387,28,Articuno
+144,Artikodin,253,54,Articuno
+144,Artikodin de Galar,253,54,Articuno
+144,Artikodin,97,57,Articuno
+144,Artikodin de Galar,97,57,Articuno
+144,Artikodin,2,21,Articuno
+144,Artikodin de Galar,2,21,Articuno
+144,Artikodin,308,83,Articuno
+144,Artikodin de Galar,308,83,Articuno
+144,Artikodin,393,27,Articuno
+144,Artikodin de Galar,393,27,Articuno
+144,Artikodin,166,30,Articuno
+144,Artikodin de Galar,166,30,Articuno
+145,Electhor,397,18,Zapdos
+145,Electhor de Galar,397,18,Zapdos
+145,Electhor,346,71,Zapdos
+145,Electhor de Galar,346,71,Zapdos
+145,Electhor,398,76,Zapdos
+145,Electhor de Galar,398,76,Zapdos
+145,Electhor,187,94,Zapdos
+145,Electhor de Galar,187,94,Zapdos
+145,Electhor,132,28,Zapdos
+145,Electhor de Galar,132,28,Zapdos
+146,Sulfura,113,33,Moltres
+146,Sulfura de Galar,113,33,Moltres
+146,Sulfura,96,75,Moltres
+146,Sulfura de Galar,96,75,Moltres
+146,Sulfura,174,28,Moltres
+146,Sulfura de Galar,174,28,Moltres
+146,Sulfura,320,20,Moltres
+146,Sulfura de Galar,320,20,Moltres
+146,Sulfura,147,82,Moltres
+146,Sulfura de Galar,147,82,Moltres
+146,Sulfura,244,35,Moltres
+146,Sulfura de Galar,244,35,Moltres
+147,Minidraco,134,73,Dratini
+147,Minidraco,185,49,Dratini
+147,Minidraco,168,41,Dratini
+147,Minidraco,64,46,Dratini
+147,Minidraco,36,55,Dratini
+147,Minidraco,236,84,Dratini
+147,Minidraco,360,88,Dratini
+147,Minidraco,211,3,Dratini
+147,Minidraco,68,16,Dratini
+147,Minidraco,274,69,Dratini
+148,Draco,72,39,Dragonair
+148,Draco,79,37,Dragonair
+148,Draco,184,83,Dragonair
+148,Draco,168,10,Dragonair
+148,Draco,192,21,Dragonair
+148,Draco,242,98,Dragonair
+148,Draco,230,29,Dragonair
+148,Draco,241,50,Dragonair
+149,Dracolosse,86,15,Dragonite
+149,Dracolosse,213,95,Dragonite
+149,Dracolosse,69,87,Dragonite
+149,Dracolosse,286,3,Dragonite
+149,Dracolosse,216,47,Dragonite
+150,Mewtwo,319,78,Mewtwo
+150,Mewtwo,320,85,Mewtwo
+150,Mewtwo,28,52,Mewtwo
+150,Mewtwo,293,42,Mewtwo
+150,Mewtwo,366,95,Mewtwo
+150,Mewtwo,264,60,Mewtwo
+150,Mewtwo,139,48,Mewtwo
+150,Mewtwo,268,16,Mewtwo
+151,Mew,320,19,Mew
+151,Mew,258,8,Mew
+151,Mew,308,95,Mew
+151,Mew,309,95,Mew
+151,Mew,211,33,Mew
+151,Mew,5,19,Mew
