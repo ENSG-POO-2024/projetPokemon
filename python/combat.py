@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import image1
 
 
 class Ui_MainWindow(object):
@@ -145,4 +146,5 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "nom_poke"))
         self.label_10.setText(_translate("MainWindow", "/"))
         self.menuCombat.setTitle(_translate("MainWindow", "Combat"))
-# import image1_rc
+
+

@@ -36,6 +36,7 @@ types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\d
 
 ### Création de la classe Pokemon 
 
+
 class Pokemon:
     def __init__(self,name,type1,stats):
        
@@ -96,24 +97,24 @@ class Pokemon:
     #     ## Déroulement d'un tour 
     #     ###Choix d'une attaque
             
-        
-        
-
-if __name__ == "__main__":
-
+nom = types["Name"] ##Liste de noms des pokémons
+typ = types["Type 1"]
     
-    nom = types["Name"] ##Liste de noms des pokémons
-    typ = types["Type 1"]
-    
-    caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 'Sp. Def', 'Speed'])
+caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 'Sp. Def', 'Speed'])
 
 
 
     ### dico qui contient tous les types de pokemon
     
-    dico_poke = {}
-    for x in range(len(nom)):
-        dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])
+dico_poke = {}
+for x in range(len(nom)):
+    dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
+        
+
+if __name__ == "__main__":
+
+    
+    
         
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]
