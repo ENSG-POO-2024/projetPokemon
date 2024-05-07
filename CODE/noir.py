@@ -5,9 +5,6 @@ from PyQt5.QtCore import Qt, QStringListModel
 from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QProgressBar
 import random
 import csv
-from pokedex import PokemonList
-
-
 
 
 class HighGrassWindow(QDialog):
@@ -40,6 +37,8 @@ class HighGrassWindow(QDialog):
         painter.drawPixmap(70, combined_pixmap.height() - poke_att.height() + 80, poke_att)
         painter.drawPixmap(-140 + combined_pixmap.width() - poke_def.width(), 150, poke_def)
         painter.end()
+        
+        
         
         # Afficher l'image combinée dans un QLabel
         combined_label = QLabel()
@@ -77,31 +76,14 @@ class HighGrassWindow(QDialog):
         # Ajouter le layout horizontal au layout principal
         layout.addLayout(hbox_layout)
         
-        # Ajouter un layout horizontal pour les boutons
-        button_layout = QHBoxLayout()
-        
-        # Ajouter les boutons à droite de l'image
-
-        button_attack = QPushButton("Attaque")
-        button_special_attack = QPushButton("Attaque Spéciale")
-        
-        button_layout.addWidget(button_attack)
-        button_layout.addWidget(button_special_attack)
-        
-        layout.addLayout(button_layout)
         self.setLayout(layout)
         self.showFullScreen()
         QApplication.processEvents()
-        
-  
 
 
 class GameBoard(QWidget):
     def __init__(self):
         super().__init__()
-        
-        self.pokemon_list = PokemonList("data/pokemons_fr.csv")
-        
         self.square_size = 50  # Taille de chaque carré (plus gros pour le zoom)
         self.camera_size = 10  # Taille de la caméra (20x20 )
         self.board_size = 100  # Taille du plateau (100x100)
@@ -146,26 +128,23 @@ class GameBoard(QWidget):
         except FileNotFoundError:
             print("Fichier CSV introuvable.")
 
-    
 
+    def open_pokedex(self):
+        pokedex = Pokedex()
+        pokedex.show()
+        
     def initUI(self):
         self.setWindowTitle('Game Board')
         self.setGeometry(100, 100, 800, 800)  # Taille de la fenêtre
         
-        layout = QVBoxLayout(self)
-        
         # Créer le bouton "Open Pokedex"
-        self.button_open_pokedex = QPushButton("Pokedex")
-        self.button_open_pokedex.clicked.connect(self.open_pokedex_window)
-        layout.addWidget(self.button_open_pokedex, alignment=Qt.AlignBottom)  # Aligner le bouton en bas de la fenêtre
+        button_open_pokedex = QPushButton('Open Pokedex', self)
+        button_open_pokedex.clicked.connect(self.open_pokedex)
         
-        self.setLayout(layout)
-        
-    def open_pokedex_window(self):
-        pokemon_list_data = self.pokemon_list.pokemon_list  # Accéder à la liste de Pokémon à l'intérieur de l'objet PokemonList
-        pokedex_window = PokedexUI(pokemon_list_data)
-        pokedex_window.exec_()
-        
+        # Ajouter le bouton à la mise en page
+        layout = QVBoxLayout(self)
+        layout.addWidget(button_open_pokedex)
+
     def generate_grid(self):
         
         TOP_ZONE_SIZE = 1  
@@ -206,8 +185,6 @@ class GameBoard(QWidget):
         return grid, tree_positions
 
 
-
-        
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setPen(QColor(0, 0, 0))  # Couleur des lignes
@@ -306,29 +283,14 @@ class GameBoard(QWidget):
         high_grass_window = HighGrassWindow(pokemon_name)
         high_grass_window.exec_()
 
-    def get_pokemon_info(self, pos):
-        try:
-            with open("data/merged_data_fr.csv", newline='') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    x, y = int(row['coord_x']), int(row['coord_y'])
-                    if (x, y) == pos:
-                        return row['#'], row['pokemon']
-        except FileNotFoundError:
-            print("Fichier CSV introuvable.")
-        return None, "Pokemon Inconnu"
-
-                
-                
     def try_move_player(self, new_pos):
         if self.is_valid_move(new_pos):
             self.move_player(new_pos)
             if self.grid[new_pos[0]][new_pos[1]] == 'tall_grass':
-                pokemon_number, pokemon_name = self.get_pokemon_info(new_pos)
-                if pokemon_number and pokemon_name:
-                    self.show_high_grass_window((pokemon_name, pokemon_number))  
-                    self.pokemon_list.modify_pokemon(pokemon_number, pokemon_name, f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_number}.png")  # Mettre à jour le Pokédex
-
+                self.move_player(new_pos)
+                pokemon_name = self.get_pokemon_name(new_pos)
+                self.show_high_grass_window(pokemon_name)
+                #self.show_high_grass_window()
     
 
 
@@ -356,64 +318,77 @@ def get_first_gen_pokemon_list(csv_file_path):
     return pokemon_list
 
 
-class PokedexUI(QDialog):
-    def __init__(self, pokemon_list):
+
+class Pokedex(QWidget):
+    def __init__(self):
         super().__init__()
-         # Afficher le nombre de Pokémon découverts / total dans le titre de la fenêtre
+        self.initUI()
         
-        discovered_pokemon_count = sum(1 for pokemon in pokemon_list if pokemon['name'] != "????")
-        total_pokemon_count = len(pokemon_list)
-        self.setWindowTitle(f"Pokédex ({discovered_pokemon_count}/{total_pokemon_count})")
+
+    def initUI(self):
+        self.setWindowTitle('Pokedex')
         
-        self.resize(300, 500) 
-        # Créer un layout vertical pour contenir les étiquettes et les images
+        self.setGeometry(100, 100, 400, 400)
+        
+
+        # Liste de Pokémon avec leurs numéros
+        self.pokemon_list = get_first_gen_pokemon_list("data/pokemons_fr.csv")
+
+        self.model = QStringListModel()
+        self.model.setStringList(self.pokemon_list)
+
+        self.list_view = QListView()
+        self.list_view.setModel(self.model)
+
+        self.label_header = QLabel(" n° - NOM")
+
         layout = QVBoxLayout()
-        
-        # Créer un widget de défilement
+        layout.addWidget(self.label_header)
+
+        # Ajout d'un espacement vertical entre chaque ligne
+        layout.addSpacing(5)
+
+        # Ajouter les frames pour chaque Pokémon
+        for pokemon in self.pokemon_list:
+            frame = self.create_pokemon_frame(pokemon)
+            layout.addWidget(frame)
+
         scroll_area = QScrollArea()
-        scroll_area.setWidgetResizable(True)  # Rendre le widget de défilement redimensionnable
+        scroll_area.setWidgetResizable(True)
         
-        # Créer un widget qui contiendra le layout vertical des étiquettes et des images
-        content_widget = QWidget(scroll_area)
-        content_layout = QVBoxLayout(content_widget)
-        
-        # Ajouter une étiquette pour chaque Pokémon dans la liste
-        for pokemon in pokemon_list:
-            # Créer une étiquette pour afficher le nom du Pokémon
-            pokemon_label = QLabel(f"n° {pokemon['number']}     Nom: {pokemon['name']}")
-            
-            # Créer une étiquette pour afficher l'image du Pokémon
-            pokemon_image_label = QLabel()
-            pokemon_image_label.setPixmap(QPixmap(pokemon['image_name']))  # Définir l'image du Pokémon
-            
-            # Créer un layout horizontal pour organiser l'étiquette du Pokémon et son image côte à côte
-            pokemon_layout = QHBoxLayout()
-            pokemon_layout.addWidget(pokemon_label)
-            pokemon_layout.addWidget(pokemon_image_label)
-            
-            # Ajouter le layout horizontal au layout vertical du contenu
-            content_layout.addLayout(pokemon_layout)
-        
-        # Définir le layout du contenu comme le layout du widget de défilement
-        content_widget.setLayout(content_layout)
-        
-        # Définir le widget de contenu du widget de défilement
-        scroll_area.setWidget(content_widget)
-        
-        # Ajouter le widget de défilement au layout vertical principal
-        layout.addWidget(scroll_area)
-        
-        # Définir le layout principal de la fenêtre
-        self.setLayout(layout)
+        container = QWidget()
+        container.setLayout(layout)
+        scroll_area.setWidget(container)
 
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(scroll_area)
 
+        self.setLayout(main_layout)
 
+    def create_pokemon_frame(self, pokemon):
+        frame = QFrame()
+        frame_layout = QHBoxLayout()
 
-    
+        # Ajouter le texte du Pokémon
+        pokemon_label = QLabel(pokemon)
+        frame_layout.addWidget(pokemon_label)
 
+        # Récupérer le numéro de Pokémon
+        pokemon_number = pokemon.split(' - ')[0]
+        image_path = f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_number}.png"
+
+        # Charger l'image et l'afficher dans un QLabel
+        pixmap = QPixmap(image_path)
+        if not pixmap.isNull():
+            image_label = QLabel()
+            image_label.setPixmap(pixmap)
+            frame_layout.addWidget(image_label)
+
+        frame.setLayout(frame_layout)
+        return frame
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game_board = GameBoard()  # Passer une référence à l'instance de Pokedex
+    game_board = GameBoard()
     game_board.show()
     sys.exit(app.exec_())
