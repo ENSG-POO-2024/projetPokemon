@@ -110,7 +110,7 @@ if __name__ == "__main__":
     bulbasaur = dico_poke["Bulbasaur"]
     
     
-    pikachu.HP = 5
+    
     # combat(pikachu,bulbasaur)
     
      

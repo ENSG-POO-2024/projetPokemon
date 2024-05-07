@@ -91,8 +91,8 @@ class Ui_MainWindow(object):
         self.labelID.setText(_translate("MainWindow", "ID"))
         self.labelTitre.setText(_translate("MainWindow", "CONNECTION"))
         self.labelPassword.setText(_translate("MainWindow", "Password:"))
-        self.pushButtonValider.setText(_translate("MainWindow", "valider"))
-        self.pushButton_2.setText(_translate("MainWindow", "première connection"))
+        self.pushButtonValider.setText(_translate("MainWindow", "Ok"))
+        self.pushButton_2.setText(_translate("MainWindow", "First connection"))
         
         
 
@@ -128,7 +128,7 @@ class MainWindow( Ui_MainWindow):
 
     def checkCredentials(self, ID, password):
         # Vérifier les informations d'identification à partir du fichier JSON
-        with open("data_user.json", "r") as file:
+        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "r") as file:
             users = json.load(file)
             if ID in users:
                 

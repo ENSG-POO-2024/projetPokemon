@@ -10,6 +10,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
+from premier_pokemon import Ui_FormPokemon
+
+
+
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -56,20 +61,22 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.labelTitre.setText(_translate("Form", "PREMIERE CONNECTION"))
+        Form.setWindowTitle(_translate("Form", "First_Conection"))
+        self.labelTitre.setText(_translate("Form", "FIRST CONNECTION"))
         self.labelID.setText(_translate("Form", "ID :"))
         self.labelPassword.setText(_translate("Form", "Password :"))
-        self.pushButton.setText(_translate("Form", "Valider"))
+        self.pushButton.setText(_translate("Form", "OK"))
         
         
+
+
+
 class FirstConnection(Ui_Form):
     def __init__(self,parent=None):
         super().__init__()
         self.setupUi(parent)
-        
-        # Connecter le bouton de connexion à la fonction de vérification
-        self.pushButton.clicked.connect(self.verifyAndRegister)
+
+
 
     def verifyAndRegister(self):
         # Récupérer le nom d'utilisateur et le mot de passe entrés par l'utilisateur
@@ -79,34 +86,77 @@ class FirstConnection(Ui_Form):
         # Vérifier si l'utilisateur a déjà été enregistré
         if self.checkUsername(ID):
             print("ID already exists. Please choose another username.")
-            return
+            return "ID already exists. Please choose another username."
 
-        # Enregistrer les informations d'identification dans un fichier JSON
+        # Enregistrer les informations d'identification dans un fichier JSON et ouvrir la page suivante
         self.registerNewUser(ID, password)
         print("New user registered successfully.")
+        
 
     def checkUsername(self, ID):
         # Vérifier si le nom d'utilisateur existe déjà dans le fichier JSON
-        with open("data_user.json", "r") as file:
+        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "r") as file:
             users = json.load(file)
             if ID in users:
                 return True
         return False
 
     def registerNewUser(self, ID, password):
-        # Enregistrer les nouvelles informations d'identification dans le fichier JSON
-        with open("data_user.json", "r") as file:
+        # Enregistrer les nouvelles informations d'identification dans le fichier JSON 
+        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "r") as file:
+            # "r" pour lire
             users = json.load(file)
         users[ID] = password
-        with open("data_user.json", "w") as file:
+        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "w") as file:
+            # "w" pour écrire
             json.dump(users, file)
+    
+class Ui_erreur(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(187, 116)
+        self.textBrowser = QtWidgets.QTextBrowser(Form)
+        self.textBrowser.setGeometry(QtCore.QRect(10, 20, 161, 81))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.textBrowser.setFont(font)
+        self.textBrowser.setObjectName("textBrowser")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "message d'erreur"))
+        self.textBrowser.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:16pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt; font-weight:600;\">ID already exists. Please choose another username.</span></p></body></html>"))
+
+
+
+        
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
+    #page des premieres pokémon
+    Form_Pokemon = QtWidgets.QWidget()
+    ui_Pokemon = Ui_FormPokemon()
+    ui_Pokemon.setupUi(Form_Pokemon)
+    
+    
+    First_Conection = QtWidgets.QWidget()
     app.setQuitOnLastWindowClosed(True)
-    ui = FirstConnection(Form)
-    Form.show()
+    ui = FirstConnection(First_Conection)
+    First_Conection.show()
     sys.exit(app.exec_())
+    
+    
+    #message d'erreur
+    mess = QtWidgets.QWidget()
+    ui_erreur = Ui_erreur()
+    ui_erreur.setupUi(mess)
+    mess.show()
