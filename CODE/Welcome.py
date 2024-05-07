@@ -17,12 +17,13 @@ from PyQt5.QtCore import pyqtSignal
 
 
 class MainWindow(QMainWindow):
+    
     def __init__(self):
         self.pokemon_list = PokemonList("data/pokemons_fr.csv", True)
+        self.selected_pokemon = []  # Ajout de l'attribut selected_pokemon
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        
         self.ui.pushButton.clicked.connect(self.open_pokedex_window)
 
     def open_pokedex_window(self):
@@ -35,23 +36,18 @@ class MainWindow(QMainWindow):
     def start_game_with_selected_pokemon(self, selected_pokemon):
         print("Pokémons sélectionnés:")
         for pokemon in selected_pokemon:
-            print(f"Nom: {pokemon['name']}, Numéro: {pokemon['number']}, Image: {pokemon['image_name']}")
-
+            print(f"Numéro: {pokemon['number']}, Nom: {pokemon['name']}")
+        # Assigner selected_pokemon à l'attribut de classe
+        self.selected_pokemon = selected_pokemon
+        self.pokemon_list.add_starters(selected_pokemon)
         self.ui.pushButton.setText("Nouveau Monde")
         self.ui.pushButton.clicked.disconnect()  # Déconnexion de l'ancienne connexion
         self.ui.pushButton.clicked.connect(self.open_game_board)  # Nouvelle connexion
 
     def open_game_board(self):
-        
-        # Fermer la fenêtre MainWindow
         self.close()
-        # Ouvrir la fenêtre GameBoard
-        game_board = GameBoard()
+        game_board = GameBoard(self.selected_pokemon)  # Passer selected_pokemon à GameBoard
         game_board.exec()
-
-
-
-  
 
 
 

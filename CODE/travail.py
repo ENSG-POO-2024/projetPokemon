@@ -10,6 +10,7 @@ from pokedex import PokemonList
 
 
 
+
 class HighGrassWindow(QDialog):
     def __init__(self, pokemon_data):
         super().__init__()
@@ -98,11 +99,16 @@ class HighGrassWindow(QDialog):
 
 
 class GameBoard(QDialog):
-    def __init__(self):
+    def __init__(self,selected_pokemon):
         super().__init__()
         print("couocou")
-        
+        self.starter_data = selected_pokemon
         self.pokemon_list = PokemonList("data/pokemons_fr.csv")
+        self.pokemon_list.add_starters(selected_pokemon)  # Appel de la méthode pour ajouter les starters
+        
+ 
+        
+
         
         self.square_size = 50  # Taille de chaque carré (plus gros pour le zoom)
         self.camera_size = 10  # Taille de la caméra (20x20 )
@@ -358,7 +364,7 @@ class PokedexUI(QDialog):
     def __init__(self, pokemon_list):
         super().__init__()
          # Afficher le nombre de Pokémon découverts / total dans le titre de la fenêtre
-        
+        print(pokemon_list)
         discovered_pokemon_count = sum(1 for pokemon in pokemon_list if pokemon['name'] != "????")
         total_pokemon_count = len(pokemon_list)
         self.setWindowTitle(f"Pokédex ({discovered_pokemon_count}/{total_pokemon_count})")

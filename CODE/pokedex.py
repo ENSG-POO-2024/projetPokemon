@@ -47,20 +47,25 @@ class PokemonList:
                 pokemon['name'] = new_name
                 pokemon['image_name'] = new_image_name
                 break
+            print("Pokemon found.")
+            print(pokemon['name'])
         else:
             print("Pokemon not found.")
             
     def add_starters(self, starters_data):
-        print("Adding starters...")
+    
         for starter_data in starters_data:
-            number, name, image_name = starter_data
+            number = starter_data['number']
+            name = starter_data['name']
+            image_name = starter_data['image_name']        
             self.modify_pokemon(number, name, image_name)
 
 if __name__ == '__main__':
-    pokemon_list = PokemonList("data/pokemons_fr.csv",cheat=False)
-    pokemon_list.print_pokemon_list()
+    #pokemon_list = PokemonList("data/pokemons_fr.csv",cheat=False)
+    #pokemon_list.print_pokemon_list()
     
     # Modifier un Pokémon (par exemple, numéro 1)
-    pokemon_list.modify_pokemon("1", 'Bulbizarre', f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front_black/{1}.png")
-    print("\nAprès modification :")
-    pokemon_list.print_pokemon_list()
+    #pokemon_list.modify_pokemon("1", 'Bulbizarre', f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front_black/{1}.png")
+    #print("\nAprès modification :")
+    #pokemon_list.print_pokemon_list()
+    pass
