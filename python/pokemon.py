@@ -12,8 +12,8 @@ import pandas as pd
 
 ### Extraction des données du projet (dataframe)
 
-coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
-types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
+coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
+types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
 
@@ -96,11 +96,11 @@ caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 
 
     ### dico qui contient tous les types de pokemon
     
-dico_poke = {}
+dico_poke1 = {}
 for x in range(len(nom)):
-    dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
+    dico_poke1[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
         
-
+dico_poke = dico_poke1
 if __name__ == "__main__":
 
     
@@ -108,7 +108,9 @@ if __name__ == "__main__":
         
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]
-     
+    
+    
+    pikachu.HP = 5
     # combat(pikachu,bulbasaur)
     
      
