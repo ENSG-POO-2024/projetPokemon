@@ -8,12 +8,22 @@ from abc import abstractmethod, ABCMeta
 import csv
 import numpy as np
 import pandas as pd
+import os
 
 
 ### Extraction des données du projet (dataframe)
+csv_coords = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_coordinates.csv')
+csv_types = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_first_gen.csv')
+coords = pd.read_csv(csv_coords)
+types = pd.read_csv(csv_types)
 
+
+
+<<<<<<< HEAD
+=======
 coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
 types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
+>>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
 
@@ -25,6 +35,7 @@ types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\d
 # print(tableau_types)
 
 ### Création de la classe Pokemon 
+
 
 class Pokemon:
     def __init__(self,name,type1,stats):
@@ -86,24 +97,24 @@ class Pokemon:
     #     ## Déroulement d'un tour 
     #     ###Choix d'une attaque
             
-        
-        
-
-if __name__ == "__main__":
-
+nom = types["Name"] ##Liste de noms des pokémons
+typ = types["Type 1"]
     
-    nom = types["Name"] ##Liste de noms des pokémons
-    typ = types["Type 1"]
-    
-    caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 'Sp. Def', 'Speed'])
+caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 'Sp. Def', 'Speed'])
 
 
 
     ### dico qui contient tous les types de pokemon
     
-    dico_poke = {}
-    for x in range(len(nom)):
-        dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])
+dico_poke = {}
+for x in range(len(nom)):
+    dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
+        
+
+if __name__ == "__main__":
+
+    
+    
         
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]

@@ -10,12 +10,17 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from statPokemon import statPoke_init
+import os
 
+#import les images des pokémons
+Bulbasaur = os.path.join(os.path.dirname(__file__), 'image', 'Bullbizarre.png')
+Squirtle = os.path.join(os.path.dirname(__file__), 'image', 'Carapuce.png')
+Charmander = os.path.join(os.path.dirname(__file__), 'image', 'Salameche.png')
 
 
 texte_Bullbizarre, texte_Salameche, texte_Carapuce = statPoke_init()
 
-class Ui_Form(object):
+class Ui_FormPokemon(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1112, 708)
@@ -28,19 +33,19 @@ class Ui_Form(object):
         self.labelBulbasaur = QtWidgets.QLabel(Form)
         self.labelBulbasaur.setGeometry(QtCore.QRect(100, 200, 261, 261))
         self.labelBulbasaur.setText("")
-        self.labelBulbasaur.setPixmap(QtGui.QPixmap("Bullbizarre.png"))
+        self.labelBulbasaur.setPixmap(QtGui.QPixmap(Bulbasaur))
         self.labelBulbasaur.setScaledContents(True)
         self.labelBulbasaur.setObjectName("labelBulbasaur")
         self.labelSquirtle = QtWidgets.QLabel(Form)
         self.labelSquirtle.setGeometry(QtCore.QRect(440, 220, 281, 221))
         self.labelSquirtle.setText("")
-        self.labelSquirtle.setPixmap(QtGui.QPixmap("Carapuce.png"))
+        self.labelSquirtle.setPixmap(QtGui.QPixmap(Squirtle))
         self.labelSquirtle.setScaledContents(True)
         self.labelSquirtle.setObjectName("labelSquirtle")
         self.labelCharmander = QtWidgets.QLabel(Form)
         self.labelCharmander.setGeometry(QtCore.QRect(790, 210, 241, 231))
         self.labelCharmander.setText("")
-        self.labelCharmander.setPixmap(QtGui.QPixmap("Salameche.png"))
+        self.labelCharmander.setPixmap(QtGui.QPixmap(Charmander))
         self.labelCharmander.setScaledContents(True)
         self.labelCharmander.setObjectName("labelCharmander")
         self.pushButtonBulbasaur = QtWidgets.QPushButton(Form)
@@ -63,8 +68,8 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "Choisis ton pokémon :"))
+        Form.setWindowTitle(_translate("Form", "First_Pokemon"))
+        self.label.setText(_translate("Form", "Choose your pokemon :"))
         self.pushButtonBulbasaur.setText(_translate("Form", "BULBASAUR"))
         self.pushButtonSquirtle.setText(_translate("Form", "SQUIRTLE"))
         self.pushButtonCharmander.setText(_translate("Form", "CHARMANDER"))
@@ -76,7 +81,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     app.setQuitOnLastWindowClosed(True)
-    ui = Ui_Form()
+    ui = Ui_FormPokemon()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())
