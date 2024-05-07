@@ -8,16 +8,13 @@ from abc import abstractmethod, ABCMeta
 import csv
 import numpy as np
 import pandas as pd
-import os
 
 
 ### Extraction des données du projet (dataframe)
-csv_coords = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_coordinates.csv')
-csv_types = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_first_gen.csv')
-coords = pd.read_csv(csv_coords)
-types = pd.read_csv(csv_types)
 
+<<<<<<< HEAD
 
+<<<<<<< HEAD
 """
 <<<<<<< HEAD
 =======
@@ -26,6 +23,18 @@ types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\d
 >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
 """
 
+=======
+
+# <<<<<<< HEAD
+# =======
+coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
+types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
+# >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
+=======
+coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
+types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
+>>>>>>> d41a08643e826155b8b06780cc544aed7be62753
+>>>>>>> 73d9419d98ae37ad40ff2e5de8256020c6ee38be
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
 
@@ -108,11 +117,11 @@ caract = pd.DataFrame(types,columns=['Total','HP',"Attack","Defense",'Sp. Atk', 
 
     ### dico qui contient tous les types de pokemon
     
-dico_poke = {}
+dico_poke1 = {}
 for x in range(len(nom)):
-    dico_poke[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
+    dico_poke1[nom[x].format(x)] = Pokemon(nom[x],typ[x],caract.iloc[x])        
         
-
+dico_poke = dico_poke1
 if __name__ == "__main__":
 
     
@@ -120,7 +129,10 @@ if __name__ == "__main__":
         
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]
-     
+    
+    print(bulbasaur.HP)
+    
+    
     # combat(pikachu,bulbasaur)
     
      
