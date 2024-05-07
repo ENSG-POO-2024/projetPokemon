@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout,QProgressBar, QScrollArea, QListView, QFrame
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout,QProgressBar, QScrollArea, QListView, QFrame,QMainWindow, QDialog
 from PyQt5.QtGui import QPainter, QColor, QPixmap
 from PyQt5.QtCore import Qt, QStringListModel
 from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QProgressBar
@@ -14,6 +14,7 @@ class HighGrassWindow(QDialog):
     def __init__(self, pokemon_data):
         super().__init__()
         self.setWindowTitle("COMBAT !!")
+        self.setModal(True)  # Définir la fenêtre comme modale
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.pokemon_data = pokemon_data
         
@@ -90,15 +91,16 @@ class HighGrassWindow(QDialog):
         
         layout.addLayout(button_layout)
         self.setLayout(layout)
-        self.showFullScreen()
+        #self.showFullScreen()
         QApplication.processEvents()
         
   
 
 
-class GameBoard(QWidget):
+class GameBoard(QDialog):
     def __init__(self):
         super().__init__()
+        print("couocou")
         
         self.pokemon_list = PokemonList("data/pokemons_fr.csv")
         
@@ -336,11 +338,7 @@ class GameBoard(QWidget):
         self.white_square_pos = new_pos
         self.update()
 
-    def show_popup(self):
-        msg = QMessageBox()
-        msg.setWindowTitle("Haute herbe")
-        msg.setText("Vous avez trouvé de l'herbe haute !")
-        msg.exec_()
+
          
 
 
@@ -405,7 +403,6 @@ class PokedexUI(QDialog):
         
         # Définir le layout principal de la fenêtre
         self.setLayout(layout)
-
 
 
 
