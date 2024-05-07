@@ -18,13 +18,13 @@ coords = pd.read_csv(csv_coords)
 types = pd.read_csv(csv_types)
 
 
-"""
-<<<<<<< HEAD
-=======
-coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
-types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
->>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
-"""
+
+# <<<<<<< HEAD
+# =======
+# coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
+# types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
+# >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
+
 
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 

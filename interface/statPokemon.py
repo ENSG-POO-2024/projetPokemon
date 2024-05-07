@@ -5,8 +5,23 @@ Created on Mon May  6 14:28:36 2024
 @author: Formation
 """
 
+from pokemon import dico_poke
+
+
 def statPoke_init():
-    
+    """
+    La fonction donne les stats des trois premiers pokémons de départ
+
+    Returns
+    -------
+    texte_Bullbizarre : TYPE
+        DESCRIPTION.
+    texte_Salameche : TYPE
+        DESCRIPTION.
+    texte_Carapuce : TYPE
+        DESCRIPTION.
+
+    """
     # Stat de Bullbizarre
     stats = {
         "Total": 318,
@@ -17,7 +32,7 @@ def statPoke_init():
         "Sp.Def": 65,
         "Speed": 45
     }
-    
+
     texte_Bullbizarre = "\n".join([f"{stat} : {valeur}" for stat, valeur in stats.items()])
     
     
@@ -50,3 +65,32 @@ def statPoke_init():
     
     return texte_Bullbizarre, texte_Salameche, texte_Carapuce
 
+
+def statPoke(nomPoke):
+
+    info_pokemon =  '\n'.join(str(dico_poke[nomPoke].stats).split('\n')[:-1])
+    # Diviser la série en fonction des sauts de ligne
+    # Supprimer la dernière ligne inutile
+    # Récupérer les données des pokémons
+    
+    info_pokemon += '\n'
+    info_pokemon += str(dico_poke[nomPoke].type1)
+    # Récupérer le type du pokémon
+    
+    return info_pokemon
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

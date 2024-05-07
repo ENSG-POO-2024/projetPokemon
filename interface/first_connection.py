@@ -30,7 +30,6 @@ class Ui_Form(object):
         self.labelID.setGeometry(QtCore.QRect(130, 200, 151, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
-        
         self.labelID.setFont(font)
         self.labelID.setObjectName("labelID")
         self.labelPassword = QtWidgets.QLabel(Form)
