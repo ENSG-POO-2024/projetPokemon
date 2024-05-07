@@ -18,6 +18,10 @@ from pokemon import Pokemon, dico_poke
 from combat import Ui_MainWindow  
 # from image1_rc import *  # Import du module contenant les ressources
 
+
+pikachu = dico_poke["Pikachu"]
+bulbasaur = dico_poke["Bulbasaur"]
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()

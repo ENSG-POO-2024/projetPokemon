@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="pokedex">
+    <file>pokedex.jpg</file>
+  </qresource>
+</RCC>
