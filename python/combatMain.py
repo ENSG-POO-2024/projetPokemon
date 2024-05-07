@@ -89,37 +89,65 @@ class MainWindow(QMainWindow):
         """
         Définit ce qu'il se passe lorsque l'on clique sur attaque spéciale
         """
-        # HP_perdus = pokemon1.Sattack-pokemon2.Sdef
+        HP_perdus = pokemon1.Sattack-pokemon2.Sdef
         
-        # if HP_perdus>=0:
-        #     self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
-        #                             \n{pokemon2.name} perd {HP_perdus}PV !""")
-        #     pokemon2.HP  -= HP_perdus
-        #     ##Affichage des dégats
-        #     percent = int(100*pokemon2.HP/PV_def)
-        #     self.ui.progressBar_2.setProperty("value",percent)
-        #     self.ui.lcdNumber_2.display(PV_def)
+        if HP_perdus>=0:
+            self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
+                                    \n{pokemon2.name} perd {HP_perdus}PV !""")
+            pokemon2.HP  -= HP_perdus
+            ##Affichage des dégats
+            percent = int(100*pokemon2.HP/PV_def)
+            self.ui.progressBar_2.setProperty("value",percent)
+            self.ui.lcdNumber_2.display(pokemon2.HP)
            
-        # else:
-        #     self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
-        #                             \n{pokemon2.name} ne perd aucun PV !""")
-        pass
-
-                                    
-        # self.ui.progressBar_2.setProperty("value",bulbasaur.HP*100/a)
-        # self.ui.progressBar_3.setProperty("value",pikachu.HP*100/b)
-        
-        # self.ui.lcdNumber_2.display(bulbasaur.HP)
-        # self.ui.lcdNumber_4.display(pikachu.HP)                                   
+        else:
+            self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
+                                    \n{pokemon2.name} ne perd aucun PV !""")
+                                          
                     
         
     def attaque_auto(self,pokemon1,pokemon2,PV_def):
         nombre = random.randint(0,2)
         
+        ## Attaque neutre
         if nombre ==1:
-            self.set_text_attaque_neutre(pokemon2,pokemon1,PV_def)
+
+            HP_perdus = pokemon1.attack-pokemon2.defense
+        
+            print("test1 -avant attaque",pokemon2.HP)
+            if HP_perdus>=0:
+                self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
+                                        \n{pokemon2.name} perd {HP_perdus}PV """)
+                pokemon2.HP -= HP_perdus
+                
+                ##Affichage des dégats    
+                percent = int(100*pokemon2.HP/PV_def)
+                self.ui.progressBar_3.setProperty("value",percent)
+                self.ui.lcdNumber_4.display(pokemon2.HP)
+                print("test2 - après attaque",pokemon2.HP)
+    
+            else:
+                self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
+                                        \n{pokemon2.name} ne perd aucun PV """)
+                
+        ## Attaque spéciale
         else:
-            self.set_text_attaque_speciale(pokemon2,pokemon1,PV_def)
+            # self.set_text_attaque_speciale(pokemon2,pokemon1,PV_def)
+            HP_perdus = pokemon1.Sattack-pokemon2.Sdef
+        
+            if HP_perdus>=0:
+                self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
+                                        \n{pokemon2.name} perd {HP_perdus}PV !""")
+                pokemon2.HP  -= HP_perdus
+                ##Affichage des dégats
+                percent = int(100*pokemon2.HP/PV_def)
+                self.ui.progressBar_3.setProperty("value",percent)
+                self.ui.lcdNumber_4.display(pokemon2.HP)
+               
+            else:
+                self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
+                                        \n{pokemon2.name} ne perd aucun PV !""")
+        print("validation attaque auto")
         
     def attack(self):
         ## Début du combat
@@ -154,12 +182,16 @@ class MainWindow(QMainWindow):
                 ## Connecter les signaux des boutons à des fonctions qui gèrent les attaques
                 ## Désactive les boutons en attendant l'attaque automatique 
             
-        
+            ##Action bouton 1
             self.ui.pushButton.clicked.connect(lambda: self.set_text_attaque_neutre(attaquant, defenseur,PV_def))
             self.ui.pushButton.clicked.connect(self.desac_boutons)
+            self.ui.pushButton.clicked.connect(lambda: self.attaque_auto(defenseur,attaquant,PV_att))
+            
+            
+            ##Action bouton 2
             self.ui.pushButton_2.clicked.connect(lambda: self.set_text_attaque_speciale(attaquant, defenseur,PV_def))
             self.ui.pushButton_2.clicked.connect(self.desac_boutons)
-            
+            self.ui.pushButton_2.clicked.connect(lambda: self.attaque_auto(defenseur,attaquant,PV_att))
             
             # #Activer le bouton après un délai de 3 secondes
             # timer = QTimer()
@@ -196,7 +228,7 @@ class MainWindow(QMainWindow):
                 # attaquant, defenseur = defenseur, attaquant
                 # PV_att,PV_def = PV_def,PV_att
                 # # Changer de rôle entre attaquant et défenseur pour le prochain tour
-        print("test3- après attaque(fonction globale)",defenseur.HP)
+        
             
         
         
@@ -221,5 +253,7 @@ if __name__ == "__main__":
     
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]
+    
 
     main()
+    

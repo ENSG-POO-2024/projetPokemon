@@ -109,6 +109,7 @@ if __name__ == "__main__":
     pikachu = dico_poke["Pikachu"]
     bulbasaur = dico_poke["Bulbasaur"]
     
+    print(bulbasaur.HP)
     
     
     # combat(pikachu,bulbasaur)
