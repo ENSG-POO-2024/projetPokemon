@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayou
 import random
 import csv
 from pokedex import PokemonList
+from welcome2 import FightWindow
 
 
 
@@ -18,6 +19,7 @@ class HighGrassWindow(QDialog):
         self.setModal(True)  # Définir la fenêtre comme modale
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.pokemon_data = pokemon_data
+        
         
         layout = QVBoxLayout()
         
@@ -99,7 +101,7 @@ class HighGrassWindow(QDialog):
 
 
 class GameBoard(QDialog):
-    def __init__(self,selected_pokemon):
+    def __init__(self,selected_pokemon=[]):
         super().__init__()
         print("couocou")
         self.starter_data = selected_pokemon
@@ -312,7 +314,12 @@ class GameBoard(QDialog):
     
     def show_high_grass_window(self, pokemon_name):
         high_grass_window = HighGrassWindow(pokemon_name)
-        high_grass_window.exec_()
+        high_grass_window.show_()
+        
+    def show_combat_ui(self,pokemon_data):
+        print("je suis là")
+        combat_ui = FightWindow(pokemon_data)
+        combat_ui.exec_()
 
     def get_pokemon_info(self, pos):
         try:
@@ -334,7 +341,8 @@ class GameBoard(QDialog):
             if self.grid[new_pos[0]][new_pos[1]] == 'tall_grass':
                 pokemon_number, pokemon_name = self.get_pokemon_info(new_pos)
                 if pokemon_number and pokemon_name:
-                    self.show_high_grass_window((pokemon_name, pokemon_number))  
+                    #self.show_high_grass_window((pokemon_name, pokemon_number))  
+                    self.show_combat_ui((pokemon_name, pokemon_number))
                     self.pokemon_list.modify_pokemon(pokemon_number, pokemon_name, f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_number}.png")  # Mettre à jour le Pokédex
 
     
