@@ -103,7 +103,6 @@ class HighGrassWindow(QDialog):
 class GameBoard(QDialog):
     def __init__(self,selected_pokemon=[]):
         super().__init__()
-        print("couocou")
         self.starter_data = selected_pokemon
         self.pokemon_list = PokemonList("data/pokemons_fr.csv")
         self.pokemon_list.add_starters(selected_pokemon)  # Appel de la méthode pour ajouter les starters

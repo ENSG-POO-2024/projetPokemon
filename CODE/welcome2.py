@@ -10,7 +10,7 @@ class FightWindow(QDialog):
         loadUi('/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/welcome2.ui', self)
         
         self.pokemon_data = pokemon_data
-        self.showFullScreen()
+        self.resize(1920,1080)
         self.setWindowTitle("COMBAT !")
         
         
