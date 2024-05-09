@@ -17,7 +17,7 @@ class Ui_Form(object):
         Form.resize(1920, 1080)
         Form.setMouseTracking(False)
         Form.setWindowOpacity(1.0)
-        Form.setStyleSheet("background-image: url('/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/bg_pokemon.png');")
+        #Form.setStyleSheet("background-image: url('/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/bg_pokemon.png');")
         self.field = QtWidgets.QLabel(Form)
         self.field.setGeometry(QtCore.QRect(390, 190, 601, 611))
         self.field.setText("")

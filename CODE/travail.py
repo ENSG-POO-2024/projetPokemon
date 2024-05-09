@@ -6,106 +6,24 @@ from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayou
 import random
 import csv
 from pokedex import PokemonList
-from welcome2 import FightWindow
+from welcome2 import Dresseur,Rencontre,FightWindow
 
 
 
 
 
-class HighGrassWindow(QDialog):
-    def __init__(self, pokemon_data):
-        super().__init__()
-        self.setWindowTitle("COMBAT !!")
-        self.setModal(True)  # Définir la fenêtre comme modale
-        self.setWindowFlags(Qt.FramelessWindowHint)
-        self.pokemon_data = pokemon_data
-        
-        
-        layout = QVBoxLayout()
-        
-        # Ajouter un bouton pour fermer la fenêtre en haut de la fenêtre
-        button_close = QPushButton("Fuir")
-        button_close.clicked.connect(self.close)
-        layout.addWidget(button_close, alignment=Qt.AlignTop)
-        
-        # Charger les images et les redimensionner si nécessaire
-        pixmap_main = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/field.png")
-        poke_att = QPixmap("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/back/1.png").scaled(300, 300)
-        poke_def = QPixmap(f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_data[1]}.png").scaled(250, 250)
-        
-        # Créer une nouvelle image qui sera la combinaison de toutes les images
-        combined_pixmap = QPixmap(pixmap_main.size())
-        combined_pixmap.fill(Qt.transparent)
-        
-        offset = -100
-        # Dessiner les images principales et superposées sur l'image combinée
-        painter = QPainter(combined_pixmap)
-        painter.drawPixmap(0, 0, pixmap_main)
-        painter.drawPixmap(70, combined_pixmap.height() - poke_att.height() + 80, poke_att)
-        painter.drawPixmap(-140 + combined_pixmap.width() - poke_def.width(), 150, poke_def)
-        painter.end()
-        
-        # Afficher l'image combinée dans un QLabel
-        combined_label = QLabel()
-        combined_label.setPixmap(combined_pixmap)
-        
-        # Créer un layout horizontal pour les boutons et l'image combinée
-        hbox_layout = QHBoxLayout()
-        
-        # Ajouter un QLabel avec texte stylisé à gauche de l'image combinée
-        label_left = QLabel("Gauche")
-        label_left.setAlignment(Qt.AlignBottom | Qt.AlignRight)
-        label_left.setStyleSheet("font-size: 10px; color: blue;")
-        label_left.setFixedSize(80, 30)  # Définir la taille du QLabel
-        hbox_layout.addWidget(label_left)
-        
-        # Ajouter une barre de progression remplie à 70% sous le label "Gauche"
-        progress_bar_left = QProgressBar()
-        progress_bar_left.setAlignment(Qt.AlignBottom | Qt.AlignRight)
-        progress_bar_left.setValue(70)
-        hbox_layout.addWidget(progress_bar_left)
-        
-        # Ajouter l'image combinée au centre
-        hbox_layout.addWidget(combined_label)
-
-        # Ajouter un QLabel avec texte stylisé à droite de l'image combinée
-        label_right = QLabel(f"{pokemon_data[0]}")
-        label_right.setAlignment(Qt.AlignTop)
-        label_right.setFixedSize(80, 30)  # Définir la taille du QLabel
-        label_right.setStyleSheet("font-size: 15px; color: black;")
-        hbox_layout.addWidget(label_right)
-        progress_bar_right = QProgressBar()
-        progress_bar_right.setValue(70)
-        hbox_layout.addWidget(progress_bar_right)
-        
-        # Ajouter le layout horizontal au layout principal
-        layout.addLayout(hbox_layout)
-        
-        # Ajouter un layout horizontal pour les boutons
-        button_layout = QHBoxLayout()
-        
-        # Ajouter les boutons à droite de l'image
-
-        button_attack = QPushButton("Attaque")
-        button_special_attack = QPushButton("Attaque Spéciale")
-        
-        button_layout.addWidget(button_attack)
-        button_layout.addWidget(button_special_attack)
-        
-        layout.addLayout(button_layout)
-        self.setLayout(layout)
-        #self.showFullScreen()
-        QApplication.processEvents()
+default_starter=[{'image_name': '/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/1.png', 'name': 'Bulbizarre', 'number': '1'}, {'image_name': '/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/4.png', 'name': 'Salameche', 'number': '4'}, {'image_name': '/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/7.png', 'name': 'Carapuce', 'number': '7'}]
         
   
 
 
 class GameBoard(QDialog):
-    def __init__(self,selected_pokemon=[]):
+    def __init__(self,selected_pokemon=default_starter,joueur=Dresseur("Sacha")):
         super().__init__()
         self.starter_data = selected_pokemon
         self.pokemon_list = PokemonList("data/pokemons_fr.csv")
         self.pokemon_list.add_starters(selected_pokemon)  # Appel de la méthode pour ajouter les starters
+        self.joueur = joueur
         
  
         
@@ -311,14 +229,14 @@ class GameBoard(QDialog):
         return "Pokemon Inconnu"
     
     
-    def show_high_grass_window(self, pokemon_name):
-        high_grass_window = HighGrassWindow(pokemon_name)
-        high_grass_window.show_()
         
-    def show_combat_ui(self,pokemon_data):
-        print("je suis là")
-        combat_ui = FightWindow(pokemon_data)
+    def show_combat_ui(self,pokemon_data,joueur,position):
+        
+        combat_ui = FightWindow(pokemon_data,self.joueur,position)
+        #Combat(pokemon_data,joueur,position)
+        #Rencontre(joueur,position)
         combat_ui.exec_()
+
 
     def get_pokemon_info(self, pos):
         try:
@@ -327,7 +245,7 @@ class GameBoard(QDialog):
                 for row in reader:
                     x, y = int(row['coord_x']), int(row['coord_y'])
                     if (x, y) == pos:
-                        return row['#'], row['pokemon']
+                        return row['#'], row['pokemon'],row['Name']
         except FileNotFoundError:
             print("Fichier CSV introuvable.")
         return None, "Pokemon Inconnu"
@@ -338,11 +256,12 @@ class GameBoard(QDialog):
         if self.is_valid_move(new_pos):
             self.move_player(new_pos)
             if self.grid[new_pos[0]][new_pos[1]] == 'tall_grass':
-                pokemon_number, pokemon_name = self.get_pokemon_info(new_pos)
+                pokemon_number, pokemon_name,pokemon_name_en = self.get_pokemon_info(new_pos)
                 if pokemon_number and pokemon_name:
-                    #self.show_high_grass_window((pokemon_name, pokemon_number))  
-                    self.show_combat_ui((pokemon_name, pokemon_number))
+                    self.show_combat_ui((pokemon_name_en),self.joueur,new_pos)
+                    
                     self.pokemon_list.modify_pokemon(pokemon_number, pokemon_name, f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_number}.png")  # Mettre à jour le Pokédex
+                    
 
     
 
