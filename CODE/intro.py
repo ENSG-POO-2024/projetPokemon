@@ -1,25 +1,12 @@
 import sys
-from Wilkommen import Ui_MainWindow
-from pokedex import PokemonList
-from travail import GameBoard
-from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QVBoxLayout, QHBoxLayout, QScrollArea, QWidget, QLabel, QPushButton, QRadioButton, QCheckBox
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
-from introUI import Ui_Dialog
-import sys
 from Wilkommen import Ui_MainWindow
 from pokedex import PokemonList
 from travail import GameBoard
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLayout,QScrollArea, QMainWindow
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QLabel, QVBoxLayout, QHBoxLayout
-from PyQt5.QtWidgets import (QDialog, QVBoxLayout, QScrollArea, QWidget,
-                             QLabel, QHBoxLayout, QRadioButton,QCheckBox)
-from PyQt5.QtGui import QPixmap
+from introUI import Ui_Dialog
 
-
-from PyQt5.QtWidgets import (QDialog, QVBoxLayout, QScrollArea, QWidget,
-                             QLabel, QHBoxLayout, QCheckBox, QPushButton)
-from PyQt5.QtCore import pyqtSignal
 
 
 class MyDialog(QDialog):

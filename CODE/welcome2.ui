@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
-    <height>900</height>
+    <width>1221</width>
+    <height>808</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -32,7 +32,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../Downloads/Untitled design (9).png</pixmap>
+    <pixmap>image tiles/field2.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -118,7 +118,7 @@
     <string>Pokemon</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="dialogue">
+<widget class="QTextBrowser" name="dialogue">
    <property name="geometry">
     <rect>
      <x>447</x>
@@ -132,17 +132,10 @@
      <kerning>true</kerning>
     </font>
    </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Le pokémon sauvage apparaît !&lt;/span&gt;    &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
    <property name="overwriteMode">
     <bool>false</bool>
    </property>
-  </widget>
+</widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -189,7 +182,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>469</x>
-     <y>283</y>
+     <y>267</y>
      <width>201</width>
      <height>171</height>
     </rect>
@@ -198,7 +191,7 @@ p, li { white-space: pre-wrap; }
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>image tiles/pokemon_Combat/back/1.png</pixmap>
+    <pixmap>image tiles/pokemon_Combat/back/2.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -344,69 +337,12 @@ p, li { white-space: pre-wrap; }
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../Downloads/Untitled design (10).png</pixmap>
+    <pixmap>image tiles/cadre.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>-10</x>
-     <y>0</y>
-     <width>771</width>
-     <height>901</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>image tiles/bg_pokemon.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>760</x>
-     <y>0</y>
-     <width>771</width>
-     <height>901</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>image tiles/bg_pokemon.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <zorder>label_7</zorder>
-  <zorder>label_6</zorder>
-  <zorder>field</zorder>
-  <zorder>progressBar_adv</zorder>
-  <zorder>progressBar_pv</zorder>
-  <zorder>progressBar_XP</zorder>
-  <zorder>nom_adv</zorder>
-  <zorder>nom_adv_2</zorder>
-  <zorder>dialogue</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>cadre</zorder>
  </widget>
  <resources/>
  <connections/>

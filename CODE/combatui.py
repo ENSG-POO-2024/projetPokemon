@@ -1,12 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QTextBrowser, QFrame,QDialog,QVBoxLayout
-
-from PyQt5.QtGui import QFont, QFontDatabase,QPixmap
-from PyQt5.uic import loadUi
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow
-from PyQt5.QtGui import QPixmap
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -128,7 +119,11 @@ class Ui_Form(object):
         self.cadre.setPixmap(QtGui.QPixmap("image tiles/cadre.png"))
         self.cadre.setScaledContents(True)
         self.cadre.setObjectName("cadre")
-
+        self.pushButton.raise_()
+        self.pushButton_2.raise_()
+        self.pushButton_3.raise_()
+        self.pushButton_4.raise_()
+        
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -148,70 +143,3 @@ class Ui_Form(object):
         self.pushButton.setText(_translate("Form", "ATTAQUE"))
         self.pushButton_2.setText(_translate("Form", "ATTAQUE SP2"))
         self.pushButton_3.setText(_translate("Form", "FUITE"))
-
-
-
-
-
-
-class FightWindow(QDialog):
-    def __init__(self, pokemon_data=None):
-        super(FightWindow, self).__init__()
-        loadUi("CODE/welcome2.ui", self)  # Assurez-vous de renseigner le bon chemin vers votre fichier UI
-        self.ui = Ui_Form()  # Instancier l'interface utilisateur
-        self.ui.setupUi(self)  # Mettre en place l'interface utilisateur
-        
-        # Connecter les boutons à des fonctions
-        self.ui.pushButton.clicked.connect(self.attaquer)
-        self.ui.pushButton_2.clicked.connect(self.attaquer_sp2)
-        self.ui.pushButton_3.clicked.connect(self.fuite)
-        self.ui.pushButton_4.clicked.connect(self.changer_pokemon)
-
-        # Charger l'image du Pokémon défenseur et redimensionner le label
-        self.set_image_pokemon_def("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/15.png")
-        self.set_image_pokemon_att("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/back/15.png")
-        self.set_dialogue_text("Un combat a commencé !")
-        
-    def attaquer(self):
-        # Code pour l'action d'attaque
-        self.set_dialogue_text("Attaque lancée")
-        self.update_progress_bar_adversaire(10)
-        
-    def update_progress_bar_adversaire(self, degats):
-        # Mettre à jour la barre de progression de l'adversaire en soustrayant les dégâts infligés
-        valeur_actuelle = self.ui.progressBar_pv.value()
-        nouvelle_valeur = max(0, valeur_actuelle - degats)
-        self.ui.progressBar_pv.setValue(nouvelle_valeur)
-
-    def attaquer_sp2(self):
-        # Code pour l'action de la deuxième attaque spéciale
-        self.set_dialogue_text("Deuxième attaque spéciale lancée")
-
-    def fuite(self):
-        # Code pour l'action de fuite
-        self.set_dialogue_text("Fuite lancée")
-
-    def changer_pokemon(self):
-        # Code pour l'action de changer de Pokémon
-        self.set_dialogue_text("Changement de Pokémon")
-
-    def set_image_pokemon_def(self, image_path):
-        pixmap = QPixmap(image_path).scaled(160, 160)
-        self.ui.label_4.setPixmap(pixmap)
-        
-    def set_image_pokemon_att(self, image_path):
-        pass
-    
-    def set_dialogue_text(self, text):
-        self.ui.dialogue.setPlainText(text)
-        font_id = QFontDatabase.addApplicationFont("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/data/police.ttf")
-        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        font = QFont(font_family)
-        self.ui.dialogue.setFont(font)
-        self.ui.dialogue.setStyleSheet("background-color: rgba(0,0,0,0); margin: 10px; padding: 0px;")
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = FightWindow()
-    sys.exit(app.exec_())
