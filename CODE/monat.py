@@ -63,8 +63,6 @@ class Combat:
 
     indice = 0  # Indice du Pokémon en combat dans l'équipe du joueur
 
-
-    
     def __init__(self, joueur, pokemon_adversaire):
 
         """
@@ -99,8 +97,6 @@ class Combat:
 
         self.pokemon_adversaire = pokemon_adversaire
 
-
-
     def est_mort(self):
 
         """
@@ -123,305 +119,22 @@ class Combat:
 
             return True
 
+    def combat_gagné(self):#c'est bon
+         exp=vp.exp_gagne_par_niveau[self.pokemon_adversaire.niveau]
 
+         self.joueur.pokemon_equipe[self.indice].monter_niveau(int(exp))
 
-    def commencer(self):
+         n=len(self.joueur.pokemon_equipe)
 
-        """
+         for i in range(0,n):
 
-        Lance le combat entre le joueur et le Pokémon adverse.
+             if i != self.indice :
 
+                 self.joueur.pokemon_equipe[i].monter_niveau(math.floor(int(exp)/(n-1)))
 
+         self.joueur.ajouter_pokemon_equipe(self.pokemon_adversaire)
 
-        Returns:
-
-        -------
-
-        str
-
-            Indique si le joueur a fui le combat.
-
-        """
-
-        #print(f"Le combat entre {self.joueur.name} et {self.pokemon_adversaire.name} commence !")
-
-        #print(f"Un {self.pokemon_adversaire.name} sauvage apparait !")
-
-       # print(f"{self.joueur.pokemon_equipe[0].name} ! Go!")
-
-        
-
-
-
-
-
-        while not self.joueur.tout_est_ko() and not self.pokemon_adversaire.est_ko():
-
-
-
-            if self.joueur.tout_est_ko():
-
-                print(f"Le dresseur {self.joueur.name} est hors de comabt ! Le {self.pokemon_adversaire.name} sauvage a gagné le combat!")
-
-                break
-
-            elif self.pokemon_adversaire.est_ko():
-
-                print(f"{self.joueur.pokemon_adversaire.name} sauvage est K.O.! Vous avez gagné le combat!")
-
-                exp=vp.exp_gagne_par_niveau[self.pokemon_adversaire.niveau]
-
-                self.joueur.pokemon_equipe[self.indice].monter_niveau(int(exp))
-
-                n=len(self.joueur.pokemon_equipe)
-
-                for i in range(1,n):
-
-                    if i != self.indice :
-
-                        self.joueur.pokemon_equipe[i].monter_niveau(math.floor(int(exp)/(n-1)))
-
-
-
-                self.joueur.ajouter_pokemon_equipe(self.pokemon_adversaire)
-
-                break
-
-
-
-            
-
-            
-
-            if self.est_mort():
-
-                print(f"{self.joueur.pokemon_equipe[self.indice]} est K.O!")
-
-                self.changer_pokemon()
-
-                choix = input("Que voulez-vous faire ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                if self.tour_joueur(choix) == 'Fuir':
-
-                    break
-
-
-
-            if self.joueur.pokemon_equipe[self.indice].stats['Speed'] > self.pokemon_adversaire.stats['Speed']:
-
-                choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                if self.tour_joueur(choix) == 'Fuir':
-
-                    break
-
-                if not self.pokemon_adversaire.est_ko():
-
-                    if self.tour_pokemon_adversaire() =='Fuir':
-
-                        break
-
-            elif self.joueur.pokemon_equipe[self.indice].stats['Speed'] < self.pokemon_adversaire.stats['Speed']:
-
-                if self.tour_pokemon_adversaire() =='Fuir':
-
-                        break
-
-                if not self.est_mort():
-
-                    choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                    if self.tour_joueur(choix) == 'Fuir':
-
-                        break
-
-            else:
-
-                attaquant = rd.choice([self.joueur, self.pokemon_adversaire])
-
-                choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                if self.tour_joueur(choix) == 'Fuir':
-
-                    break
-
-                elif not self.pokemon_adversaire.est_ko():
-
-                    if self.tour_pokemon_adversaire() =='Fuir':
-
-                        break
-
-                else:
-
-                    if self.tour_pokemon_adversaire() =='Fuir':
-
-                        break
-
-                    if not self.est_mort():
-
-                        choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                        if self.tour_joueur(choix) == 'Fuir':
-
-                            break
-
-
-
-       
-
-            if self.joueur.tout_est_ko():
-
-                print(f"Le dresseur {self.joueur.name} est hors de combat ! Le {self.pokemon_adversaire.name} sauvage a gagné le combat!")
-
-                break
-
-
-
-            elif self.pokemon_adversaire.est_ko():
-
-                print(f"Le {self.pokemon_adversaire.name} sauvage est K.O! Vous avez gagné le combat!")
-
-                exp=vp.exp_gagne_par_niveau[self.pokemon_adversaire.niveau]
-
-                self.joueur.pokemon_equipe[self.indice].monter_niveau(int(exp))
-
-                n=len(self.joueur.pokemon_equipe)
-
-                for i in range(0,n):
-
-                    if i != self.indice :
-
-                        self.joueur.pokemon_equipe[i].monter_niveau(math.floor(int(exp)/(n-1)))
-
-                self.joueur.ajouter_pokemon_equipe(self.pokemon_adversaire)
-
-                break
-
-
-
-
-
-    def tour_joueur(self, choix):
-
-        """
-
-        Gère le tour de jeu du joueur.
-
-
-
-        Parameters:
-
-        ----------
-
-        choix : str
-
-            Le choix du joueur.
-
-
-
-        Returns:
-
-        -------
-
-        str
-
-            Indique si le joueur a fui le combat.
-
-        """
-
-
-
-        if choix == "1":
-
-            print("Choisissez une attaque :")
-
-            print(f"1. {'charge'}")
-
-            print(f"2. {self.joueur.pokemon_equipe[self.indice].stats['attaque_speciale']}")
-
-            choix_attaque = input("Entrez le numéro de l'attaque choisie : ")
-
-
-
-            if choix_attaque == "1":
-
-                attaque = ['Normal', 30, 'Charge']
-
-            elif choix_attaque == "2":
-
-                attaque = [self.joueur.pokemon_equipe[self.indice].stats['Type 1'], self.joueur.pokemon_equipe[self.indice].stats['puissance'], self.joueur.pokemon_equipe[self.indice].stats['attaque_speciale']]
-
-            else:
-
-                print("Choix invalide. L'attaque par défaut sera utilisée.")
-
-                attaque = [self.joueur.pokemon_equipe[self.indice].charge, 30, 'Charge']
-
-
-
-            self.joueur.pokemon_equipe[self.indice].attaquer(attaque, self.pokemon_adversaire)
-
-
-
-        elif choix == "2":
-
-            ancien_indice = self.indice
-
-            nouveau_pokemon = self.changer_pokemon()
-
-            if nouveau_pokemon:
-
-                print(f"{self.joueur.pokemon_equipe[ancien_indice].name}, reviens !")
-
-                print(f"Allons-y, {self.joueur.pokemon_equipe[self.indice].name}! A toi de jouer!")
-
-            else:
-
-                print(f"{self.joueur.name} n'a pas changé de Pokémon.")
-
-                choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-                self.tour_joueur(choix)
-
-
-
-        elif choix == "3":
-
-            proba_fuite= ((self.joueur.pokemon_equipe[self.indice].stats['Speed']*32)/ (math.floor(self.pokemon_adversaire.stats['Speed']/4))) +30
-
-            if proba_fuite>255:
-
-                print("Vous avez pris la fuite !")
-
-                return 'Fuir'
-
-            else :
-
-                aleatoire=rd.randint(0,255)
-
-                if aleatoire<=  proba_fuite:
-
-                    print("Vous avez pris la fuite !")
-
-                    return 'Fuir'
-
-                else :
-
-                    print("Vous n'avez pas réussi à fuir !")
-
-
-
-        else :
-
-            choix = input(f"Que doit faire {self.joueur.pokemon_equipe[self.indice].name} ? (1 pour attaquer, 2 pour changer de Pokémon, 3 pour fuir): ")
-
-            print('Veuillez saisir un chiffre valide')
-
-            self.tour_joueur(choix)
-
-
-
-    def fuir(self):
+    def fuir(self):#c'est bon
         """
         Gère la tentative de fuite pendant le combat.
 
@@ -432,19 +145,25 @@ class Combat:
         """
         proba_fuite = ((self.joueur.pokemon_equipe[self.indice].stats['Speed'] * 32) / (math.floor(self.pokemon_adversaire.stats['Speed'] / 4))) + 30
         if proba_fuite > 255:
-            print("Vous avez pris la fuite !")
+           
             return True
         else:
             aleatoire = rd.randint(0, 255)
             if aleatoire <= proba_fuite:
-                print("Vous avez pris la fuite !")
+                
                 return True
             else:
-                print("Vous n'avez pas réussi à fuir !")
+                
                 return False
 
-      
-    def utiliser_charge(self):
+    def attaque_spe(self):#c'est bon
+        attaque = [self.joueur.pokemon_equipe[self.indice].stats['Type 1'], self.joueur.pokemon_equipe[self.indice].stats['puissance'], self.joueur.pokemon_equipe[self.indice].stats['attaque_speciale']]
+
+
+        return self.joueur.pokemon_equipe[self.indice].attaquer(attaque, self.pokemon_adversaire)
+        
+
+    def utiliser_charge(self):#c'est bon
         """
         Gère l'utilisation de l'attaque 'Charge' pendant le combat.
 
@@ -455,10 +174,9 @@ class Combat:
         """
         attaque = ['Normal', 30, 'Charge']
 
-        self.joueur.pokemon_equipe[self.indice].attaquer(attaque, self.pokemon_adversaire)
-        return True
-
-    def attaquer_adversaire(self):
+        return self.joueur.pokemon_equipe[self.indice].attaquer(attaque, self.pokemon_adversaire)
+        
+    def attaquer_adversaire(self):#c'est bon
         """
         Gère l'attaque du Pokémon adverse pendant le combat.
 
@@ -469,24 +187,27 @@ class Combat:
         """
         attaque_aleatoire = rd.choice([[self.pokemon_adversaire.stats['Type 1'], self.pokemon_adversaire.stats['puissance'], self.pokemon_adversaire.stats['attaque_speciale']], ['Normal', 30, 'Charge']])
 
+        return self.pokemon_adversaire.attaquer(attaque_aleatoire, self.joueur.pokemon_equipe[self.indice])
+        
+            
+    def fuir_adv(self):#c'est bon
         if self.pokemon_adversaire.stats['Legendary']:
             aleatoire = rd.randint(0, 100)
             if aleatoire < 10:
                 print(f"Le {self.pokemon_adversaire.name} sauvage a pris la fuite !")
-                return False
+            
+                return True
+            return False
         else:
             aleatoire = rd.randint(0, 100)
             if aleatoire < 5:
                 print(f"Le {self.pokemon_adversaire.name} sauvage a pris la fuite !")
-                return False
-
-        self.pokemon_adversaire.attaquer(attaque_aleatoire, self.joueur.pokemon_equipe[self.indice])
-        return True
             
+                return True
+            return False
 
 
-
-    def tour_pokemon_adversaire(self):
+ 
 
         """
 
@@ -525,8 +246,6 @@ class Combat:
                 return 'Fuir'
 
         self.pokemon_adversaire.attaquer(attaque_aleatoire, self.joueur.pokemon_equipe[self.indice])
-
-
 
     def changer_pokemon(self):
 
@@ -573,8 +292,6 @@ class Combat:
             self.indice = int(choix) - 1
 
             return True
-
-
 
 class Pokemons(metaclass=ABCMeta):
     """
@@ -745,7 +462,7 @@ class Pokemons(metaclass=ABCMeta):
 
             elif type1*type2>=2:
                 print("C'est super efficace !")
-
+        return deg
 
     def est_ko(self):
         """
@@ -757,9 +474,7 @@ class Pokemons(metaclass=ABCMeta):
             True si le Pokémon est KO, False sinon.
         """
         return self.stats['HP'][0] <= 0
-    
-
-
+ 
 class Dresseur:
 
     def __init__(self, name):
@@ -871,9 +586,9 @@ class Rencontre :
         self.pokemon_sauvage=Pokemons(vp.pokemon_coordinates[self.position])
         self.combat=Combat(self.joueur,self.pokemon_sauvage)
         #combat.commencer()
-        
-
+ 
 class Starter :
+
     def __init__(self,joueur,p1,p2,p3):
         """
         Initialise les Pokémon de départ d'un joueur.
@@ -898,6 +613,7 @@ class Starter :
         self.joueur.pokemon_equipe.append(Pokemons( p2))
         self.joueur.pokemon_equipe.append(Pokemons( p3))
 
+
 class Soins:
     def __init__(self,joueur):
         """
@@ -915,11 +631,3 @@ class Soins:
         self.joueur=joueur
         for pokemon in joueur.pokemon_equipe :
             pokemon.stats['HP'][0]= pokemon.stats['HP'][1]
-        
-
-
-
-if __name__ == '__main__':
-    Dan = Dresseur('Dan')
-    Starter(Dan,'Charmander','Bulbasaur','Squirtle')
-    Rencontre(Dan,(35, 18))
