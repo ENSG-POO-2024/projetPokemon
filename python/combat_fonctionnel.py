@@ -25,15 +25,15 @@ bulbasaur = dico_poke["Bulbasaur"]
 
 class MainWindow(QMainWindow):
     attackFinished = pyqtSignal()
-
+    # simpleSig = pyqtSignal() 
     
     def __init__(self):
         super(MainWindow, self).__init__()
-        loadUi('combat.ui', self)  
+        loadUi('combat.ui', self)  # Remplacez 'votre_fichier.ui' par le nom de votre fichier .ui
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowTitle('Interface combat') 
-        self.setWindowIcon(QIcon('votre_icone.ico')) 
+        self.setWindowTitle('Interface combat')  # Changez le titre selon vos besoins
+        self.setWindowIcon(QIcon('votre_icone.ico'))  # Changez le nom de l'icône selon vos besoins
 
         ## Set le nom des pokémons
         self.ui.label_8.setText(f"{pikachu.name}")
@@ -58,7 +58,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton.setText("Attaque")
         self.ui.pushButton.clicked.connect(self.combat)
         ##Fuite
-        self.ui.pushButton_2.setText("Fuite")
+        self.ui.pushButton_2.setText("Fuire")
         self.ui.pushButton_2.clicked.connect(self.fuite)
         # self.attackFinished.connect(self.combat)
         
@@ -106,10 +106,6 @@ class MainWindow(QMainWindow):
             self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
                                     \n{pokemon2.name} perd {HP_perdus}PV """)
             pokemon2.HP -= HP_perdus
-            if pokemon2.HP<=0:
-                pokemon2.HP=0
-            else:
-                pass
             
             
             ##Affichage des dégats    
@@ -120,7 +116,6 @@ class MainWindow(QMainWindow):
 
         else:
             self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
-                                        \n C'est inefficace...
                                     \n{pokemon2.name} ne perd aucun PV """)
                                     
         
@@ -136,12 +131,7 @@ class MainWindow(QMainWindow):
             self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
                                     \n{pokemon2.name} perd {HP_perdus}PV !""")
             pokemon2.HP  -= HP_perdus
-            ##Affichage des 
-            if pokemon2.HP<=0:
-                pokemon2.HP=0
-            else:
-                pass
-            
+            ##Affichage des dégats
             percent = int(100*pokemon2.HP/PV_def)
             self.ui.progressBar_2.setProperty("value",percent)
             self.ui.lcdNumber_2.display(pokemon2.HP)
@@ -149,14 +139,12 @@ class MainWindow(QMainWindow):
            
         else:
             self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
-                                        \n C'est inefficace...
                                     \n{pokemon2.name} ne perd aucun PV !""")
         
                     
         
     def attaque_auto(self,pokemon1,pokemon2,PV_def):
         nombre = random.randint(0,2)
-        
         
         ## Attaque neutre
         if nombre ==1:
@@ -168,11 +156,6 @@ class MainWindow(QMainWindow):
                 self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
                                         \n{pokemon2.name} perd {HP_perdus}PV """)
                 pokemon2.HP -= HP_perdus
-                if pokemon2.HP<=0:
-                    pokemon2.HP=0
-                else:
-                    pass
-
                 
                 ##Affichage des dégats    
                 percent = int(100*pokemon2.HP/PV_def)
@@ -182,7 +165,6 @@ class MainWindow(QMainWindow):
     
             else:
                 self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Neutre
-                                            \n C'est inefficace...
                                         \n{pokemon2.name} ne perd aucun PV """)
                 
         ## Attaque spéciale
@@ -194,10 +176,6 @@ class MainWindow(QMainWindow):
                 self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
                                         \n{pokemon2.name} perd {HP_perdus}PV !""")
                 pokemon2.HP  -= HP_perdus
-                if pokemon2.HP<=0:
-                    pokemon2.HP=0
-                else:
-                    pass
                 ##Affichage des dégats
                 percent = int(100*pokemon2.HP/PV_def)
                 self.ui.progressBar_3.setProperty("value",percent)
@@ -205,9 +183,7 @@ class MainWindow(QMainWindow):
                
             else:
                 self.ui.textBrowser.setText(f"""{pokemon1.name} lance Attaque Spéciale
-                                            \n C'est inefficace...
-                                        \n{pokemon2.name} ne perd aucun PV !
-                                        """)
+                                        \n{pokemon2.name} ne perd aucun PV !""")
        
         self.ui.textBrowser.append("fin attaque auto")
         
@@ -218,32 +194,22 @@ class MainWindow(QMainWindow):
         sauvage = bulbasaur # Pokemon sauvage
         PV_att, PV_def = joueur.HP, sauvage.HP ##Attribution des pv
         
-        
+        self.activ_boutons_down()
         
         # self.
         self.ui.pushButton.setEnabled(False)
-        self.activ_boutons_down()
     
         # print("test")
         # print(f"{pikachu.HP}  PV DE PIKACHU")
         
-        
     
             ## Cas où le joueur commence :
         if joueur.speed >= sauvage.speed:
+   
             attaquant = joueur
             defenseur = sauvage
-            
-            
-            if defenseur.HP ==0:
-                QTimer.singleShot(1000, lambda: self.combat_perdu())
-            elif attaquant.HP ==0:
-                QTimer.singleShot(1000, lambda: self.combat_gagne())
-            else:
-                self.ui.textBrowser.setText(f"{attaquant.name} attaque ! Choisissez votre attaque")
-        
  
-            
+            self.ui.textBrowser.setText(f"{attaquant.name} attaque ! Choisissez votre attaque")
                 
                 ## Choix de l'attaque
             self.ui.pushButton_3.setText("Attaque Neutre")
@@ -255,22 +221,27 @@ class MainWindow(QMainWindow):
             
             ##Action bouton 1
             self.ui.pushButton_3.clicked.connect(lambda: self.set_text_attaque_neutre(attaquant, defenseur,PV_def))
+            # self.ui.pushButton_3.clicked.connect(self.desac_boutons)
             self.ui.pushButton_3.clicked.connect(self.desac_boutons_down)
-            self.ui.pushButton_3.clicked.connect(lambda: QTimer.singleShot(2000, lambda: self.attaque_auto(defenseur,attaquant,PV_att)))
+            self.ui.pushButton_3.clicked.connect(lambda: QTimer.singleShot(3000, lambda: self.attaque_auto(defenseur,attaquant,PV_att)))
             
             ### GROS TEST 
-            # self.ui.pushButton_3.clicked.connect(lambda:QTimer.singleShot(4000, lambda: self.activ_boutons_down()))
-            self.ui.pushButton_3.clicked.connect(lambda:QTimer.singleShot(4000, lambda: self.combat()))
+            self.ui.pushButton_3.clicked.connect(lambda:QTimer.singleShot(4000, lambda: self.activ_boutons_down()))
+            self.ui.pushButton_3.clicked.connect(lambda:QTimer.singleShot(6000, lambda: self.attack()))
             
             ##Action bouton 2
             self.ui.pushButton_4.clicked.connect(lambda: self.set_text_attaque_speciale(attaquant, defenseur,PV_def))
+            # self.ui.pushButton_4.clicked.connect(self.desac_boutons)
             self.ui.pushButton_4.clicked.connect(self.desac_boutons_down)
-            self.ui.pushButton_4.clicked.connect(lambda: QTimer.singleShot(2000, lambda: self.attaque_auto(defenseur, attaquant, PV_att)))
+            self.ui.pushButton_4.clicked.connect(lambda: QTimer.singleShot(3000, lambda: self.attaque_auto(defenseur, attaquant, PV_att)))
             
             ### GROS TEST
-            self.ui.pushButton_4.clicked.connect(lambda:QTimer.singleShot(4000, lambda: self.combat()))
+            # self.ui.pushButton_4.clicked.connect(lambda:QTimer.singleShot(4000, lambda: self.activ_boutons_down()))
+            self.ui.pushButton_4.clicked.connect(lambda:QTimer.singleShot(6000, lambda: self.attack()))
             
-
+                       
+                    # self.activ_boutons()
+        
             print("fin de tour")
             
             
@@ -313,38 +284,59 @@ class MainWindow(QMainWindow):
         # self.simpleSig.emit()
         
 
-        
-        
         self.attackFinished.emit()
-
-        
 
         return()
         
         
     def combat(self):
+        
+        ## Mise à zéro des slots
+        
+     
+        # self.reinitialise()
         self.attack()
-        self.activ_boutons_down()
-
-
-    def combat_gagne(self):
-        self.ui.textBrowser.setText(f"Le {bulbasaur.name} ennemi est K.O ! ")
-        self.desac_boutons_down()
-        self.desac_boutons()
         
-        QTimer.singleShot(3000, lambda: self.close())
+        # ### permettre de re appuyer sur attaque
+        # self.ui.textBrowser.setText(f"Que voulez vous faire ?")
         
-    def combat_perdu(self):
-        self.ui.textBrowser.setText(f"{pikachu.name}est K.O ! ")
-        QTimer.singleShot(3000, lambda: self.close())
+        # self.ui.pushButton.setText("Attaquer")
+        # self.ui.pushButton_2.setText("Fuir")
         
+        # ##Action bouton 1
+        # self.ui.pushButton.clicked.connect(lambda: self.attack())
+        # print("nouveau tour d'attaque")
+        # # self.ui.pushButton.clicked.connect(self.desac_boutons)
+        # # self.ui.pushButton.clicked.connect(lambda: QTimer.singleShot(3000, lambda: self.attaque_auto(defenseur,attaquant,PV_att)))
+        
+        
+        # ##Action bouton 2
+        # self.ui.pushButton_2.clicked.connect(lambda: self.fuite())
+        # # self.ui.pushButton_2.clicked.connect(self.desac_boutons)
+        # # self.ui.pushButton_2.clicked.connect(lambda: QTimer.singleShot(3000, lambda: self.attaque_auto(defenseur, attaquant, PV_att)))
+        
+        # ###lancer attaque 
+        
+        
+        
+        pass
 
+        
+    def test(self):
+        print("------------1")
+        self.attack()
+        print("------------2")
+        
+        print("------------3")
+    
+    def simpleSlot(self):
+        # Sans argument
+        print ("Simple custom signal:")
+        print ("No arguments in this type of signal.")
     
     
     def fuite(self):
         self.ui.textBrowser.setText("Vous avez choisi de fuir !")
-        QTimer.singleShot(3000, lambda: self.close())
-        # self.close()
         ## Voir comment on peut sortir de la fenetre + fin du combat 
 
 
