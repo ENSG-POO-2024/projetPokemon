@@ -1,5 +1,6 @@
 <RCC>
-  <qresource prefix="pokedex">
+  <qresource prefix="pokédex">
+    <file>bouton.png</file>
     <file>pokedex.jpg</file>
   </qresource>
 </RCC>

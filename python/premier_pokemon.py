@@ -12,6 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from statPokemon import statPoke_init
 import os
 
+from pokedex import Ui_FormPokedex
+
 #import les images des pokémons
 Bulbasaur = os.path.join(os.path.dirname(__file__), 'image', 'Bullbizarre.png')
 Squirtle = os.path.join(os.path.dirname(__file__), 'image', 'Carapuce.png')
@@ -73,6 +75,8 @@ class Ui_FormPokemon(object):
         self.pushButtonBulbasaur.setText(_translate("Form", "BULBASAUR"))
         self.pushButtonSquirtle.setText(_translate("Form", "SQUIRTLE"))
         self.pushButtonCharmander.setText(_translate("Form", "CHARMANDER"))
+        
+
 
 
 
@@ -87,3 +91,7 @@ if __name__ == "__main__":
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())
+    
+
+
+

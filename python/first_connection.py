@@ -11,7 +11,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 from premier_pokemon import Ui_FormPokemon
+import os
+from pokedex import Ui_FormPokedex
 
+data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
 
 
 
@@ -85,16 +88,20 @@ class FirstConnection(Ui_Form):
         # Vérifier si l'utilisateur a déjà été enregistré
         if self.checkUsername(ID):
             print("ID already exists. Please choose another username.")
-            return "ID already exists. Please choose another username."
+
+            return "ID already exists. Please choose another username.", ID
 
         # Enregistrer les informations d'identification dans un fichier JSON et ouvrir la page suivante
-        self.registerNewUser(ID, password)
-        print("New user registered successfully.")
+        else:
+            self.registerNewUser(ID, password)
+            print("New user registered successfully.")
+            return "New user registered successfully.", ID
+        
         
 
     def checkUsername(self, ID):
         # Vérifier si le nom d'utilisateur existe déjà dans le fichier JSON
-        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "r") as file:
+        with open(data, "r") as file:
             users = json.load(file)
             if ID in users:
                 return True
@@ -102,13 +109,17 @@ class FirstConnection(Ui_Form):
 
     def registerNewUser(self, ID, password):
         # Enregistrer les nouvelles informations d'identification dans le fichier JSON 
-        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "r") as file:
-            # "r" pour lire
+        with open(data, "r") as file:
+            # "r" pour lire dans le fichier
             users = json.load(file)
-        users[ID] = password
-        with open(r"F:\Pokemon\projetPokemonBrown_Cremonese_Ye\interface\data\data_user.json", "w") as file:
-            # "w" pour écrire
+        users[ID] = {"password" : password, "MyPokemons": []} #format du dictionnaire
+        with open(data, "w") as file:
+            # "w" pour modifier dans le fichier
             json.dump(users, file)
+    
+
+
+
     
 class Ui_erreur(object):
     def setupUi(self, Form):
@@ -153,6 +164,8 @@ if __name__ == "__main__":
     First_Conection.show()
     sys.exit(app.exec_())
     
+    #Pokédex
+    Pokedex = Ui_FormPokedex()
     
     #message d'erreur
     mess = QtWidgets.QWidget()
