@@ -15,7 +15,7 @@ import pandas as pd
 import json
 import random
 import numpy as np
-
+import os
 # # Importez la fonction de combat depuis votre autre module
 # from pokemon_combat import launch_battle
 
@@ -28,6 +28,7 @@ from pokedex import Ui_FormPokedex
 
 
 coords = pd.read_csv('..\data\pokemon_coordinates.csv')
+Joueur = os.path.join(os.path.dirname(__file__),'image','Ash.png')
 NOM = coords.pokemon
 COORD = coords.coordinates
 
@@ -80,6 +81,29 @@ NF =Nf()
 cf = CF(COORD)
 dico_poke = {cle: valeur for cle, valeur in zip(NF, cf)}  # Création d'un dictionnaire à l'aide de deux listes
 
+pk = []
+Machop = os.path.join(os.path.dirname(__file__),'pokemon','machop.png')
+pk.append(Machop)
+Machoke = os.path.join(os.path.dirname(__file__),'pokemon','machoke.png')
+pk.append(Machoke)
+Dugtrio = os.path.join(os.path.dirname(__file__),'pokemon','dugtrio.png')
+pk.append(Dugtrio)
+Tauros = os.path.join(os.path.dirname(__file__),'pokemon','tauros.png')
+pk.append(Tauros)
+Snorlax = os.path.join(os.path.dirname(__file__),'pokemon','snorlax.png')
+pk.append(Snorlax)
+Mankey = os.path.join(os.path.dirname(__file__),'pokemon','mankey.png')
+pk.append(Mankey)
+Electrode = os.path.join(os.path.dirname(__file__),'pokemon','electrode.png')
+pk.append(Electrode)
+Exeggcute = os.path.join(os.path.dirname(__file__),'pokemon','exeggcute.png')
+pk.append(Exeggcute)
+Weedle = os.path.join(os.path.dirname(__file__),'pokemon','weedle.png')
+pk.append(Weedle)
+Venonat = os.path.join(os.path.dirname(__file__),'pokemon','venonat.png')
+pk.append(Venonat)
+dico_poke_img = {cle: valeur for cle, valeur in zip(NF, pk)}
+
 
 class PokemonMap(QWidget):
     def __init__(self):
@@ -106,21 +130,16 @@ class PokemonMap(QWidget):
         # self.button.setGeometry(self.window_width - 100, self.window_height - 50, 80, 30)
         # self.button.clicked.connect(self.open_new_interface)
         
-        # Créer un QLabel pour afficher l'image du bouton
-        self.button_label = QLabel(self)
+        
+        self.button_label = QLabel(self) #Création bouton
         self.button_label.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
-        self.button_label.setPixmap(QPixmap("Pokedex.png"))
+        self.button_label.setPixmap(QPixmap("Pokedex.png"))  #Afficher une image sur le bouton
         self.button_label.setScaledContents(True)  # Redimensionner l'image pour s'adapter au QLabel
         self.button_label.mousePressEvent = self.open_new_interface
+            
         
-        # # Créer un QLabel pour afficher l'image du bouton
-        # self.button_label2 = QLabel(self)
-        # self.button_label2.setGeometry(self.window_width - 150, self.window_height - 580, 50, 50)
-        # self.button_label2.setPixmap(QPixmap("Sauvegarde.png"))
-        # self.button_label2.setScaledContents(True)  # Redimensionner l'image pour s'adapter au QLabel
-        # self.button_label2.mousePressEvent = self.open_new_interface2
 
-        self.player_image = QPixmap("Joueur.jpg").scaled(30, 30, Qt.KeepAspectRatio)   # Charger et redimensionner l'image du joueur
+        self.player_image = QPixmap(Joueur).scaled(50, 50, Qt.KeepAspectRatio)   # Charger et redimensionner l'image du joueur
         
         self.pokemon_image = QPixmap("testgrass.png").scaled(30, 30, Qt.KeepAspectRatio) # Charger et redimensionner l'image des pokémons
 
@@ -147,7 +166,8 @@ class PokemonMap(QWidget):
             pokemon_x, pokemon_y = coord
             distance = ((pokemon_x - self.player_x) ** 2 + (pokemon_y - self.player_y) ** 2) ** 0.5
             if distance < self.proximity_radius:
-                painter.drawPixmap(coord[0], coord[1], self.pokemon_image)         # Dessiner les Pokémons 
+                IMG = QPixmap(dico_poke_img[pokemon_name]).scaled(50, 50, Qt.KeepAspectRatio)
+                painter.drawPixmap(coord[0], coord[1],IMG)         # Dessiner les Pokémons 
                 # painter.fillRect(coord[0], coord[1], 10, 10, Qt.black)
                 font = QFont()
                 font.setBold(True)                                                # Mettre la police en gras
@@ -156,7 +176,7 @@ class PokemonMap(QWidget):
                 text_width = font_metrics.width(pokemon_name) +10
                 # font_metrics = QFontMetrics(painter.font())
                 # text_width = font_metrics.horizontalAdvance(pokemon_name)
-                painter.drawText(pokemon_x - text_width // 2 + 15, pokemon_y - 5, pokemon_name)  # Afficher le texte sur le pokémon
+                # painter.drawText(pokemon_x - text_width // 2 + 15, pokemon_y - 5, pokemon_name)  # Afficher le texte sur le pokémon
                 # Créer une instance de la MainWindow et l'afficher
                 self.main_window = MainWindow()
                 self.main_window.show()
