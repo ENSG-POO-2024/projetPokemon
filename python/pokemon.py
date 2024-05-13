@@ -22,19 +22,27 @@ types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\da
 # # >>>>>>> d41a08643e826155b8b06780cc544aed7be62753
 # # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
+
+
 csv_coords = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_coordinates.csv')
 csv_types = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_first_gen.csv')
 coords = pd.read_csv(csv_coords)
 types = pd.read_csv(csv_types)
 
 
+
+
 coords = pd.read_csv('..\data\pokemon_coordinates.csv')
 types = pd.read_csv('..\data\pokemon_first_gen.csv')
+
+coords = pd.read_csv('..\data\pokemon_coordinates.csv')
+types = pd.read_csv('..\data\pokemon_first_gen.csv')
+
+
+# coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
+# types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
 # >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
-# =======
-coords = pd.read_csv('..\data\pokemon_coordinates.csv')
-types = pd.read_csv('..\data\pokemon_first_gen.csv')
-# >>>>>>> d41a08643e826155b8b06780cc544aed7be62753
+# """
 
 # =======
 
