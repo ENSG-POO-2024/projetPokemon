@@ -9,7 +9,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from page_accueil import MainWindow
 from first_connection import FirstConnection, Ui_erreur
 from premier_pokemon import Ui_FormPokemon
-
+from pokedex import Ui_FormPokedex
 
 
 import sys
@@ -32,6 +32,26 @@ def afficheFirstPokemon():
         Form_Pokemon.show()
     else:
         mess.show()
+    
+        
+def capturer(pokemon):
+    """
+    La fonction enregistre les pokémons capturés dans  my pokemons
+
+    Parameters
+    ----------
+    pokemon : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    None.
+
+    """
+    ui_Pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(pokemon))
+    Form_Pokedex.show()
+
+
 
 
 
@@ -59,9 +79,25 @@ mess = QtWidgets.QWidget()
 ui_erreur = Ui_erreur()
 ui_erreur.setupUi(mess)
 
-#bouton valider
+#bouton 
 ui_MainWindow.pushButton_2.clicked.connect(afficheFirstConnection)
 ui_Form.pushButton.clicked.connect(afficheFirstPokemon)
+
+
+#Pokédex
+Form_Pokedex = QtWidgets.QWidget()
+ui_Pokedex = Ui_FormPokedex()
+ui_Pokedex.setupUi(Form_Pokedex)
+
+
+#Choisir son pokémon
+ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur' : capturer(pokemon))
+#Utilisation de lambda car la fonction clicked.connect ne reconnait pas les paramètres des fonctions qui se trouvent à l'intérieur
+ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, pokemon = 'Charmander' :capturer(pokemon))
+ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, pokemon ='Squirtle' : capturer(pokemon))
+
+
+
 
 
 

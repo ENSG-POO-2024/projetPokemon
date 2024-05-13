@@ -76,6 +76,8 @@ class Ui_FormPokemon(object):
 
 
 
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
