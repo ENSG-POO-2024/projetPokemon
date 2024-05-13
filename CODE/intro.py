@@ -6,14 +6,16 @@ from Wilkommen import Ui_MainWindow
 from pokedex import PokemonList
 from travail import GameBoard
 from introUI import Ui_Dialog
-
-
+import visualisation_pokemon as vp
+import copy
 
 class MyDialog(QDialog):
 
 
     def __init__(self):
         self.pokemon_list = PokemonList("data/pokemons_fr.csv", True)
+        
+
         self.selected_pokemon = []  # Ajout de l'attribut selected_pokemon
         super().__init__()
         self.ui = Ui_Dialog()
@@ -24,7 +26,21 @@ class MyDialog(QDialog):
 
     def open_pokedex_window(self):
         pokemon_list_data = self.pokemon_list.pokemon_list
-        pokedex_window = ChoixStarter(pokemon_list_data)
+
+        noms_starter =[]
+        copie_dict = copy.deepcopy(vp.pokemon_dict)
+        for pokemon in pokemon_list_data:
+            for pokemon2 in copie_dict:
+                
+                if int(copie_dict[pokemon2]['Niveau']) == 20 and int(copie_dict[pokemon2]['Numero'])==int(pokemon['number']) and len(noms_starter)<=15:
+                    copie_dict[pokemon2]['image_name']=pokemon['image_name']
+                    copie_dict[pokemon2]['name']=pokemon['name']
+                    copie_dict[pokemon2]['number']=pokemon['number']
+                    noms_starter.append(copie_dict[pokemon2])
+                    
+      
+        
+        pokedex_window = ChoixStarter(noms_starter)
         pokedex_window.pokemon_selected.connect(self.start_game_with_selected_pokemon)
         pokedex_window.exec_()
         pokedex_window.close()  
@@ -49,7 +65,7 @@ class MyDialog(QDialog):
 class ChoixStarter(QDialog):
     # Définir un signal personnalisé pour émettre les Pokémon sélectionnés
     pokemon_selected = pyqtSignal(list)
-
+    
     def __init__(self, pokemon_list):
         super().__init__()
         self.setWindowTitle("Choisissez vos 3 Pokémons pour le combat!")

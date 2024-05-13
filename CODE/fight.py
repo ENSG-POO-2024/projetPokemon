@@ -791,13 +791,10 @@ class FightWindow(QDialog):
          
             
         
-    def changer_pokemon(self):
+    def changer_pokemon(self,choix):
         print("Choisissez un Pokémon pour le remplacer dans le combat :")
-        for i, pokemon in enumerate(self.joueur.pokemon_equipe):
-            print(f"{i+1}. {pokemon.name}")
-        choix = input("Entrez le numéro du Pokémon choisi ou 0 pour annuler : ")
-        while choix not in [str(i) for i in range(len(self.joueur.pokemon_equipe) + 1)] \
-                or self.joueur.pokemon_equipe[int(choix) - 1].est_ko():
+        ancien_indice = self.indice
+        while choix not in [str(i) for i in range(len(self.joueur.pokemon_equipe) + 1)] or self.joueur.pokemon_equipe[int(choix) - 1].est_ko():
             print("Choix invalide. Veuillez entrer un numéro valide ou un pokemon vivant .")
             choix = input("Entrez le numéro du Pokémon choisi ou 0 pour annuler : ")
         if choix == "0":
@@ -805,13 +802,18 @@ class FightWindow(QDialog):
         else:
             self.indice = int(choix) - 1
             return True
+        
+        
         self.set_dialogue_text("Changement de Pokémon")
+
+
 
     def afficher_autre_texte(self, texte):
         self.set_dialogue_text(texte)
 
     def set_dialogue_text(self, text):
         self.ui.dialogue.setPlainText(text)
+
         font_id = QFontDatabase.addApplicationFont("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/data/police.ttf")
         self.ui.dialogue.setStyleSheet("background-color: rgba(0,0,0,0); margin: 10px; padding: 0px;")
 

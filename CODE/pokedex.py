@@ -55,7 +55,7 @@ class PokemonList:
     def add_starters(self, starters_data):
     
         for starter_data in starters_data:
-            number = starter_data['number']
+            number = starter_data['Numero']
             name = starter_data['name']
             image_name = starter_data['image_name']        
             self.modify_pokemon(number, name, image_name)
