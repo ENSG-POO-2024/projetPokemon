@@ -11,7 +11,7 @@ import visualisation_pokemon as vp
 import random as rd
 import math
 import copy
-
+import time
 from abc import abstractmethod, ABCMeta
 import visualisation_pokemon as vp
 import random as rd
@@ -626,7 +626,7 @@ class FightWindow(QDialog):
         Dresseur1 = Dresseur("Sacha")
         #Starter(Dresseur1, 'Charmander', 'Bulbasaur', 'Squirtle')
         Dresseur1.pokemon_equipe.append(Pokemons('Charmander'))
-        self.cb = Rencontre(Dresseur1, (16, 57))
+        self.cb = Rencontre(Dresseur1, (198, 98))
 
         self.num_pok_dress = df.loc[df['Name'] == 'Charmander', '#'].values
         num_pok_sauv = df.loc[(df['coord_x'] == 16) & (df['coord_y'] == 57), '#'].values
@@ -672,7 +672,18 @@ class FightWindow(QDialog):
             self.combat_timer.stop()
             self.combat_timer.start(1000)  
 
-    
+    def phrases(self,phrase):
+        # Diviser la chaîne en mots
+        words = self.name.split()
+        
+        # Afficher chaque mot progressivement
+        for word in words:
+            print(word, end=' ', flush=True)
+            time.sleep(0.015)  # Laps de temps entre chaque mot (15 millisecondes)
+        return ''  # Renvoie une chaîne vide pour éviter l'affichage double
+
+
+
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
             # Vérification si toutes les phrases ont été affichées
@@ -809,7 +820,9 @@ class FightWindow(QDialog):
 
 
 if __name__ == "__main__":
+    
     app = QApplication(sys.argv)
     dialog = FightWindow()
     dialog.show()
     sys.exit(app.exec_())
+    

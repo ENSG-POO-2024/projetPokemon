@@ -279,40 +279,80 @@ exp_niveau_pokemon = {
     35100: 27,
     37800: 28,
     40600: 29,
-    43500: 30
+    43500: 30,
+    46500: 31,
+    49600: 32,
+    52800: 33,
+    56100: 34,
+    59500: 35,
+    63000: 36,
+    66600: 37,
+    70300: 38,
+    74100: 39,
+    78000: 40,
+    82000: 41,
+    86100: 42,
+    90300: 43,
+    94600: 44,
+    99000: 45,
+    103500: 46,
+    108100: 47,
+    112800: 48,
+    117600: 49,
+    122500: 50
 }
 
 exp_necessaire_par_niveau = [
-    0,    # Niveau 1
-    100,  # Niveau 2
-    300,  # Niveau 3
-    600,  # Niveau 4
-    1000, # Niveau 5
-    1500, # Niveau 6
-    2100, # Niveau 7
-    2800, # Niveau 8
-    3600, # Niveau 9
-    4500, # Niveau 10
-    5500, # Niveau 11
-    6600, # Niveau 12
-    7800, # Niveau 13
-    9100, # Niveau 14
-    10500,# Niveau 15
-    12000,# Niveau 16
-    13600,# Niveau 17
-    15300,# Niveau 18
-    17100,# Niveau 19
-    19000,# Niveau 20
-    21000,# Niveau 21
-    23100,# Niveau 22
-    25300,# Niveau 23
-    27600,# Niveau 24
-    30000,# Niveau 25
-    32500,# Niveau 26
-    35100,# Niveau 27
-    37800,# Niveau 28
-    40600,# Niveau 29
-    43500 
+    0,      # Niveau 1
+    100,    # Niveau 2
+    300,    # Niveau 3
+    600,    # Niveau 4
+    1000,   # Niveau 5
+    1500,   # Niveau 6
+    2100,   # Niveau 7
+    2800,   # Niveau 8
+    3600,   # Niveau 9
+    4500,   # Niveau 10
+    5500,   # Niveau 11
+    6600,   # Niveau 12
+    7800,   # Niveau 13
+    9100,   # Niveau 14
+    10500,  # Niveau 15
+    12000,  # Niveau 16
+    13600,  # Niveau 17
+    15300,  # Niveau 18
+    17100,  # Niveau 19
+    19000,  # Niveau 20
+    21000,  # Niveau 21
+    23100,  # Niveau 22
+    25300,  # Niveau 23
+    27600,  # Niveau 24
+    30000,  # Niveau 25
+    32500,  # Niveau 26
+    35100,  # Niveau 27
+    37800,  # Niveau 28
+    40600,  # Niveau 29
+    43500,  # Niveau 30
+    46500,  # Niveau 31
+    49600,  # Niveau 32
+    52800,  # Niveau 33
+    56100,  # Niveau 34
+    59500,  # Niveau 35
+    63000,  # Niveau 36
+    66600,  # Niveau 37
+    70300,  # Niveau 38
+    74100,  # Niveau 39
+    78000,  # Niveau 40
+    82000,  # Niveau 41
+    86100,  # Niveau 42
+    90300,  # Niveau 43
+    94600,  # Niveau 44
+    99000,  # Niveau 45
+    103500, # Niveau 46
+    108100, # Niveau 47
+    112800, # Niveau 48
+    117600, # Niveau 49
+    122500  # Niveau 50
 ]
 
 exp_gagne_par_niveau = {
@@ -345,5 +385,25 @@ exp_gagne_par_niveau = {
     27: 1350,
     28: 1400,
     29: 1450,
-    30: 1500
+    30: 1500,
+    31: 1550,
+    32: 1600,
+    33: 1650,
+    34: 1700,
+    35: 1750,
+    36: 1800,
+    37: 1850,
+    38: 1900,
+    39: 1950,
+    40: 2000,
+    41: 2050,
+    42: 2100,
+    43: 2150,
+    44: 2200,
+    45: 2250,
+    46: 2300,
+    47: 2350,
+    48: 2400,
+    49: 2450,
+    50: 2500
 }
