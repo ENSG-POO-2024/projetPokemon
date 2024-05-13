@@ -135,19 +135,15 @@ class PokemonMap(QWidget):
         self.button_label.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
         self.button_label.setPixmap(QPixmap("Pokedex.png"))  #Afficher une image sur le bouton
         self.button_label.setScaledContents(True)  # Redimensionner l'image pour s'adapter au QLabel
-<<<<<<< HEAD
-        self.button_label.mousePressEvent = self.open_new_interface
-            
-=======
-        
-        
+
+        self.button_label.mousePressEvent = self.open_new_interface()
+                    
         #Création d'un bouton
         self.button = QtWidgets.QPushButton(self)
         self.button.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
         self.button.setFlat(True) #Mode transparent
         # self.button_label.mousePressEvent = self.open_new_interface
->>>>>>> e99fd9fffbabf1feea9446068dc4db3f2a51ca5b
-        
+
 
         self.player_image = QPixmap(Joueur).scaled(50, 50, Qt.KeepAspectRatio)   # Charger et redimensionner l'image du joueur
         
