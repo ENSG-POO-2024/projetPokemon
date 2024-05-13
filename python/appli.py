@@ -10,7 +10,7 @@ from page_accueil import MainWindow, Ui_erreur_login
 from first_connection import FirstConnection, Ui_erreur
 from premier_pokemon import Ui_FormPokemon
 from pokedex import Ui_FormPokedex
-from Marche_BCP import PokemonMap
+from Marche_BCP_moi import PokemonMap
 import os
 import json
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
@@ -50,7 +50,7 @@ def capturer(pokemon):
     ui_Pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(pokemon))
     Text, ID = ui_MainWindow.verifyLogin()
     
-    #Si le ID est vide alors on est dans first coonection
+    #Si le ID est vide alors on est dans first connection
     if ID == '':
         Text, ID =  ui_Form.verifyAndRegister()
         with open(data, "r") as file:
@@ -173,7 +173,7 @@ ui_Pokemon.pushButtonSquirtle.clicked.connect(openMap)
 
 #Map
 Map = PokemonMap()
-Map.button.clicked.connect(openPokedex)
+#Map.button.clicked.connect(openPokedex)
 
 
 
