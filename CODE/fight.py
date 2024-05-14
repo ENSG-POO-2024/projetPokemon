@@ -1,8 +1,9 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QPixmap, QFont, QFontDatabase
-from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox,QWidget
+from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
 from combatui import Ui_Form  
+from monat import Rencontre, Dresseur, Starter, Combat, Pokemons
 from PyQt5.QtCore import QTimer, Qt 
 import pandas as pd
 from abc import abstractmethod, ABCMeta
@@ -11,8 +12,6 @@ import random as rd
 import math
 import copy
 import time
-from inventaireui import Ui_Form2
-
 from abc import abstractmethod, ABCMeta
 import visualisation_pokemon as vp
 import random as rd
@@ -170,10 +169,7 @@ class Combat:
                 
                 return False
 
-    def attaque_spe(self):
-        
-
-            
+    def attaque_spe(self):#c'est bon
         attaque = [self.joueur.pokemon_equipe[self.indice].stats['Type 1'], self.joueur.pokemon_equipe[self.indice].stats['puissance'], self.joueur.pokemon_equipe[self.indice].stats['attaque_speciale']]
 
 
@@ -189,9 +185,6 @@ class Combat:
         bool
             True si l'attaque a été utilisée avec succès, False sinon.
         """
-        
-
-            
         attaque = ['Normal', 30, 'Charge']
 
         return self.joueur.pokemon_equipe[self.indice].attaquer(attaque, self.pokemon_adversaire)
@@ -311,7 +304,7 @@ class Pokemons(metaclass=ABCMeta):
         self.niveau = self.stats['Niveau']
         self.exp=vp.exp_necessaire_par_niveau[self.niveau-1]
         
-       #self.pv = self.stats['HP'][0]
+        self.pv = self.stats['HP'][0]
         
 
     def __str__(self):
@@ -621,29 +614,24 @@ class Soins:
 
 
 class FightWindow(QDialog):
-    def __init__(self, pokemons=None,dresseur=None,pos=None):
+    def __init__(self, pokemon=None):
         super(FightWindow, self).__init__()
-        loadUi("CODE/welcome2.ui", self) 
-        self.ui = Ui_Form()  
-        self.ui.setupUi(self)
-        self.dresseur = dresseur
+        loadUi("CODE/welcome2.ui", self)  # Assurez-vous de renseigner le bon chemin vers votre fichier UI
+        self.ui = Ui_Form()  # Instancier l'interface utilisateur
+        self.ui.setupUi(self)  # Initialiser l'interface utilisateur dans la fenêtre
+
         # Ajoutez des fonctionnalités de clic aux boutons en définissant des fonctions correspondantes
         df = pd.read_csv("data/merged_data_fr.csv")
-        self.current_pokemon = int
 
-        #Dresseur1 = Dresseur("Sacha")
-        #dresseur.pokemon_equipe.append(Pokemons('Charmander'))
+        Dresseur1 = Dresseur("Sacha")
+        #Starter(Dresseur1, 'Charmander', 'Bulbasaur', 'Squirtle')
+        Dresseur1.pokemon_equipe.append(Pokemons('Charmander'))
+        self.cb = Rencontre(Dresseur1, (198, 98))
 
-        self.cb = Rencontre(self.dresseur, pos)
-        self.num_pok_dress = df.loc[df['Name'] == self.dresseur.pokemon_equipe[0].name, '#'].values
-        
-        #UI ADVERSAIRE
-        num_pok_sauv = df.loc[(df['coord_x'] == pos[0]) & (df['coord_y'] == pos[1]), '#'].values
+        self.num_pok_dress = df.loc[df['Name'] == 'Charmander', '#'].values
+        num_pok_sauv = df.loc[(df['coord_x'] == 16) & (df['coord_y'] == 57), '#'].values
         self.label_3.clear()
         self.changer_image_pok_adv(num_pok_sauv[0])
-        self.label.setText(f"{self.cb.pokemon_sauvage.niveau}")
-        self.label_2.setText(f"{self.dresseur.pokemon_equipe[self.cb.combat.indice].niveau}")
-        self.nom_adv.setText(f"{self.cb.pokemon_sauvage.name}")
 
         self.phrases_intro = [
             f"Le combat entre {self.cb.joueur.name} et {self.cb.combat.pokemon_adversaire.name} commence !",
@@ -654,29 +642,29 @@ class FightWindow(QDialog):
         self.set_dialogue_text(self.phrases_intro[self.compteur])
         self.compteur += 1
 
-        self.ui.progressBar_adv.setValue(self.cb.combat.pokemon_adversaire.stats['HP'][0])
-        self.ui.progressBar_pv.setValue(self.cb.joueur.pokemon_equipe[0].stats['HP'][0])
+        self.ui.progressBar_adv.setValue(self.cb.combat.pokemon_adversaire.pv)
+        self.ui.progressBar_pv.setValue(self.cb.joueur.pokemon_equipe[0].pv)
         self.ui.progressBar_adv.setStyleSheet("QProgressBar::chunk { background-color: red; }")
         self.ui.progressBar_pv.setStyleSheet("QProgressBar::chunk { background-color: blue; }")
 
         
-        
-        self.ui.pushButton.setText("Charge")
+
+        self.ui.pushButton.setText("Attaque 1")
         self.ui.pushButton.clicked.connect(self.utiliser_charge)
         self.ui.pushButton_2.clicked.connect(self.attaquer_sp2)
-        self.ui.pushButton_2.setText(self.cb.joueur.pokemon_equipe[0].stats['attaque_speciale'])
+        self.ui.pushButton_2.setText("Attaque 2")
         self.ui.pushButton_3.clicked.connect(self.fuite)
         self.ui.pushButton_4.clicked.connect(self.changer_pokemon)
         self.ui.pushButton.setEnabled(False)
         self.ui.pushButton_2.setEnabled(False)
         self.ui.pushButton_3.setEnabled(False)
-        #self.ui.pushButton_4.setEnabled(False)
+        self.ui.pushButton_4.setEnabled(False)
         self.ui.pushButton.clicked.connect(self.on_button_click)
         self.ui.pushButton_2.clicked.connect(self.on_button_click)
         
         self.combat_timer = QTimer(self)
         self.combat_timer.timeout.connect(self.round)
-       # self.combat_timer.start(15000)  # 15 secondes par tour de combat
+        self.combat_timer.start(15000)  # 15 secondes par tour de combat
 
 
     def on_button_click(self):
@@ -684,7 +672,18 @@ class FightWindow(QDialog):
             self.combat_timer.stop()
             self.combat_timer.start(1000)  
 
-    
+    def phrases(self,phrase):
+        # Diviser la chaîne en mots
+        words = self.name.split()
+        
+        # Afficher chaque mot progressivement
+        for word in words:
+            print(word, end=' ', flush=True)
+            time.sleep(0.015)  # Laps de temps entre chaque mot (15 millisecondes)
+        return ''  # Renvoie une chaîne vide pour éviter l'affichage double
+
+
+
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
             # Vérification si toutes les phrases ont été affichées
@@ -697,22 +696,11 @@ class FightWindow(QDialog):
                 # Affichage d'un message lorsque toutes les phrases ont été affichées
                 self.changer_image_pok(self.num_pok_dress[0])
                 self.set_dialogue_text("Que voulez-vous faire ?")
-                self.round()
 
     
 
     def attaquer_sp2(self):
         # Code pour l'action de la deuxième attaque spéciale
-        
-        if self.cb.joueur.pokemon_equipe[self.cb.combat.indice].stats['Speed'] >= self.cb.combat.pokemon_adversaire.stats['Speed']:
-
-            self.set_dialogue_text("Vous avez été plus rapide!",temps=0.5)
-    
-        else:
-            self.defendre()
-            print("defense")
-            self.set_dialogue_text("Il a été plus rapide!",1)
-            
             deg=self.cb.combat.attaque_spe()
             self.set_dialogue_text("Votre Pokémon utilise Attaque spe!")
             self.ui.progressBar_adv.setValue(self.ui.progressBar_adv.value() - deg)
@@ -735,30 +723,20 @@ class FightWindow(QDialog):
         """
         Gère l'action d'utiliser l'attaque 'Charge' dans la fenêtre de combat.
         """
-        
-        if self.cb.joueur.pokemon_equipe[self.cb.combat.indice].stats['Speed'] >= self.cb.combat.pokemon_adversaire.stats['Speed']:
-
-            self.set_dialogue_text("Vous avez été plus rapide!",temps=0.5)
-    
-        else:
-            self.defendre()
-            print("defense")
-            self.set_dialogue_text("Il a été plus rapide!",1)
-            
         deg=self.cb.combat.utiliser_charge()
         self.set_dialogue_text("Votre Pokémon utilise Charge !")
         self.ui.progressBar_adv.setValue(self.ui.progressBar_adv.value() - deg)
        
     def defendre(self):
         if self.cb.combat.fuir_adv():
-            self.set_dialogue_text(f"Le {self.cb.pokemon_adversaire.name} sauvage a pris la fuite !",0.5)
+            self.set_dialogue_text(f"Le {self.cb.combat.pokemon_adversaire.name} sauvage a pris la fuite !")
             QMessageBox.information(self, "", f"Le {self.cb.combat.pokemon_adversaire.name} sauvage a pris la fuite !")
             self.close()
             return True
         else:
-            self.set_dialogue_text(f"C'est au tour de {self.cb.combat.pokemon_adversaire.name} d'attaquer.",0.5)
+            self.set_dialogue_text(f"C'est au tour de {self.cb.combat.pokemon_adversaire.name} d'attaquer.")
             deg=self.cb.combat.attaquer_adversaire()
-            self.ui.progressBar_pv.setValue(self.ui.progressBar_pv.value() - deg)
+            self.ui.progressBar_adv.setValue(self.ui.progressBar_pv.value() - deg)
 
     def changer_image_pok(self, numero):
         self.label_3.setPixmap(QPixmap(f"CODE/image tiles/pokemon_Combat/back/{numero}.png"))
@@ -769,143 +747,84 @@ class FightWindow(QDialog):
         self.label_4.setScaledContents(True)
 
     def round(self):
+        
        # Code pour un round de combat
 
         self.combat_timer.stop()
-        self.ui.pushButton.setEnabled(True)
-        self.ui.pushButton_2.setEnabled(True)
-        self.ui.pushButton_3.setEnabled(True)
-        self.ui.pushButton_4.setEnabled(True)
-        print(self.cb.combat.pokemon_adversaire.stats['HP'][0])
+        self.ui.pushButton.setEnabled(False)
+        self.ui.pushButton_2.setEnabled(False)
+        self.ui.pushButton_3.setEnabled(False)
+        self.ui.pushButton_4.setEnabled(False)
 
         if self.cb.combat.pokemon_adversaire.est_ko():
             self.set_dialogue_text(f"{self.cb.combat.pokemon_adversaire.name} est KO !\n next..")
-            self.ui.progressBar_adv.setValue(self.cb.combat.pokemon_adversaire.stats['HP'][0])
-            self.set_dialogue_text(f"Vous avez gagné !\n next..",temps=1)
+            self.ui.progressBar_adv.setValue(self.cb.combat.pokemon_adversaire.pv)
+            self.set_dialogue_text(f"Vous avez gagné !\n next..")
             QMessageBox.information(self, "", "Vous avez gagné !\n next..")
-            
             self.cb.combat.combat_gagné()
-            print("Vous avez perdu !")
+            
             self.close()
             
 
-        elif self.cb.combat.joueur.tout_est_ko():
-            self.set_dialogue_text(f"{self.cb.joueur.pokemon_equipe[self.cb.combat.indice].name} est KO !\n next..")
-            self.set_dialogue_text(f"Vous avez perdu !\n next..",temps=1)
+        if self.cb.combat.joueur.tout_est_ko():
+            self.set_dialogue_text(f"{self.cb.joueur.pokemon_equipe[0].name} est KO !\n next..")
+            self.set_dialogue_text(f"Vous avez perdu !\n next..")
             QMessageBox.information(self, "", "Vous avez perdu !\n next..")
-            print("Vous avez perdu !")
             self.close()
+            
+        if self.cb.joueur.pokemon_equipe[0].stats['Speed'] >= self.cb.combat.pokemon_adversaire.stats['Speed']:
+            self.ui.pushButton.setEnabled(True)
+            self.ui.pushButton_2.setEnabled(True)
+            self.ui.pushButton_3.setEnabled(True)
+            self.ui.pushButton_4.setEnabled(True)
+            self.set_dialogue_text("Vous avez été plus rapide!")
+            
+            
+
+        else:
+            self.defendre()
+            self.ui.pushButton.setEnabled(True)
+            self.ui.pushButton_2.setEnabled(True)
+            self.ui.pushButton_3.setEnabled(True)
+            self.ui.pushButton_4.setEnabled(True)
+            self.set_dialogue_text("Il a été plus rapide!")
          
             
         
-    def changer_pokemon(self):
+    def changer_pokemon(self,choix):
+        print("Choisissez un Pokémon pour le remplacer dans le combat :")
+        ancien_indice = self.indice
+        while choix not in [str(i) for i in range(len(self.joueur.pokemon_equipe) + 1)] or self.joueur.pokemon_equipe[int(choix) - 1].est_ko():
+            print("Choix invalide. Veuillez entrer un numéro valide ou un pokemon vivant .")
+            choix = input("Entrez le numéro du Pokémon choisi ou 0 pour annuler : ")
+        if choix == "0":
+            return False
+        else:
+            self.indice = int(choix) - 1
+            return True
         
-        pokemon_nom=[]
-        df = pd.read_csv("data/merged_data_fr.csv")
-        pokemon_list= self.dresseur.pokemon_equipe
-        for pokemon in pokemon_list:
-            pokemon_nom.append(df.loc[df['Name'] == pokemon.name, '#'].values[0])
-            
-            
-        print(pokemon_nom)
         
-        inventaire = Inventaire(pokemon_nom)
-        inventaire.exec_()
-        self.set_dialogue_text(f"Changement de Pokémon {self.cb.joueur.pokemon_equipe[self.cb.combat.indice].name} Go!")
-        
-        # Code pour changer de Pokémon
-        #if self
-        #print("Choisissez un Pokémon pour le remplacer dans le combat :")
-        #for i, pokemon in enumerate(self.joueur.pokemon_equipe):
-        #    print(f"{i+1}. {pokemon.name}")
-        #choix = input("Entrez le numéro du Pokémon choisi ou 0 pour annuler : ")
-        #while choix not in [str(i) for i in range(len(self.joueur.pokemon_equipe) + 1)] \
-        #        or self.joueur.pokemon_equipe[int(choix) - 1].est_ko():
-        #    print("Choix invalide. Veuillez entrer un numéro valide ou un pokemon vivant .")
-        #    choix = input("Entrez le numéro du Pokémon choisi ou 0 pour annuler : ")
-        #if choix == "0":
-        #    return False
-        #else:
-        #    self.indice = int(choix) - 1
-        #    return True
-        #self.set_dialogue_text("Changement de Pokémon")
-
+        self.set_dialogue_text("Changement de Pokémon")
 
 
 
     def afficher_autre_texte(self, texte):
         self.set_dialogue_text(texte)
 
-    def set_dialogue_text(self, text, temps=0):
+    def set_dialogue_text(self, text):
         self.ui.dialogue.setPlainText(text)
 
         font_id = QFontDatabase.addApplicationFont("/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/data/police.ttf")
-        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        font = QFont(font_family)
-        self.ui.dialogue.setFont(font)
         self.ui.dialogue.setStyleSheet("background-color: rgba(0,0,0,0); margin: 10px; padding: 0px;")
-        time.sleep(temps)
-        
-    
-        
 
 
-class Inventaire(QDialog):
-    def __init__(self,pokemon_liste):
-        super(Inventaire, self).__init__()
-        loadUi("CODE/inventaire.ui", self) 
-        self.ui = Ui_Form2()  
-        self.ui.setupUi(self)
-        
-        self.pokemon_liste=pokemon_liste
-        
-        
-        
-        self.poke_img_1.clear()
-        self.poke_img_2.clear()
-        self.poke_img_3.clear()
-        self.poke_img_4.clear()
-        self.poke_img_5.clear()
-        self.poke_main.clear()
-        
-        self.ui.poke_main.mousePressEvent = self.shift_pokemon
-        
-        for i, poke_img_attr in enumerate([self.ui.poke_img_1, self.ui.poke_img_2, self.ui.poke_img_3, self.ui.poke_img_4, self.ui.poke_img_5,self.ui.poke_img_6]):
-            if i < len(pokemon_liste):
-                pokemon_name = pokemon_liste[i]
-            else:
-                pokemon_name= "ERROR"
-                
-            # Utilisation de f-strings pour formater le chemin de l'image
-            pixmap_path = f"CODE/image tiles/pokemon_Combat/front/{pokemon_name}.png"
-            
-            poke_img_attr.clear()
-            poke_img_attr.setPixmap(QPixmap(pixmap_path))
-            poke_img_attr.setScaledContents(True)
-            
-            # Assignation de la fonction de gestion d'événements pour le clic de souris
-            poke_img_attr.mousePressEvent = lambda event, index=i: self.on_pokemon_clicked(index)
-        
-        
-    def on_pokemon_clicked(self, index):
-        # Lorsque vous cliquez sur une image de Pokémon, mettez à jour le pixmap de l'image label correspondante
-        pokemon_name = self.pokemon_liste[index]
-        self.ui.poke_main.setPixmap(QPixmap(f"CODE/image tiles/pokemon_Combat/front/{pokemon_name}.png"))
-        self.ui.poke_main.setScaledContents(True)
-        self.indice = index
-        
-        
-    def shift_pokemon(self,event):
-        print(self.indice)
-        self.current_pokemon = self.indice
-        print("j'arrive ici")
-        self.close()
-        return self.indice
-        
-    
+
+
 
 if __name__ == "__main__":
+    
     app = QApplication(sys.argv)
     dialog = FightWindow()
     dialog.show()
     sys.exit(app.exec_())
+    
