@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form2(object):
     def setupUi(self, Form):
-        Form.setObjectName("INVENTAIRE")
+        Form.setObjectName("Form")
         Form.resize(505, 259)
         self.fond = QtWidgets.QLabel(Form)
         self.fond.setGeometry(QtCore.QRect(0, -60, 511, 441))
@@ -57,12 +57,6 @@ class Ui_Form2(object):
         self.poke_img_6 = QtWidgets.QLabel(Form)
         self.poke_img_6.setGeometry(QtCore.QRect(410, 190, 71, 61))
         self.poke_img_6.setObjectName("poke_img_6")
-        self.poke_main = QtWidgets.QLabel(Form)
-        self.poke_main.setGeometry(QtCore.QRect(50, 60, 161, 171))
-        self.poke_main.setObjectName("poke_main")
-        self.quitter = QtWidgets.QLabel(Form)
-        self.quitter.setGeometry(QtCore.QRect(250, 200, 31, 41))
-        self.quitter.setObjectName("quitter")
         self.fond.raise_()
         self.poke_img_1.raise_()
         self.poke_img_2.raise_()
@@ -76,8 +70,6 @@ class Ui_Form2(object):
         self.pok_pv_5.raise_()
         self.pok_pv_2.raise_()
         self.pok_pv_6.raise_()
-        self.poke_main.raise_()
-        self.quitter.raise_()
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -97,5 +89,3 @@ class Ui_Form2(object):
         self.poke_img_4.setText(_translate("Form", "TextLabel"))
         self.poke_img_5.setText(_translate("Form", "TextLabel"))
         self.poke_img_6.setText(_translate("Form", "TextLabel"))
-        self.poke_main.setText(_translate("Form", "TextLabel"))
-        self.quitter.setText(_translate("Form", "X"))

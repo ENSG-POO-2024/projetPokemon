@@ -1,12 +1,12 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout,QProgressBar, QScrollArea, QListView, QFrame,QMainWindow, QDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout,QProgressBar, QScrollArea, QListView, QFrame,QMainWindow, QDialog, QRadioButton, QCheckBox
 from PyQt5.QtGui import QPainter, QColor, QPixmap
 from PyQt5.QtCore import Qt, QStringListModel
-from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QProgressBar
+from PyQt5.QtWidgets import QMessageBox,QDialog, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QProgressBar, QScrollArea, QListView, QFrame
 import random
 import csv
 from pokedex import PokemonList
-from fight import FightWindow
+from fight import FightWindow,Dresseur,Starter,Pokemons
 
 
 
@@ -19,7 +19,14 @@ class GameBoard(QDialog):
         self.starter_data = selected_pokemon
         self.pokemon_list = PokemonList("data/pokemons_fr.csv")
         self.pokemon_list.add_starters(selected_pokemon)  # Appel de la méthode pour ajouter les starters
+        self.dresseur = Dresseur("coucou")
         
+        if selected_pokemon==[]:
+            
+            Starter(self.dresseur, 'Charmander', 'Bulbasaur', 'Squirtle')
+        else:
+            Starter(self.dresseur, selected_pokemon[0]['Name'], selected_pokemon[1]['Name'], selected_pokemon[2]['Name'])
+            #self.dresseur.ajouter_pokemon_equipe(Pokemons('Charizard'))
  
         
 
@@ -224,13 +231,9 @@ class GameBoard(QDialog):
         return "Pokemon Inconnu"
     
     
-    def show_high_grass_window(self, pokemon_name):
-        high_grass_window = HighGrassWindow(pokemon_name)
-        high_grass_window.show_()
-        
-    def show_combat_ui(self,pokemon_data):
-        print("je suis là")
-        combat_ui = FightWindow(pokemon_data)
+    
+    def show_combat_ui(self,pos):
+        combat_ui = FightWindow(pokemons=None,dresseur=self.dresseur,pos=pos)
         combat_ui.exec_()
 
     def get_pokemon_info(self, pos):
@@ -254,7 +257,7 @@ class GameBoard(QDialog):
                 pokemon_number, pokemon_name = self.get_pokemon_info(new_pos)
                 if pokemon_number and pokemon_name:
                     #self.show_high_grass_window((pokemon_name, pokemon_number))  
-                    self.show_combat_ui((pokemon_name, pokemon_number))
+                    self.show_combat_ui(new_pos)
                     self.pokemon_list.modify_pokemon(pokemon_number, pokemon_name, f"/Users/samy/PROJET_POO_REAL/DAN_MONAT_SAMY/CODE/image tiles/pokemon_Combat/front/{pokemon_number}.png")  # Mettre à jour le Pokédex
 
     

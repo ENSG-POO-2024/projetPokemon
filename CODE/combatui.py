@@ -130,16 +130,16 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.nom_adv.setText(_translate("Form", "Pokemon"))
-        self.nom_adv_2.setText(_translate("Form", "Pokemon"))
+        self.nom_adv.setText(_translate("Form", ""))
+        self.nom_adv_2.setText(_translate("Form", ""))
         self.dialogue.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">Le pokémon sauvage apparaît !</span>    </p></body></html>"))
-        self.label.setText(_translate("Form", "21"))
-        self.label_2.setText(_translate("Form", "23"))
-        self.pushButton_4.setText(_translate("Form", "POKEMON"))
-        self.pushButton.setText(_translate("Form", "ATTAQUE"))
-        self.pushButton_2.setText(_translate("Form", "ATTAQUE SP2"))
+        self.label.setText(_translate("Form", ""))
+        self.label_2.setText(_translate("Form", ""))
+        self.pushButton_4.setText(_translate("Form", ""))
+        self.pushButton.setText(_translate("Form", ""))
+        self.pushButton_2.setText(_translate("Form", "POKEMON"))
         self.pushButton_3.setText(_translate("Form", "FUITE"))
