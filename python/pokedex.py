@@ -1,5 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 import os
 import json
 from pokemon import dico_poke
@@ -208,8 +209,8 @@ class Ui_FormPokedex(FormPokedex):
     def __init__(self,parent=None):
         super().__init__()
         self.setupUi(parent)
-        self.pokemon_combat = None
-        
+        self.pokemon_combat = None #pas de pokémon combat choisit pour le moment
+
 
        
 
@@ -228,17 +229,20 @@ class Ui_FormPokedex(FormPokedex):
     
     def choisir_pokemon(self):
         """
-        la fonction enregistre le nom du pokémon choisit pour le combat
+        la fonction enregistre le nom du pokémon choisit pour le combat et ferme le pokédex
 
         """
         
         #si on est pas dans Mes pokémons on ne peut pas sélectionner le pokémon pour le combat
         try:
-            item = self.listWidgetMesPokemons.currentItem() #choisir dans Mes pokémons
+            item = self.listWidgetPokemon.currentItem() #choisir dans Mes pokémons
             self.pokemon_combat = item.text()
-            
+
+            return pokemon_combat
         except:
             pass
+        
+
 
 
         
@@ -255,3 +259,4 @@ if __name__ == "__main__":
     ui_Pokedex.Check.clicked.connect(ui_Pokedex.choisir_pokemon)
     Form.show()
     sys.exit(app.exec_())
+

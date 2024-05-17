@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QMovie
 import json
-from premier_pokemon import Ui_FormPokemon
+
 import os
 from pokedex import Ui_FormPokedex
 
@@ -167,10 +167,6 @@ class Ui_erreur(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    #page des premieres pokémon
-    Form_Pokemon = QtWidgets.QWidget()
-    ui_Pokemon = Ui_FormPokemon()
-    ui_Pokemon.setupUi(Form_Pokemon)
     
     
     First_Conection = QtWidgets.QWidget()

@@ -10,7 +10,7 @@ from page_accueil import MainWindow, Ui_erreur_login
 from first_connection import FirstConnection, Ui_erreur
 from premier_pokemon import Ui_FormPokemon
 from pokedex import Ui_FormPokedex
-from Marche_BCP import PokemonMap
+from Map_Def import PokemonMap
 import os
 import json
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
@@ -32,9 +32,7 @@ class App:
         #self.ui_MainWindow.pushButtonValider.clicked.connect(self.ui_MainWindow.verifyLogin) # Connecter le bouton de connexion à la fonction de vérification
         self.ui_MainWindow.pushButtonValider.clicked.connect(self.check) # Charger tout les données de l'utilisateur
 
-        #Map
-        self.map = PokemonMap()
-        self.map.hide() #il reste cacher pour le moment
+
             
 
         self.Window.show()
@@ -45,17 +43,25 @@ class App:
         #Page first connection
         self.First_Conection = QtWidgets.QWidget()
         
+        
         self.ui_Form = FirstConnection(self.First_Conection)
+        
         self.ui_Form.pushButton.clicked.connect(self.afficheFirstPokemon) #afficher la page de choix de pokémon
 
         self.Window.close()
         self.First_Conection.show()
+        
+
 
     #afficher la page first pokémon
     def afficheFirstPokemon(self):
         
         texte = "ID already exists. Please choose another username."
         Text, self.FirstID = self.ui_Form.verifyAndRegister()
+        
+        #Map
+        self.map = PokemonMap(self.FirstID)
+        self.map.hide() #il reste cacher pour le moment
     
         #si le login n'a jamais encore été utilisé alors on ouvre la nouvelle fenêtre et on choisit nos pokémon
         if Text != texte:
@@ -64,20 +70,26 @@ class App:
             
             #page des premieres pokémon
             self.Form_Pokemon = QtWidgets.QWidget()
-            self.ui_Pokemon = Ui_FormPokemon()
-            self.ui_Pokemon.setupUi(self.Form_Pokemon)
+            self.ui_Pokemon = Ui_FormPokemon(self.Form_Pokemon)
+            # self.ui_Pokemon.setupUi(self.Form_Pokemon)
             
             self.First_Conection.close() #fermer la page précédente
             self.Form_Pokemon.show() 
+            print("ID :",self.FirstID)
             
             
             #Choisir son pokémon
             #Utilisation de lambda car la fonction clicked.connect ne reconnait pas les paramètres des fonctions qui se trouvent à l'intérieur
-            self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur'  : self.capturer(pokemon))
+            self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur', ID =  self.FirstID: self.ui_Pokemon.enregistrer(pokemon,ID))#enregistrer le pokémons choisi dans le fichier
+            self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, FirstID = self.FirstID  : self.map.ui_pokedex.laoding(FirstID))#importer depuis le fichier json dans le pokédex
             self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(self.openMap)
-            self.ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, pokemon = 'Charmander' :self.capturer(pokemon))
+
+            self.ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, pokemon = 'Charmander', ID =  self.FirstID :self.ui_Pokemon.enregistrer(pokemon, ID))
+            self.ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, FirstID = self.FirstID  : self.map.ui_pokedex.laoding(FirstID))#importer depuis le fichier json dans le pokédex
             self.ui_Pokemon.pushButtonCharmander.clicked.connect(self.openMap)
-            self.ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, pokemon ='Squirtle' : self.capturer(pokemon))
+
+            self.ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, pokemon ='Squirtle', ID =  self.FirstID : self.ui_Pokemon.enregistrer(pokemon,ID))
+            self.ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, FirstID = self.FirstID  : self.map.ui_pokedex.laoding(FirstID))#importer depuis le fichier json dans le pokédex
             self.ui_Pokemon.pushButtonSquirtle.clicked.connect(self.openMap)
 
             
@@ -101,6 +113,10 @@ class App:
         texte = "Login failed. Please try again."
         Text, self.ID = self.ui_MainWindow.verifyLogin()
         
+        #Map
+        self.map = PokemonMap(self.ID)
+        self.map.hide() #il reste cacher pour le moment
+        
         #Si mot de passe et login correct
         if Text != texte:
 
@@ -122,38 +138,7 @@ class App:
 
         
             
-    def capturer(self, pokemon):
-        """
-        La fonction enregistre les pokémons capturés dans  my pokemons
-    
-        """
-        #on rajoute le pokémon capturer dans le pokédex
-        self.map.ui_pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(pokemon)) #on reprend la notation  de Marche_BCP_moi pour utiliser le pokédex de la map
-        
-        Text, ID =self.ui_MainWindow.verifyLogin()
-        
-        #Si le ID est vide alors on est dans first connection
-        if ID == '':
-            Text, ID =  self.ui_Form.verifyAndRegister()
-            with open(data, "r") as file:
-                users = json.load(file)
-            users[ID]['MyPokemons'].append(pokemon)
-            
-            #Modifier le fichier
-            with open(data, "w") as file:
-                json.dump(users, file)
-            
-        
-        #Si pas première connexion
-        else:
-            Text, ID =  self.ui_Form.verifyAndRegister()
-            with open(data, "r") as file:
-                users = json.load(file)
-            users[ID]['MyPokemons'].append(pokemon)
-            
-            #Modifier le fichier
-            with open(data, "w") as file:
-                json.dump(users, file) 
+
     
     def openMap(self):
         self.map.show()

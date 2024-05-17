@@ -20,17 +20,29 @@ import time
 import pokemon
 from pokemon import Pokemon, dico_poke
 from combat import Ui_MainWindow
-from combatMain import MainWindow
+from CombatMain_def import CombatMain
 from pokedex import Ui_FormPokedex
-
-from page_accueil import MainWindow as ecran_accueil
 
 
 coords = pd.read_csv('..\data\pokemon_coordinates.csv')
 Joueur = os.path.join(os.path.dirname(__file__),'image','Ash.png')
 NOM = coords.pokemon
 COORD = coords.coordinates
+
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
+
+
+Bulbasaur = os.path.join(os.path.dirname(__file__), 'image', 'Bullbizarre.png')
+Charmander = os.path.join(os.path.dirname(__file__), 'image', 'Salameche.png')
+Squirtle = os.path.join(os.path.dirname(__file__), 'image', 'Carapuce.png')
+
+# Création d'un dictionnaire avec les Pokémon Bulbasaur, Charmander et Squirtle
+dico_pokemon = {"Bulbasaur" : Bulbasaur,
+    "Charmander": Charmander,
+    "Squirtle": Squirtle}
+
+
+
 
 
 
@@ -85,6 +97,7 @@ cf = CF(COORD)
 dico_poke = {cle: valeur for cle, valeur in zip(NF, cf)}  # Création d'un dictionnaire à l'aide de deux listes
 
 pk = []
+
 Machop = os.path.join(os.path.dirname(__file__),'pokemon','machop.png')
 pk.append(Machop)
 Machoke = os.path.join(os.path.dirname(__file__),'pokemon','machoke.png')
@@ -112,9 +125,12 @@ dico_poke_img = {cle: valeur for cle, valeur in zip(NF, pk)}
 
 
 class PokemonMap(QWidget):
-    def __init__(self):
+    def __init__(self, ID):
         super().__init__()
-
+        
+        #ID du joueur
+        self.ID = ID
+        
         # Taille de la fenêtre et de la carte
         self.window_width = 800
         self.window_height = 600
@@ -127,7 +143,7 @@ class PokemonMap(QWidget):
 
         self.pokemon_data = dico_poke          # Dictionnaire des Pokémon avec leurs noms et coordonnées 
 
-        self.proximity_radius = 50             # Rayon de proximité pour détecter les Pokémons
+        self.proximity_radius = 80             # Rayon de proximité pour détecter les Pokémons
 
         self.map_image = QPixmap("Grass_Type.webp")  # Charger l'image de la carte Pokémon
         
@@ -147,23 +163,19 @@ class PokemonMap(QWidget):
 
         self.setWindowTitle("Pokemon Map")   # Titre de la fenêtre
         
-        #fenêtre de combat
-        self.main_window = MainWindow()
-        self.main_window.hide()
-        
+        # self.new_interface = QtWidgets.QWidget()  # Créer une instance de QWidget
+        # self.ui_pokedex = Ui_FormPokedex()  # Créer une instance de Ui_FormPokedex
+        # self.ui_pokedex.setupUi(self.new_interface)  # Appeler la méthode setupUi() 
+
+        self.show()   # Afficher la fenêtre
+
         #interface pokédex
         self.new_interface = QtWidgets.QWidget()  # Créer une instance de QWidget
         self.ui_pokedex = Ui_FormPokedex(self.new_interface)  # Créer une instance de Ui_FormPokedex
         self.ui_pokedex.setupUi(self.new_interface)  # Appeler la méthode setupUi() 
 
-        self.show()   # Afficher la fenêtre
 
-        
-        
-
-
-
-    def paintEvent(self, event):
+    def paintEvent(self, event ):
         """
         
         DESCRIPTION: Dessine la carte, le personnage et les pokémons à proximité.
@@ -173,6 +185,7 @@ class PokemonMap(QWidget):
         Une carte avec un personnage au centre et des pokémons cachés
 
         """
+        ID = self.ID
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.map_width, self.map_height, self.map_image)  # Dessiner la carte Pokémon
         painter.drawPixmap(self.player_x, self.player_y, self.player_image)        # Dessiner le joueur
@@ -187,9 +200,18 @@ class PokemonMap(QWidget):
                 painter.setFont(font)
                 font_metrics = QFontMetrics(painter.font())
                 text_width = font_metrics.width(pokemon_name) +10
+                if distance < 10:
+                    
+                    with open(data, "r") as file:
+                        users = json.load(file)
+                        nom = users[ID]["MyPokemons"][0]
 
-                self.main_window.show()
-                QTimer.singleShot(3000, lambda name=pokemon_name: self.remove_pokemon(name))
+
+
+                    
+                    self.main_window = CombatMain(nom ,pokemon_name, dico_pokemon[nom] ,dico_poke_img[pokemon_name])                        # Lance l'interface du combat
+                    self.main_window.show()
+                    QTimer.singleShot(3000, lambda name=pokemon_name: self.remove_pokemon(name))
                 
                 
 
@@ -229,15 +251,15 @@ class PokemonMap(QWidget):
 
         """
         if event.key() == Qt.Key_Left:
-            self.player_x = max(0, self.player_x - 20)                          # max(0) pour gérer les bords
+            self.player_x = max(0, self.player_x - 20)                          # max pour gérer les bords
         elif event.key() == Qt.Key_Right:
             self.player_x = min(self.window_width - 20, self.player_x + 20)     # min pour gérer les bords
         elif event.key() == Qt.Key_Up:
             self.player_y = max(0, self.player_y - 20)
         elif event.key() == Qt.Key_Down:
             self.player_y = min(self.window_height - 20, self.player_y + 20)
-            
         self.update()
+        
         
         
         
@@ -259,29 +281,27 @@ class PokemonMap(QWidget):
         with open(data, "w") as file:
             json.dump(users, file) 
             
-    def choix_poke(self):
-        """
-        la fonction choisit le pokémon de combat pour le combat
+    # def closepoke(self):
+    #     """
+    #     la fonction ferme le pokedex
 
-        Returns
-        -------
-        None.
+    #     Returns
+    #     -------
+    #     None.
 
-        """
-        self.ui_pokedex.show()
-        self.ui_pokedex.clicked.connect(self.ui_pokedex.choisir_pokemon)
-        pokemon_combat = self.ui_pokedex.pokemon_combat
+    #     """
+    #     self.new_interface.close()
+
         
-        #changer l'image du pokémon combat dans la fenêtre combat
-        
+    #     #changer l'image du pokémon combat dans la fenêtre combat
         
         
-        self.main_window.show()
-    
+
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = PokemonMap()
-    app.setQuitOnLastWindowClosed(True)
+    app.setQuitOnLastWindowClosed(True)  
     sys.exit(app.exec_())
+    

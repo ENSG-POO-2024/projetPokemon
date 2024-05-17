@@ -10,7 +10,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from statPokemon import statPoke_init
+from first_connection import FirstConnection
 import os
+import json
 from PyQt5.QtGui import QMovie
 from PyQt5.QtCore import *
 from pokedex import Ui_FormPokedex
@@ -23,11 +25,13 @@ Charmander = os.path.join(os.path.dirname(__file__), 'image', 'charmander2.gif')
 #import des descriptions de ces pokémons
 texte_Bullbizarre, texte_Salameche, texte_Carapuce = statPoke_init() 
 
+data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
+
 fond_ecran =  os.path.join(os.path.dirname(__file__),'image', 'ecran3.jpg')
 
 
 
-class Ui_FormPokemon(object):
+class FormPokemon(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1112, 708)
@@ -111,6 +115,33 @@ class Ui_FormPokemon(object):
         self.pushButtonSquirtle.setText(_translate("Form", "SQUIRTLE"))
         self.pushButtonCharmander.setText(_translate("Form", "CHARMANDER"))
         
+        
+
+
+
+class Ui_FormPokemon(FormPokemon):
+    
+    def __init__(self,parent=None):
+        super().__init__()
+        self.setupUi(parent)
+        
+        
+    def enregistrer(self, pokemon, ID):
+        """
+        La fonction enregistre le premier pokémon choisi dans le fichier json
+    
+        """
+
+        with open(data, "r") as file:
+            users = json.load(file)
+        users[ID]['MyPokemons'].append(pokemon)
+                    
+        #Modifier le fichier
+        with open(data, "w") as file:
+            json.dump(users, file)
+            
+
+        
 
 
 
@@ -122,8 +153,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     app.setQuitOnLastWindowClosed(True)
-    ui = Ui_FormPokemon()
-    ui.setupUi(Form)
+    ui = Ui_FormPokemon(Form)
     Form.show()
     sys.exit(app.exec_())
     
