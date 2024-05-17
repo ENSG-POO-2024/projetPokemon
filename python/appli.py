@@ -19,167 +19,176 @@ data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
 import sys
 
 
-#afficher la page first connection
-def afficheFirstConnection():
-    Window.close()
-    First_Conection.show()
 
-#afficher la page first pokémon
-def afficheFirstPokemon():
-    
-    texte = "ID already exists. Please choose another username."
-    Text, ID = ui_Form.verifyAndRegister()
-
-    #si le login n'a jamais encore été utilisé alors on ouvre la nouvelle fenêtre et on choisit nos pokémon
-    if Text != texte:
-        #fonction de vérification
-        First_Conection.close()
-        Form_Pokemon.show()
-        return ID
-
-    else:
-        mess.show()
-    
+class App:
+    def __init__(self):
         
-def capturer(pokemon):
-    """
-    La fonction enregistre les pokémons capturés dans  my pokemons
+        #Page d'accueil
+        self.Window = QtWidgets.QMainWindow()
+        self.ui_MainWindow = MainWindow()
+        self.ui_MainWindow.setupUi(self.Window)
 
-    """
+        self.ui_MainWindow.pushButton_2.clicked.connect(self.afficheFirstConnection) #ouvrir la page first connection
+        #self.ui_MainWindow.pushButtonValider.clicked.connect(self.ui_MainWindow.verifyLogin) # Connecter le bouton de connexion à la fonction de vérification
+        self.ui_MainWindow.pushButtonValider.clicked.connect(self.check) # Charger tout les données de l'utilisateur
 
-    ui_Pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(pokemon))
-    Text, ID = ui_MainWindow.verifyLogin()
-    
-    #Si le ID est vide alors on est dans first connection
-    if ID == '':
-        Text, ID =  ui_Form.verifyAndRegister()
-        with open(data, "r") as file:
-            users = json.load(file)
-        users[ID]['MyPokemons'].append(pokemon)
-        
-        #Modifier le fichier
-        with open(data, "w") as file:
-            json.dump(users, file)
-        
-    
-    #Si pas première connexion
-    else:
-        Text, ID =  ui_Form.verifyAndRegister()
-        with open(data, "r") as file:
-            users = json.load(file)
-        users[ID]['MyPokemons'].append(pokemon)
-        
-        #Modifier le fichier
-        with open(data, "w") as file:
-            json.dump(users, file) 
-
-
-    
-
-
-    
-def openMap():
-    Map.show()
-    
-    #Fermeture de tous les fenêtres inutiles
-    First_Conection.close()
-    Window.close()
-    Form_Pokemon.close()
-    
-    
-
-def openPokedex():
-    Form_Pokedex.show()
-        
-def check():
-    """
-     la fonction recharge la partie de l'utilisateur avec tous ses pokémons
-
-    """
-    texte = "Login failed. Please try again."
-    Text, ID = ui_MainWindow.verifyLogin()
-    
-    #Si mot de passe et login correct
-    if Text != texte:
-        with open(data, "r") as file:
-            users = json.load(file)
-            listPoke = users[ID]["MyPokemons"]
-            for k in range(len(listPoke)):
-                nomPoke = listPoke[k]
-                ui_Pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(nomPoke))
-            openMap()
+        #Map
+        self.map = PokemonMap()
+        self.map.hide() #il reste cacher pour le moment
             
-    else:
-        mess_err.show()
+
+        self.Window.show()
+
+    #afficher la page first connection
+    def afficheFirstConnection(self):
+        
+        #Page first connection
+        self.First_Conection = QtWidgets.QWidget()
+        
+        self.ui_Form = FirstConnection(self.First_Conection)
+        self.ui_Form.pushButton.clicked.connect(self.afficheFirstPokemon) #afficher la page de choix de pokémon
+
+        self.Window.close()
+        self.First_Conection.show()
+
+    #afficher la page first pokémon
+    def afficheFirstPokemon(self):
+        
+        texte = "ID already exists. Please choose another username."
+        Text, self.FirstID = self.ui_Form.verifyAndRegister()
+    
+        #si le login n'a jamais encore été utilisé alors on ouvre la nouvelle fenêtre et on choisit nos pokémon
+        if Text != texte:
+            
+
+            
+            #page des premieres pokémon
+            self.Form_Pokemon = QtWidgets.QWidget()
+            self.ui_Pokemon = Ui_FormPokemon()
+            self.ui_Pokemon.setupUi(self.Form_Pokemon)
+            
+            self.First_Conection.close() #fermer la page précédente
+            self.Form_Pokemon.show() 
+            
+            
+            #Choisir son pokémon
+            #Utilisation de lambda car la fonction clicked.connect ne reconnait pas les paramètres des fonctions qui se trouvent à l'intérieur
+            self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur'  : self.capturer(pokemon))
+            self.ui_Pokemon.pushButtonBulbasaur.clicked.connect(self.openMap)
+            self.ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, pokemon = 'Charmander' :self.capturer(pokemon))
+            self.ui_Pokemon.pushButtonCharmander.clicked.connect(self.openMap)
+            self.ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, pokemon ='Squirtle' : self.capturer(pokemon))
+            self.ui_Pokemon.pushButtonSquirtle.clicked.connect(self.openMap)
+
+            
+
+
+    
+        else:
+            #message d'erreur si le login a déjà été utilisé
+            self.mess = QtWidgets.QWidget()
+            self.ui_erreur = Ui_erreur()
+            self.ui_erreur.setupUi(self.mess)
+
+
+            self.mess.show()
+            
+    def check(self):
+        """
+         la fonction recharge la partie de l'utilisateur avec tous ses pokémons
+    
+        """
+        texte = "Login failed. Please try again."
+        Text, self.ID = self.ui_MainWindow.verifyLogin()
+        
+        #Si mot de passe et login correct
+        if Text != texte:
+
+            self.map.ui_pokedex.laoding(self.ID)
+            
+            #Fermeture de tous les fenêtres inutiles
+            self.Window.close()
+            self.map.show()
+
+            
+                
+        else:
+            #message d'erreur si le login ou mot de passe incorrect
+            self.mess_err = QtWidgets.QWidget()
+            self.ui_erreur_log = Ui_erreur_login()
+            self.ui_erreur_log.setupUi(self.mess_err)
+            self.mess_err.show()
+        
+
+        
+            
+    def capturer(self, pokemon):
+        """
+        La fonction enregistre les pokémons capturés dans  my pokemons
+    
+        """
+        #on rajoute le pokémon capturer dans le pokédex
+        self.map.ui_pokedex.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(pokemon)) #on reprend la notation  de Marche_BCP_moi pour utiliser le pokédex de la map
+        
+        Text, ID =self.ui_MainWindow.verifyLogin()
+        
+        #Si le ID est vide alors on est dans first connection
+        if ID == '':
+            Text, ID =  self.ui_Form.verifyAndRegister()
+            with open(data, "r") as file:
+                users = json.load(file)
+            users[ID]['MyPokemons'].append(pokemon)
+            
+            #Modifier le fichier
+            with open(data, "w") as file:
+                json.dump(users, file)
+            
+        
+        #Si pas première connexion
+        else:
+            Text, ID =  self.ui_Form.verifyAndRegister()
+            with open(data, "r") as file:
+                users = json.load(file)
+            users[ID]['MyPokemons'].append(pokemon)
+            
+            #Modifier le fichier
+            with open(data, "w") as file:
+                json.dump(users, file) 
+    
+    def openMap(self):
+        self.map.show()
+        
+        self.Form_Pokemon.close()# on ferme la page des choix de pokémon
+
+
     
 
 
-app = QtWidgets.QApplication(sys.argv)
-
-
-#Pokédex
-Form_Pokedex = QtWidgets.QWidget()
-ui_Pokedex = Ui_FormPokedex()
-Pokedex = ui_Pokedex.setupUi(Form_Pokedex)
-
-
-
-#Page d'accueil
-Window = QtWidgets.QMainWindow()
-ui_MainWindow = MainWindow()
-ui_MainWindow.setupUi(Window)
-ui_MainWindow.pushButton_2.clicked.connect(afficheFirstConnection) #ouvrir la page first connection
-ui_MainWindow.pushButtonValider.clicked.connect(ui_MainWindow.verifyLogin) # Connecter le bouton de connexion à la fonction de vérification
-ui_MainWindow.pushButtonValider.clicked.connect(check) # Charger tout les données de l'utilisateur
-
-
-#Page first connection
-First_Conection = QtWidgets.QWidget()
-app.setQuitOnLastWindowClosed(True)
-ui_Form = FirstConnection(First_Conection)
-ui_Form.pushButton.clicked.connect(afficheFirstPokemon) #afficher la page de choix de pokémon
-
-
-
-#page des premieres pokémon
-Form_Pokemon = QtWidgets.QWidget()
-ui_Pokemon = Ui_FormPokemon()
-ui_Pokemon.setupUi(Form_Pokemon)
     
-#message d'erreur si le login a déjà été utilisé
-mess = QtWidgets.QWidget()
-ui_erreur = Ui_erreur()
-ui_erreur.setupUi(mess)
+    
 
-#message d'erreur si le login ou mot de passe incorrect
-mess_err = QtWidgets.QWidget()
-ui_erreur_log = Ui_erreur_login()
-ui_erreur_log.setupUi(mess_err)
-
-
-
-
-
-
-#Choisir son pokémon
-# ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur' : ui_Pokemon.choixpoke_init(pokemon))
-#Utilisation de lambda car la fonction clicked.connect ne reconnait pas les paramètres des fonctions qui se trouvent à l'intérieur
-ui_Pokemon.pushButtonBulbasaur.clicked.connect(lambda checked, pokemon = 'Bulbasaur'  : capturer(pokemon))
-ui_Pokemon.pushButtonBulbasaur.clicked.connect(openMap)
-ui_Pokemon.pushButtonCharmander.clicked.connect(lambda checked, pokemon = 'Charmander' :capturer(pokemon))
-ui_Pokemon.pushButtonCharmander.clicked.connect(openMap)
-ui_Pokemon.pushButtonSquirtle.clicked.connect(lambda checked, pokemon ='Squirtle' : capturer(pokemon))
-ui_Pokemon.pushButtonSquirtle.clicked.connect(openMap)
-
-#Map
-Map = PokemonMap()
-#Map.button.clicked.connect(openPokedex)
+ 
+if __name__ == "__main__":
+    
+    app = QtWidgets.QApplication(sys.argv)
+    application = App()
+    sys.exit(app.exec_())#exécuter l'app
+    app.setQuitOnLastWindowClosed(True)
 
 
 
 
 
-app.setQuitOnLastWindowClosed(True)
-Window.show()
-#exécuter l'app
-sys.exit(app.exec_())
+
+
+
+
+    
+
+
+
+
+
+
+
+

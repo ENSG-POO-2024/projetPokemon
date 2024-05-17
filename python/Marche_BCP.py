@@ -136,7 +136,7 @@ class PokemonMap(QWidget):
         self.button_label.setPixmap(QPixmap("Pokedex.png"))  #Afficher une image sur le bouton
         self.button_label.setScaledContents(True)  # Redimensionner l'image pour s'adapter au QLabel
 
-        self.button_label.mousePressEvent = self.open_new_interface
+        # self.button_label.mousePressEvent = self.open_new_interface
             
 
         

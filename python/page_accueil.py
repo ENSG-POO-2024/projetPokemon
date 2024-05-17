@@ -14,6 +14,8 @@ import os
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
 from pokedex import Ui_FormPokedex
 
+fond_ecran =  os.path.join(os.path.dirname(__file__),'image', 'ecran.png')
+
 
 class MainWindow(object):
     
@@ -22,6 +24,16 @@ class MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(690, 502)
+        
+        #Ajouter une image de fond
+        self.labelpokedex = QtWidgets.QLabel(MainWindow)
+        self.labelpokedex.setGeometry(QtCore.QRect(0, 0, 690, 502))
+        self.labelpokedex.setText("")
+        self.labelpokedex.setPixmap(QtGui.QPixmap(fond_ecran))
+        self.labelpokedex.setScaledContents(True)
+        
+        
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -41,13 +53,14 @@ class MainWindow(object):
         self.labelID.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextEditable|QtCore.Qt.TextEditorInteraction|QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.labelID.setObjectName("labelID")
         self.labelTitre = QtWidgets.QLabel(self.frame)
-        self.labelTitre.setGeometry(QtCore.QRect(230, 80, 214, 42))
+        self.labelTitre.setGeometry(QtCore.QRect(200, 40, 280, 102))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.labelTitre.setFont(font)
         self.labelTitre.setObjectName("labelTitre")
         self.labelPassword = QtWidgets.QLabel(self.frame)
         self.labelPassword.setGeometry(QtCore.QRect(100, 260, 111, 25))
+        self.labelTitre.setStyleSheet("font-weight: bold;") # mettre en gras
         font = QtGui.QFont()
         font.setPointSize(16)
         self.labelPassword.setFont(font)
@@ -91,7 +104,7 @@ class MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Connection"))
         self.labelID.setText(_translate("MainWindow", "ID"))
         self.labelTitre.setText(_translate("MainWindow", "CONNECTION"))
         self.labelPassword.setText(_translate("MainWindow", "Password:"))
@@ -176,8 +189,7 @@ if __name__ == "__main__":
     ui.setupUi(Form)
     Form.show()
     
-    #Pokédex
-    Pokedex = Ui_FormPokedex()
+
     
     sys.exit(app.exec_())
 

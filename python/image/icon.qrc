@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="pokémon">
-    <file>Carapuce.png</file>
-    <file>Salameche.png</file>
-    <file>Bullbizarre.png</file>
-  </qresource>
-</RCC>

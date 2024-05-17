@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QMovie
 import json
 from premier_pokemon import Ui_FormPokemon
 import os
@@ -17,38 +18,52 @@ from pokedex import Ui_FormPokedex
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
 
 
+fond_ecran =  os.path.join(os.path.dirname(__file__),'image', 'pikachu.gif')
+
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(741, 484)
+        Form.resize(500, 500)
+        
+        #Ajouter un gif de fond
+        self.labelpokedex = QtWidgets.QLabel(Form)
+        self.labelpokedex.setGeometry(QtCore.QRect(0, 0, 1000, 500))
+        self.labelpokedex.setText("")
+        self.movie = QMovie(fond_ecran) #pour faire animer le gif
+        self.labelpokedex.setMovie(self.movie)
+        self.movie.start() # démarrer le gif
+
+        
+        
         self.labelTitre = QtWidgets.QLabel(Form)
-        self.labelTitre.setGeometry(QtCore.QRect(160, 50, 561, 151))
+        self.labelTitre.setGeometry(QtCore.QRect(35, 50, 500, 151))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.labelTitre.setFont(font)
         self.labelTitre.setObjectName("labelTitre")
         self.labelID = QtWidgets.QLabel(Form)
-        self.labelID.setGeometry(QtCore.QRect(130, 200, 151, 51))
+        self.labelID.setGeometry(QtCore.QRect(50, 200, 151, 51))
+        self.labelTitre.setStyleSheet("font-weight: bold;") # mettre en gras
         font = QtGui.QFont()
         font.setPointSize(16)
         self.labelID.setFont(font)
         self.labelID.setObjectName("labelID")
         self.labelPassword = QtWidgets.QLabel(Form)
-        self.labelPassword.setGeometry(QtCore.QRect(100, 320, 151, 51))
+        self.labelPassword.setGeometry(QtCore.QRect(5, 320, 151, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.labelPassword.setFont(font)
         self.labelPassword.setObjectName("labelPassword")
         self.lineEditID = QtWidgets.QLineEdit(Form)
-        self.lineEditID.setGeometry(QtCore.QRect(210, 200, 341, 41))
+        self.lineEditID.setGeometry(QtCore.QRect(110, 200, 341, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.lineEditID.setFont(font)
         self.lineEditID.setObjectName("lineEditID")
         self.lineEditPassword = QtWidgets.QLineEdit(Form)
-        self.lineEditPassword.setGeometry(QtCore.QRect(210, 320, 341, 41))
+        self.lineEditPassword.setGeometry(QtCore.QRect(110, 320, 341, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.lineEditPassword.setFont(font)

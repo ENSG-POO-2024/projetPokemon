@@ -10,20 +10,17 @@ import csv
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel
 from PyQt5.QtGui import QPixmap, QFont, QPainter, QFontMetrics
-from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import Qt, QRect, QTimer
 import pandas as pd
 import json
 import random
 import numpy as np
 import os
-# # Importez la fonction de combat depuis votre autre module
-# from pokemon_combat import launch_battle
-
+import time
 import pokemon
 from pokemon import Pokemon, dico_poke
 from combat import Ui_MainWindow
 from combatMain import MainWindow
-
 from pokedex import Ui_FormPokedex
 
 
@@ -32,7 +29,10 @@ Joueur = os.path.join(os.path.dirname(__file__),'image','Ash.png')
 NOM = coords.pokemon
 COORD = coords.coordinates
 
-# Création du dictionnaire
+
+
+
+### Création des dictionnaires #########################################
 
 def CF(C):
     """
@@ -105,6 +105,9 @@ pk.append(Venonat)
 dico_poke_img = {cle: valeur for cle, valeur in zip(NF, pk)}
 
 
+###################################################
+
+
 class PokemonMap(QWidget):
     def __init__(self):
         super().__init__()
@@ -125,11 +128,6 @@ class PokemonMap(QWidget):
 
         self.map_image = QPixmap("Grass_Type.webp")  # Charger l'image de la carte Pokémon
         
-        # Créer un bouton pour ouvrir la nouvelle interface
-        # self.button = QPushButton("Ouvrir", self)
-        # self.button.setGeometry(self.window_width - 100, self.window_height - 50, 80, 30)
-        # self.button.clicked.connect(self.open_new_interface)
-        
         
         self.button_label = QLabel(self) #Création bouton
         self.button_label.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
@@ -138,7 +136,6 @@ class PokemonMap(QWidget):
         self.button_label.mousePressEvent = self.open_new_interface
             
         
-
         self.player_image = QPixmap(Joueur).scaled(50, 50, Qt.KeepAspectRatio)   # Charger et redimensionner l'image du joueur
         
         self.pokemon_image = QPixmap("testgrass.png").scaled(30, 30, Qt.KeepAspectRatio) # Charger et redimensionner l'image des pokémons
@@ -146,8 +143,17 @@ class PokemonMap(QWidget):
         self.setGeometry(100, 100, self.window_width, self.window_height)  # Définir la taille de la fenêtre
 
         self.setWindowTitle("Pokemon Map")   # Titre de la fenêtre
+        
+        
+        #interface pokédex
+        self.new_interface = QtWidgets.QWidget()  # Créer une instance de QWidget
+        self.ui_pokedex = Ui_FormPokedex(self.new_interface)  # Créer une instance de Ui_FormPokedex
+        self.ui_pokedex.setupUi(self.new_interface)  # Appeler la méthode setupUi() 
 
         self.show()   # Afficher la fenêtre
+
+
+
 
     def paintEvent(self, event):
         """
@@ -168,73 +174,40 @@ class PokemonMap(QWidget):
             if distance < self.proximity_radius:
                 IMG = QPixmap(dico_poke_img[pokemon_name]).scaled(50, 50, Qt.KeepAspectRatio)
                 painter.drawPixmap(coord[0], coord[1],IMG)         # Dessiner les Pokémons 
-                # painter.fillRect(coord[0], coord[1], 10, 10, Qt.black)
                 font = QFont()
                 font.setBold(True)                                                # Mettre la police en gras
                 painter.setFont(font)
                 font_metrics = QFontMetrics(painter.font())
                 text_width = font_metrics.width(pokemon_name) +10
-                # font_metrics = QFontMetrics(painter.font())
-                # text_width = font_metrics.horizontalAdvance(pokemon_name)
-                # painter.drawText(pokemon_x - text_width // 2 + 15, pokemon_y - 5, pokemon_name)  # Afficher le texte sur le pokémon
-                # Créer une instance de la MainWindow et l'afficher
                 self.main_window = MainWindow()
                 self.main_window.show()
+                QTimer.singleShot(3000, lambda name=pokemon_name: self.remove_pokemon(name))
                 
-    
-    
-    
-    # # Vérifiez si le personnage est à proximité d'un Pokémon et lancez le combat si c'est le cas
-    #     self.check_for_battle()
+                
 
-    # def check_for_battle(self):
-    #     for pokemon_name, coord in self.pokemon_data.items():
-    #         pokemon_x, pokemon_y = coord
-    #         distance = ((pokemon_x - self.player_x) ** 2 + (pokemon_y - self.player_y) ** 2) ** 0.5
-    #         if distance < self.proximity_radius:
-    #             # Lancez le combat avec le Pokémon à proximité
-    #             defeated = launch_battle(pokemon_name)
-    #             if defeated:
-    #                 # Supprimez le Pokémon de la carte s'il est battu
-    #                 del self.pokemon_data[pokemon_name]
-    #                 break  # Sortez de la boucle pour ne pas traiter les autres Pokémon
-                
-                # # Créez une instance de MainWindow et montrez-la
-                #  self.main_window = MainWindow()
-                #  self.main_window.show()
-                #  break  # Sortez de la boucle pour ne pas traiter les autres Pokémon
-                
-    # def open_new_interface(self, event):
-    #     # Fonction pour ouvrir une nouvelle interface
-    #     # self.new_window = QWidget()
-    #     # self.new_window.setGeometry(200, 200, 400, 300)
-    #     # self.new_window.setWindowTitle("Nouvelle Interface")
-    #     # self.new_window.show()
+    def remove_pokemon(self, pokemon_name):
+        """
+        DESCRIPTION: Supprime un Pokémon du dictionnaire.
+        """
+        if pokemon_name in self.pokemon_data:
+            del self.pokemon_data[pokemon_name]
+            self.update()  # Montrer les changements
         
-    #     new_interface = Ui_FormPokedex()
-    #     # self.new_interface.show()
-    #     # app = QtWidgets.QApplication(sys.argv)
-    #     # Form_Pokedex = QtWidgets.QWidget()
-    #     # app.setQuitOnLastWindowClosed(True)
-    #     # ui_pokedex = Ui_FormPokedex()
-    #     # ui_pokedex.setupUi(Form_Pokedex)
-    #     # Form_Pokedex.show()
-    #     # sys.exit(app.exec_())
         
         
     def open_new_interface(self, event):
-        # Fonction pour ouvrir une nouvelle interface
-        self.new_interface = QtWidgets.QWidget()  # Créez une instance de QWidget
-        self.ui_pokedex = Ui_FormPokedex()  # Créez une instance de votre classe Ui_FormPokedex
-        self.ui_pokedex.setupUi(self.new_interface)  # Appelez la méthode setupUi() avec votre nouvelle interface en tant qu'argument
-        self.new_interface.show()  # Affichez la nouvelle interface
+        """
         
-    # def open_new_interface2(self, event):
-    #     # Fonction pour ouvrir une nouvelle interface
-    #     self.new_window = QWidget()
-    #     self.new_window.setGeometry(200, 200, 400, 300)
-    #     self.new_window.setWindowTitle("Nouvelle Interface")
-    #     self.new_window.show()
+        DESCRIPTION: Ouvre une nouvelle interface
+        Returns
+        -------
+        Ouverture du Pokédex
+
+        """
+
+        self.new_interface.show()  # Afficher la nouvelle interface
+        
+ 
 
 
     def keyPressEvent(self, event):
@@ -255,7 +228,6 @@ class PokemonMap(QWidget):
             self.player_y = max(0, self.player_y - 20)
         elif event.key() == Qt.Key_Down:
             self.player_y = min(self.window_height - 20, self.player_y + 20)
-        # self.check_for_battle()
         self.update()
 
 

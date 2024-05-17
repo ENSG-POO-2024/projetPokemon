@@ -14,8 +14,8 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 import random
 import pokemon
-from pokemon import Pokemon, dico_poke
-from new_combat import Ui_MainWindow  
+from pokemon import Pokemon, dico_poke 
+from new_combat import Ui_MainWindow
 from PyQt5.QtCore import QTimer,QObject, pyqtSignal
 # from image1_rc import *  # Import du module contenant les ressources
 
