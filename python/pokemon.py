@@ -12,12 +12,19 @@ import os
 
 ### Extraction des données du projet (dataframe)
 
+<<<<<<< HEAD
 
 # <<<<<<< HEAD
 # # =======
 # coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
 # types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
 # # # >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
+=======
+# =======
+coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
+types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
+# # >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
+>>>>>>> 2e3e49179de7ee00493b523e9a5d5e055a3a6fad
 
 # coords = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_coordinates.csv')
 # types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\pokemon_first_gen.csv')
@@ -25,6 +32,10 @@ import os
 # # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e3e49179de7ee00493b523e9a5d5e055a3a6fad
 csv_coords = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_coordinates.csv')
 csv_types = os.path.join(os.path.dirname(__file__), 'data', 'pokemon_first_gen.csv')
 coords = pd.read_csv(csv_coords)
@@ -33,21 +44,12 @@ types = pd.read_csv(csv_types)
 
 
 
-
-# <<<<<<< HEAD
-
-# <<<<<<< HEAD
-# """
-# <<<<<<< HEAD
-
+coords = pd.read_csv('..\data\pokemon_coordinates.csv')
+types = pd.read_csv('..\data\pokemon_first_gen.csv')
 
 coords = pd.read_csv('..\data\pokemon_coordinates.csv')
 types = pd.read_csv('..\data\pokemon_first_gen.csv')
-# >>>>>>> 44bc78e81b45f1796c550c59cc8f17812f4436eb
-# =======
-coords = pd.read_csv('..\data\pokemon_coordinates.csv')
-types = pd.read_csv('..\data\pokemon_first_gen.csv')
-# >>>>>>> d41a08643e826155b8b06780cc544aed7be62753
+
 
 # coords = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_coordinates.csv')
 # types = pd.read_csv('F:\ENSG\S2\Projet_pokemon\projetPokemonBrown_Cremonese_Ye\data\pokemon_first_gen.csv')
@@ -68,7 +70,10 @@ types = pd.read_csv('..\data\pokemon_first_gen.csv')
 # >>>>>>> 73d9419d98ae37ad40ff2e5de8256020c6ee38be
 
 # tableau = pd.read_csv('D:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2e3e49179de7ee00493b523e9a5d5e055a3a6fad
 
 
 # df_types = pd.read_csv('F:\Projet_Pokemon\projetPokemonBrown_Cremonese_Ye\python\data\tableau_type.csv')

@@ -135,26 +135,9 @@ class PokemonMap(QWidget):
         self.button_label.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
         self.button_label.setPixmap(QPixmap("Pokedex.png"))  #Afficher une image sur le bouton
         self.button_label.setScaledContents(True)  # Redimensionner l'image pour s'adapter au QLabel
-
-<<<<<<< HEAD
-        # self.button_label.mousePressEvent = self.open_new_interface
-=======
-        # self.button_label.mousePressEvent = self.open_new_interface()
-                    
-
         self.button_label.mousePressEvent = self.open_new_interface
->>>>>>> 2e3e49179de7ee00493b523e9a5d5e055a3a6fad
             
-
         
-        
-
-        #Création d'un bouton
-        self.button = QtWidgets.QPushButton(self)
-        self.button.setGeometry(self.window_width - 80, self.window_height - 580, 50, 50)
-        self.button.setFlat(True) #Mode transparent
-        # self.button_label.mousePressEvent = self.open_new_interface
-
 
         self.player_image = QPixmap(Joueur).scaled(50, 50, Qt.KeepAspectRatio)   # Charger et redimensionner l'image du joueur
         
@@ -163,12 +146,8 @@ class PokemonMap(QWidget):
         self.setGeometry(100, 100, self.window_width, self.window_height)  # Définir la taille de la fenêtre
 
         self.setWindowTitle("Pokemon Map")   # Titre de la fenêtre
-        
-        
-        """
+
         self.show()   # Afficher la fenêtre
-        """
-        
 
     def paintEvent(self, event):
         """
@@ -224,21 +203,14 @@ class PokemonMap(QWidget):
                 #  self.main_window = MainWindow()
                 #  self.main_window.show()
                 #  break  # Sortez de la boucle pour ne pas traiter les autres Pokémon
-    """            
-    def open_new_interface(self, event):
-        Fonction pour ouvrir une nouvelle interface
-        self.new_window = QWidget()
-        self.new_window.setGeometry(200, 200, 400, 300)
-        self.new_window.setWindowTitle("Nouvelle Interface")
-        self.new_window.show()
-    """
-    
-    
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.clicked.emit()  # Émettre un signal lorsque le bouton est cliqué    
-    
-    
+                
+    # def open_new_interface(self, event):
+    #     # Fonction pour ouvrir une nouvelle interface
+    #     # self.new_window = QWidget()
+    #     # self.new_window.setGeometry(200, 200, 400, 300)
+    #     # self.new_window.setWindowTitle("Nouvelle Interface")
+    #     # self.new_window.show()
+        
     #     new_interface = Ui_FormPokedex()
     #     # self.new_interface.show()
     #     # app = QtWidgets.QApplication(sys.argv)
@@ -248,17 +220,14 @@ class PokemonMap(QWidget):
     #     # ui_pokedex.setupUi(Form_Pokedex)
     #     # Form_Pokedex.show()
     #     # sys.exit(app.exec_())
-       
-    
-
-     # def open_new_interface(self, event):
-     #    Fonction pour ouvrir une nouvelle interface
-     #    self.new_interface = QtWidgets.QWidget()  # Créez une instance de QWidget
-     #    self.ui_pokedex = Ui_FormPokedex()  # Créez une instance de votre classe Ui_FormPokedex
-     #    self.ui_pokedex.setupUi(self.new_interface)  # Appelez la méthode setupUi() avec votre nouvelle interface en tant qu'argument
-     #    self.new_interface.show()  # Affichez la nouvelle interface
         
         
+    def open_new_interface(self, event):
+        # Fonction pour ouvrir une nouvelle interface
+        self.new_interface = QtWidgets.QWidget()  # Créez une instance de QWidget
+        self.ui_pokedex = Ui_FormPokedex()  # Créez une instance de votre classe Ui_FormPokedex
+        self.ui_pokedex.setupUi(self.new_interface)  # Appelez la méthode setupUi() avec votre nouvelle interface en tant qu'argument
+        self.new_interface.show()  # Affichez la nouvelle interface
         
     # def open_new_interface2(self, event):
     #     # Fonction pour ouvrir une nouvelle interface
@@ -292,6 +261,5 @@ class PokemonMap(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setQuitOnLastWindowClosed(True)
     window = PokemonMap()
     sys.exit(app.exec_())

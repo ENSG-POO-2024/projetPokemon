@@ -10,7 +10,7 @@ from page_accueil import MainWindow, Ui_erreur_login
 from first_connection import FirstConnection, Ui_erreur
 from premier_pokemon import Ui_FormPokemon
 from pokedex import Ui_FormPokedex
-from Marche_BCP_moi import PokemonMap
+from Marche_BCP import PokemonMap
 import os
 import json
 data =  os.path.join(os.path.dirname(__file__),'data', 'data_user.json')
