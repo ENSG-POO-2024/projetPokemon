@@ -61,6 +61,7 @@ class Ui_Win(object):
         self.pushButton_flee.setText(_translate("Win", "LEAVE"))
 
 
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

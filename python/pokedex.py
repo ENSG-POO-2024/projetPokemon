@@ -112,6 +112,8 @@ class FormPokedex(object):
         self.Check.setObjectName("Check")
         self.Check.clicked.connect(self.getItem)
         
+        
+        
         #ajouter le nom de tous les pokémons dans le pokédex
         nom_poke = list(dico_poke.keys())
         for k in range(len(nom_poke)):
@@ -138,9 +140,6 @@ class FormPokedex(object):
         """
         La fonction affiche les caractéristiques des pokémons sélectionnés dans le pokédex
 
-        Returns
-        -------
-        None.
 
         """
         fenetre = self.tabWidget.currentIndex()
@@ -161,6 +160,9 @@ class FormPokedex(object):
         #Récupération des données des pokémons
         
         self.infoPoke.setText(text)
+
+        
+        
         
     def remove(self):
         """
@@ -206,7 +208,9 @@ class Ui_FormPokedex(FormPokedex):
     def __init__(self,parent=None):
         super().__init__()
         self.setupUi(parent)
+        self.pokemon_combat = None
         
+
        
 
         
@@ -221,6 +225,24 @@ class Ui_FormPokedex(FormPokedex):
                 nomPoke = listPoke[k]
                 self.listWidgetMesPokemons.addItem(QtWidgets.QListWidgetItem(nomPoke))
     
+    
+    def choisir_pokemon(self):
+        """
+        la fonction enregistre le nom du pokémon choisit pour le combat
+
+        """
+        
+        #si on est pas dans Mes pokémons on ne peut pas sélectionner le pokémon pour le combat
+        try:
+            item = self.listWidgetMesPokemons.currentItem() #choisir dans Mes pokémons
+            self.pokemon_combat = item.text()
+            
+        except:
+            pass
+
+
+        
+    
 
 
 if __name__ == "__main__":
@@ -230,5 +252,6 @@ if __name__ == "__main__":
     app.setQuitOnLastWindowClosed(True)
     ui_Pokedex = Ui_FormPokedex(Form)
     ui_Pokedex.setupUi(Form)
+    ui_Pokedex.Check.clicked.connect(ui_Pokedex.choisir_pokemon)
     Form.show()
     sys.exit(app.exec_())
