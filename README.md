@@ -2,7 +2,7 @@
 
 Bienvenue sur notre jeu Pokémon.
 
-Pour y jouer veuillez lancer le script appli.
+Pour y jouer veuillez lancer le script appli_jeu_final.
 
 En lançant l'application, vous allez vous retrouver sur une page d'accueil.
 
