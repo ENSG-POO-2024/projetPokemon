@@ -157,8 +157,9 @@ if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
     application = App()
-    sys.exit(app.exec_())#exécuter l'app
     app.setQuitOnLastWindowClosed(True)
+    sys.exit(app.exec_())#exécuter l'app
+    
 
 
 
