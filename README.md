@@ -1,38 +1,29 @@
 # Pokémon: projet informatique
 
-* Marie-Dominique Van Damme: marie-dominique.van-damme@ensg.eu
-* Melvin Hersent: melvin.hersent@map.cnrs.fr
+Bienvenue sur notre jeu Pokémon.
 
-## Matériel de départ
+Pour y jouer veuillez lancer le script appli.
 
-### Dans le répertoire "document", vous avez:
+En lançant l'application, vous allez vous retrouver sur une page d'accueil.
 
-* la présentation du projet informatique (ProjetInfo_Ing1_2024.pdf)
-* des exemples de règles de combat entre les pokémons (MondePokemon.pdf)
-* le support de cours des interfaces graphiques
+Si c'est votre première connexion, vous trouverez un bouton "First Connection", en cliquant dessus vous allez être redirigé vers une autre page afin de pouvoir créer votre nom d'utilisateur et votre mot de passe.
+Lorsque vous avez réussi à créer votre compte, vous devez choisir votre pokémon de départ, il vous accompagnera pour vos combats.
 
-### Dans le répertoire "data", vous avez:
+Si vous avez déjà un compte, veuillez inscrire votre id et votre mot de passe sur la page d'accueil et vous pourrez accéder au jeu là où vous l'aviez laissé.
 
-* Un fichier csv contenant les 151 pokemons de la première génération, ainsi que leurs attributs :
-  1. `#` : indique le numéro du pokemon (peut être utilisé comme id)
-  2. `name` : le nom (ici en anglais) du pokemon
-  3. `Type 1` : le type du pokemon
-  4. `Type 2` : le second type du pokemon (s'il en possède un deuxième)
-  5. `Total` : le nombre total de points d'attributs (HP + Attack + Defense + Sp. Attack + Sp. Def + Speed)
-  6. `HP` : le nombre de point de vie de départ
-  7. `Attack` : le nombre de point d'attaque (coefficient pour les dégats infligés)
-  8. `Defense` : le nombre de point de défense (coefficient pour les dégats reçus)
-  9. `Sp. Atk` : le nombre de point d'attaque spéciale (coefficient pour les dégats infligés)
-  10. `Sp. Def` : le nombre de point de défense contre une attaque spéciale (coefficient pour les dégats reçus)
-  11. `Speed` : la vitesse du pokemon (détermine qui joue en premier)
-  12. `Generation` : la génération du pokemon (ici la première)
-  13. `Legendary` : rareté du pokemon, les légendaires sont normalement uniques
+Maintenant que vous vous êtes connecté, vous voilà sur la map de jeu. Vous incarnez un jeune dresseur pokémon qui a un objectif, devenir le meilleur dresseur.
 
-* Un fichier csv contenant une liste de pokemons avec des coordonnées géographiques.
+Pour vous déplacer, utilisez les flèches sur votre clavier. Lors de vos déplacements, des pokémons vont apparaître sur votre route. 
+Vous avez alors le choix d'entrer en combat contre lui en vous approchant de lui ou alors de continuer votre chemin si ce pokémon ne vous interesse pas.
 
-## Comment créer votre dépôt github ?
+Si vous avez choisi de le comabttre, une interface de combat s'ouvre alors. Vous voyez votre pokémon (à gauche) et le pokémon sauvage (à droite). Deux premiers choix s'offrent à vous: Attaquer ou Fuir.
+La fuite ferme l'interface et vous pouvez continuer à vous déplacer. L'attaque offre deux nouveaux choix entre une attaque neutre et une attaque spéciale (qui est du type de votre pokémon de départ), à vous d'être stratégique 
+en choisissant l'attaque la plus puissante contre le pokémon adverse. Après votre attaque, le pokémon adverse lance une attaque. Le combat se termine lorsque votre pokémon ou le pokémon sauvage n'a plus de PV (point de vie).
 
-1. Se créer un identifiant github
-2. Demander à un enseignant de vous ajouter dans l'organisation **ENSG-POO-2024**
-3. *Forker* (copier) le projet **projetPokemon** et choisissez un nom très personnalisé !
-4. Pour voir comment établir une connexion ssh entre votre ordinateur et github, voir documents/sshConnexion.md
+Si vous gagnez le combat, vous avez la possibilité de capturer le pokémon sauvage. Si vous choisissez de le capturer alors il sera ajouté à votre pokédex dans la rubrique 'My Pokémons' que vous retrouverez en haut à droite de la 
+map.
+
+Votre objectif est de capturer tous les Pokémons de la map.
+
+À vous de jouer !
+
